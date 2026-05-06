@@ -743,6 +743,7 @@
     .t-aud-grid{ grid-template-columns: 1fr 1fr;}
     .t-aud{ border-right: 0; border-bottom: 1px solid var(--hairline);}
     .t-step{ grid-template-columns: 56px 1fr; gap: 14px;}
+    .t-step p{ grid-column: 1 / -1; }
     .t-step-dur{ grid-column: 1 / -1; padding-top: 0;}
     .t-footer-grid{ grid-template-columns: 1fr 1fr;}
     .t-hero-feature{ display:none;}
@@ -853,7 +854,7 @@
     .t-fac-tabs2{ gap: 6px; width: 100%; }
     .t-fac-tab{ padding: 7px 12px; font-size: 11.5px; flex: 1; text-align: center; }
     .t-fac-body{ grid-template-columns: 1fr; gap: 12px; }
-    .t-fac-photo{ aspect-ratio: 16/10; border-radius: 12px; }
+    .t-fac-photo{ aspect-ratio: 16/10; min-height: 0; border-radius: 12px; }
     .t-fac-stats-row{ gap: 6px; flex-wrap: wrap; }
     .t-fac-stat-pill{ min-width: 0; flex: 1 1 calc(50% - 6px); padding: 8px 10px; border-radius: 10px; }
     .t-fac-stat-k{ font-size: 9px; }
@@ -908,7 +909,7 @@
     .t-service-art{
       aspect-ratio: 4/3; border-radius: 0; min-height: 0; order: -1;
     }
-    .t-service-info{ padding: 20px; }
+    .t-service-panel > div:last-child{ padding: 20px; }
     .t-service-title{ font-size: clamp(20px, 5.5vw, 28px); margin-bottom: 10px; }
     .t-service-list li{ font-size: 13px; }
     .t-service-price{ padding: 12px 0; }
@@ -924,9 +925,9 @@
 
     /* ── Méthode ── */
     .t-step{ grid-template-columns: 36px 1fr; gap: 10px; padding: 18px 0; }
-    .t-step-num{ font-size: 22px; }
-    .t-step-title{ font-size: 16px; margin-bottom: 6px; }
-    .t-step-desc{ font-size: 13px; }
+    .t-step-n{ font-size: 22px; }
+    .t-step h3{ font-size: 16px; margin-bottom: 4px; }
+    .t-step p{ font-size: 13px; grid-column: 1 / -1; }
     .t-step-dur{ grid-column: 1 / -1; }
 
     /* ── CTA / Formulaire ── */
@@ -945,7 +946,7 @@
     /* ── Témoignages ── */
     .t-testimonials{ padding: 48px 0; }
     .t-test-grid{ grid-template-columns: 1fr; gap: 10px; }
-    .t-test-card{ padding: 18px; border-radius: 14px; }
+    .t-test{ padding: 18px; border-radius: 14px; }
 
     /* ── Footer ── */
     .t-footer{ padding: 44px 0 20px; }
@@ -2010,7 +2011,7 @@ ReactDOM.createRoot(document.getElementById('app')).render(<App />);
         if (!el.dataset.reveal) { el.dataset.reveal=''; el.dataset.delay=80; io.observe(el); }
       });
       /* Cards & blocks — stagger */
-      document.querySelectorAll('.t-ps-card,.t-tx-card,.t-aud,.t-test-card,.t-fac-stat-pill,.t-fac-block').forEach((el,i) => {
+      document.querySelectorAll('.t-ps-card,.t-tx-card,.t-aud,.t-test,.t-fac-stat-pill,.t-fac-block').forEach((el,i) => {
         if (!el.dataset.reveal) { el.dataset.reveal=''; el.dataset.delay=i*60; io.observe(el); }
       });
       /* Service panel */
