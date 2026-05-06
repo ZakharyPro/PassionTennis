@@ -286,7 +286,7 @@
     z-index: 2;
   }
   .t-skilled-photo img{
-    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    width: 100%; height: 100%; object-fit: cover; object-position: var(--coach-pos, center top);
     display: block;
   }
   @keyframes coachEnterNext{
@@ -1096,7 +1096,7 @@ function Hero() {
 
         <div className="t-hero-feature">
           <div className="t-hero-feature-thumb" aria-hidden="true">
-            <img src="coach2.jpg" alt="" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}} onError={(e)=>{e.target.style.display='none'}}/>
+            <img src="coach2.jpg?v=3" alt="" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 80%',display:'block'}} onError={(e)=>{e.target.style.display='none'}}/>
           </div>
           <div className="t-hero-feature-body">
             <div className="t-hero-feature-eyebrow">PROGRAMME · PERFORMANCE</div>
@@ -1119,9 +1119,9 @@ function Hero() {
 }
 
 const COACHES = [
-  { file:'coach1.jpg', role:'Coach tennis & performance', rotate:'-10deg' },
-  { file:'coach2.jpg', role:'Sur le court',               rotate:'0deg'   },
-  { file:'coach3.jpg', role:'Préparation physique',       rotate:'9deg'   },
+  { file:'coach1.jpg?v=3', role:'Coach tennis & performance', rotate:'-10deg', pos:'center 85%' },
+  { file:'coach2.jpg?v=3', role:'Sur le court',               rotate:'0deg',   pos:'center 80%' },
+  { file:'coach3.jpg?v=4', role:'Préparation physique',       rotate:'9deg',   pos:'center 40%' },
 ];
 
 function Trusted() {
@@ -1159,7 +1159,7 @@ function Trusted() {
               <span className="word">né</span>
             </div>
           </div>
-          <div className="t-skilled-photo" style={{'--coach-rotate': coach.rotate}}>
+          <div className="t-skilled-photo" style={{'--coach-rotate': coach.rotate, '--coach-pos': coach.pos}}>
             <img key={coach.file} src={coach.file} alt="Zakhary Laloum" className={`coach-img--${dir}`} onError={(e)=>{e.target.style.display='none'}}/>
             <div className="t-skilled-tag">
               <div className="t-skilled-tag-name">Zakhary Laloum</div>
@@ -1269,7 +1269,7 @@ const SERVICES = [
     title:'Coaching tennis individuel',
     desc:"Travail technique et tactique sur le court, vidéo à l'appui. On démonte ton jeu, on identifie les fuites, on reconstruit plus solide.",
     bullets:['Analyse vidéo après chaque séance','Plan de jeu adapté à ton style','Préparation tournoi (Swiss Tennis)','Sparring avec partenaires de niveau'],
-    price:'90 CHF', per:'/ séance · 1h30', img:'prepa.tennis.jpg', pos:'center 35%' },
+    price:'90 CHF', per:'/ séance · 1h30', img:'prepa-tennis.jpg', pos:'center 35%' },
   { id:'fitness', tag:'COACHING FITNESS', meta:['Salle','Force','Conditioning'],
     title:'Préparation physique',
     desc:"Force, vitesse, explosivité, capacité à enchaîner les matchs sans s'écrouler. Tu deviens un athlète, pas juste un joueur.",
