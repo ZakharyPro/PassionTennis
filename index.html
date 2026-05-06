@@ -803,7 +803,7 @@
       min-height: 0; border-radius: 0; aspect-ratio: unset;
       display: flex; flex-direction: column; justify-content: flex-end;
     }
-    .t-hero-figure img{ object-position: center center; }
+    .t-hero-figure img{ object-position: center top; }
     .t-hero-headline{
       position: relative; left: unset; bottom: unset;
       padding: 0 20px;
@@ -1248,11 +1248,11 @@ function Hero() {
         </div>
 
         <div className="t-hero-stats">
-          <div className="t-hero-stats-num">120<span>+</span></div>
+          <div className="t-hero-stats-num">10<span>+</span></div>
           <div className="t-hero-stats-avatars">
             <span></span><span></span><span></span><span></span>
           </div>
-          <div className="t-hero-stats-lbl">100+ athlètes coachés</div>
+          <div className="t-hero-stats-lbl">10+ athlètes coachés</div>
         </div>
 
       </div>
@@ -1427,7 +1427,7 @@ const SERVICES = [
     title:'Coaching tennis individuel',
     desc:"Travail technique et tactique sur le court, vidéo à l'appui. On démonte ton jeu, on identifie les fuites, on reconstruit plus solide.",
     bullets:['Analyse vidéo après chaque séance','Plan de jeu adapté à ton style','Préparation tournoi (Swiss Tennis)','Sparring avec partenaires de niveau'],
-    price:'60 CHF', per:'/ heure', img:'prepa-tennis.jpg', pos:'center 35%' },
+    price:'60 CHF', per:'/ heure', img:'prepa.tennis.jpg', pos:'center 35%' },
   { id:'fitness', tag:'COACHING FITNESS', meta:['Salle','Force','Conditioning'],
     title:'Préparation physique',
     desc:"Force, vitesse, explosivité, capacité à enchaîner les matchs sans s'écrouler. Tu deviens un athlète, pas juste un joueur.",
@@ -1730,7 +1730,7 @@ function Testimonials() {
             <div className="t-eyebrow">— Témoignages</div>
             <h2 className="t-section-title">Ce qu'ils disent,<br/><em>pas ce que je promets.</em></h2>
           </div>
-          <p className="t-section-desc">Plus de 120 athlètes coachés. Voici trois d'entre eux. Les autres, je peux te les présenter de vive voix.</p>
+          <p className="t-section-desc">Plus de 10 athlètes coachés. Voici trois d'entre eux. Les autres, je peux te les présenter de vive voix.</p>
         </div>
         <div className="t-test-grid">
           {QUOTES.map((q,i) => (
