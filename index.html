@@ -1,0 +1,1618 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PassionTennis — Coaching Tennis & Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Narrow:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  :root{
+    --bg:#EFEEEA;
+    --paper:#FBFAF6;
+    --ink:#0A1628;
+    --ink-2:#3A4A5E;
+    --ink-mute:#7A8597;
+    --rule:rgba(10,22,40,.10);
+    --hairline:rgba(10,22,40,.10);
+    --brand:#0A2A55;
+    --brand-2:#1B4FA0;
+    --brand-3:#3573D1;
+    --accent: oklch(0.86 0.16 110);
+
+    --font-display:'Archivo', 'Helvetica Neue', sans-serif;
+    --font-body:'Inter', system-ui, sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+
+    --section-py: 120px;
+    --container: 1320px;
+    --gutter: 24px;
+    --btn-radius: 999px;
+  }
+
+  body[data-density="compact"]{ --section-py: 80px; }
+  body[data-density="regular"]{ --section-py: 120px; }
+  body[data-density="spacious"]{ --section-py: 160px; }
+
+  body[data-btn="pill"]{ --btn-radius:999px; }
+  body[data-btn="square"]{ --btn-radius:6px; }
+  body[data-btn="ghost"]{ --btn-radius:0; }
+
+  body[data-palette="blue"]{ --brand:#0A2A55; --brand-2:#1B4FA0; --brand-3:#3573D1; --accent: oklch(0.86 0.16 110); }
+  body[data-palette="green"]{ --brand:#0F3D2E; --brand-2:#19694F; --brand-3:#2EA77E; --accent: oklch(0.82 0.13 95); }
+  body[data-palette="black"]{ --brand:#0A0A0A; --brand-2:#1F1F1F; --brand-3:#3A3A3A; --accent: oklch(0.85 0.18 130); }
+  body[data-palette="cobalt"]{ --brand:#0033A0; --brand-2:#1A4ED1; --brand-3:#3573ff; --accent: oklch(0.78 0.18 60); }
+
+  body[data-typo="display"]{ --font-display:'Archivo', 'Helvetica Neue', sans-serif; }
+  body[data-typo="editorial"]{ --font-display:'Fraunces', 'Times New Roman', serif; }
+  body[data-typo="condensed"]{ --font-display:'Archivo Narrow', 'Helvetica Neue', sans-serif; }
+
+  .t-container{ max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+  .t-eyebrow{ font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 18px;}
+  .t-on-dark-eyebrow, .t-on-dark .t-eyebrow{ color: rgba(255,255,255,.55) !important; }
+
+  .t-section-head{ display:grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items:end; margin-bottom: 56px;}
+  .t-section-title{
+    font-family: var(--font-display); font-weight: 800;
+    font-size: clamp(38px, 4.4vw, 68px); line-height: 1; letter-spacing: -0.02em; margin: 0; text-wrap: balance;
+  }
+  .t-section-title em{ font-style: italic; font-family: 'Fraunces', serif; font-weight: 500; color: var(--ink-2);}
+  .t-on-dark .t-section-title{ color:#fff;}
+  .t-on-dark .t-section-title em{ color: rgba(255,255,255,.55);}
+  .t-section-desc{ font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 460px;}
+  .t-on-dark .t-section-desc{ color: rgba(255,255,255,.65);}
+
+  /* ========== NAV ========== */
+  .t-nav{
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    display:grid; grid-template-columns: 1fr auto 1fr;
+    align-items:center;
+    padding: 22px 36px;
+    background: rgba(239,238,234,.6); backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid rgba(10,22,40,.06);
+  }
+  .t-nav-l{ display:flex; gap: 36px; }
+  .t-nav-mini{ display:flex; flex-direction:column; gap:2px; font-size: 11px; color: var(--ink); text-decoration:none; line-height:1.25; font-weight:500;}
+  .t-nav-mini span:first-child{ color: var(--ink); }
+  .t-nav-mini span:last-child{ color: var(--ink-2); }
+  .t-nav-c{ display:flex; align-items:center; gap: 10px; justify-content:center; color: var(--ink);}
+  .t-brand{ font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: 0.02em; }
+  .t-nav-r{ display:flex; align-items:center; justify-content: flex-end; gap: 18px;}
+  .t-nav-talk{
+    background: transparent; border: 0; color: var(--ink); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 600; cursor: pointer; padding: 0; font-family: var(--font-body);
+    border-bottom: 1.5px solid var(--ink); padding-bottom: 3px;
+  }
+  .t-nav-burger{
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--ink); color: #fff; border: 0; display:grid; place-items:center; cursor: pointer;
+  }
+
+  /* ========== HERO ========== */
+  .t-hero{ padding: 100px 16px 16px; }
+  .t-hero-canvas{
+    position: relative;
+    aspect-ratio: 16/9.4;
+    min-height: 720px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: var(--brand);
+    color: #fff;
+    isolation: isolate;
+  }
+  .t-hero-bg{
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(120% 80% at 30% 100%, color-mix(in oklab, var(--brand-3), white 20%) 0%, transparent 60%),
+      radial-gradient(140% 100% at 80% 0%, color-mix(in oklab, var(--brand), black 15%) 0%, transparent 60%),
+      linear-gradient(160deg, var(--brand-2), var(--brand) 80%);
+    z-index: 0;
+  }
+  .t-hero-grain{
+    position: absolute; inset: 0;
+    background-image: linear-gradient(transparent 95%, rgba(255,255,255,.05) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,.05) 95%);
+    background-size: 80px 80px;
+    mix-blend-mode: overlay; opacity: .5; pointer-events:none; z-index:1;
+  }
+  .t-hero-figure{ position:absolute; inset:0; z-index: 2; pointer-events: none; overflow:hidden;}
+  .t-hero-figure img{
+    width:100%; height:100%; object-fit:cover; object-position: center 30%;
+    display:block;
+  }
+  .t-hero-figure-overlay{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(to bottom, rgba(10,22,40,.18) 0%, rgba(10,22,40,.55) 100%),
+      linear-gradient(to right, rgba(10,22,40,.4) 0%, transparent 60%);
+  }
+  .t-hero-figure-fill{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(60% 70% at 50% 55%, rgba(255,255,255,.18) 0%, transparent 65%),
+      repeating-linear-gradient(110deg, rgba(255,255,255,.04) 0 8px, transparent 8px 24px),
+      linear-gradient(180deg, color-mix(in oklab, var(--brand-3), white 5%) 0%, var(--brand) 90%);
+    filter: blur(0.4px);
+  }
+  .t-figure-label{
+    position:absolute; left:14px; top:14px; z-index:5;
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform:uppercase;
+    color: rgba(255,255,255,.7);
+    background: rgba(0,0,0,.25);
+    border: 1px solid rgba(255,255,255,.18);
+    backdrop-filter: blur(8px);
+    padding: 6px 10px; border-radius: 999px;
+  }
+
+  .t-hero-title{
+    position: absolute; left: 36px; right: 36px; top: 110px;
+    margin: 0; padding: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(60px, 10.5vw, 195px);
+    line-height: 0.86;
+    letter-spacing: -0.045em;
+    color: #fff;
+    z-index: 3;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    white-space: nowrap;
+  }
+  body[data-typo="condensed"] .t-hero-title{ font-size: clamp(70px, 12vw, 220px); letter-spacing: -0.03em;}
+  body[data-typo="editorial"] .t-hero-title{ font-weight: 600; letter-spacing: -0.03em; font-style: italic;}
+
+  .t-name{
+    position: absolute; z-index: 4; color: #fff; line-height: 1.1;
+    display:flex; flex-direction: column; pointer-events:none;
+  }
+  .t-name .ttl{ font-size: 12px; font-weight: 600; letter-spacing: 0.02em;}
+  .t-name .sub{ font-size: 11px; color: rgba(255,255,255,.7); }
+  .t-name-1{ left: 36px; top: 270px;}
+  .t-name-2{ left: 50%; top: 290px; transform: translateX(-50%);}
+  .t-name-3{ right: 36px; top: 270px; text-align: right;}
+
+  .t-hero-headline{
+    position:absolute; left: 36px; bottom: 48px; z-index: 4;
+    font-family: var(--font-display); font-weight: 800;
+    font-size: clamp(36px, 4.6vw, 76px); line-height: 0.92; letter-spacing: -0.03em;
+    color: rgba(255,255,255,.92);
+    text-shadow: 0 4px 30px rgba(0,0,0,.25);
+  }
+  body[data-typo="editorial"] .t-hero-headline{ font-weight: 500; font-style: italic;}
+
+  .t-hero-feature{
+    position: absolute; right: 36px; top: 50%; transform: translateY(-30%);
+    width: 280px;
+    background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.22);
+    border-radius: 20px; padding: 14px;
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    z-index: 5;
+    color: #fff;
+  }
+  .t-hero-feature-thumb{ position:relative; aspect-ratio: 4/3; border-radius: 12px; overflow:hidden; background: var(--brand-2);}
+  .t-hero-feature-thumb .t-figure-fill{ position:absolute; inset:0;}
+  .t-hero-feature-body{ padding: 14px 4px 4px; }
+  .t-hero-feature-eyebrow{ font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.18em; color: rgba(255,255,255,.65); text-transform:uppercase;}
+  .t-hero-feature-title{ font-size: 14.5px; font-weight: 600; line-height: 1.3; letter-spacing: 0.005em; margin: 8px 0 12px;}
+  .t-hero-feature-link{ font-size: 12.5px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.4); padding-bottom: 2px; font-weight: 500;}
+
+  .t-hero-stats{
+    position: absolute; right: 36px; bottom: 48px;
+    width: 200px;
+    background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.22);
+    border-radius: 18px; padding: 18px;
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    z-index: 5; color: #fff;
+  }
+  .t-hero-stats-num{ font-family: var(--font-display); font-weight: 800; font-size: 36px; letter-spacing: -0.02em; line-height: 1;}
+  .t-hero-stats-num span{ color: var(--accent); }
+  .t-hero-stats-avatars{ display: flex; margin-top: 12px;}
+  .t-hero-stats-avatars span{ width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--brand);
+    margin-left: -8px; background: linear-gradient(135deg, var(--accent), white);}
+  .t-hero-stats-avatars span:first-child{ margin-left: 0; background: linear-gradient(135deg, #ffb478, #ed7250);}
+  .t-hero-stats-avatars span:nth-child(2){ background: linear-gradient(135deg, #a4d8ff, #3573D1);}
+  .t-hero-stats-avatars span:nth-child(3){ background: linear-gradient(135deg, #c4f08c, #6da033);}
+  .t-hero-stats-avatars span:nth-child(4){ background: linear-gradient(135deg, #ffc8d8, #c8639a);}
+  .t-hero-stats-lbl{ margin-top: 12px; font-size: 11.5px; color: rgba(255,255,255,.7);}
+
+  .t-hero-dots{ position:absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display:flex; gap: 6px; z-index: 4;}
+  .t-hero-dots .dot{ width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.4);}
+  .t-hero-dots .dot.active{ background: #fff; width: 18px; border-radius: 99px;}
+
+  /* ========== TRUSTED ========== */
+  .t-trusted{ padding: 80px 0 40px; }
+  .t-trusted-grid{
+    display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; align-items:center;
+    margin-bottom: 60px;
+  }
+  .t-bubble{
+    aspect-ratio: 1/1; max-width: 280px; justify-self: start;
+    border-radius: 50%; background: #fff; padding: 30px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 8px;
+    box-shadow: 0 12px 40px -20px rgba(10,22,40,.15);
+  }
+  .t-bubble-num{ font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1; letter-spacing: -0.04em;}
+  .t-bubble-num span{ color: var(--ink-2); }
+  .t-bubble-cap{ font-size: 11px; color: var(--ink-2); text-align: center; line-height:1.4; }
+
+  .t-trusted-card{
+    background: #fff; border-radius: 24px; padding: 36px;
+    display:grid; grid-template-columns: auto 1fr; gap: 36px; align-items:start;
+    box-shadow: 0 12px 40px -20px rgba(10,22,40,.12);
+  }
+  .t-trusted-tag{ font-family: var(--font-display); font-weight: 800; font-size: 36px; letter-spacing: -0.02em; line-height: 1;}
+  .t-trusted-body h3{ font-family: var(--font-display); font-weight: 700; font-size: 22px; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 10px;}
+  .t-trusted-body p{ margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-2);}
+  .t-trusted-body em{ font-style: normal; font-weight: 600; color: var(--ink); }
+
+  /* ========== SKILLED tilted-photo block ========== */
+  .t-skilled{
+    position: relative; padding: 120px 0 60px;
+  }
+  .t-skilled-text{
+    font-family: var(--font-display); font-weight: 800;
+    font-size: clamp(60px, 9vw, 155px); line-height: 0.92; letter-spacing: -0.045em;
+    color: var(--ink);
+    text-align: left;
+    overflow: hidden;
+  }
+  body[data-typo="editorial"] .t-skilled-text{ font-style: italic; font-weight: 500;}
+  .t-skilled-row{ display:flex; gap: 0.4ch; align-items: center; }
+  .t-skilled-row:last-child{ justify-content: flex-end; padding-right: 6%;}
+  .t-skilled-row .word.muted{ color: rgba(10,22,40,.18);}
+
+  .t-skilled-photo{
+    position: absolute; left: 50%; top: 60px;
+    width: 280px; height: 380px;
+    transform: translateX(-50%) rotate(var(--coach-rotate, -8deg));
+    transition: transform .45s cubic-bezier(.22,.68,0,1.2);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px -30px rgba(10,22,40,.4);
+    background: var(--brand);
+    z-index: 2;
+  }
+  .t-skilled-photo img{
+    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    display: block;
+  }
+  @keyframes coachEnterNext{
+    from{ opacity:0; transform: rotate(14deg) scale(0.88); }
+    to{   opacity:1; transform: rotate(0deg)  scale(1); }
+  }
+  @keyframes coachEnterPrev{
+    from{ opacity:0; transform: rotate(-14deg) scale(0.88); }
+    to{   opacity:1; transform: rotate(0deg)   scale(1); }
+  }
+  .coach-img--next{ animation: coachEnterNext .45s cubic-bezier(.22,.68,0,1.2); }
+  .coach-img--prev{ animation: coachEnterPrev .45s cubic-bezier(.22,.68,0,1.2); }
+  .t-skilled-tag{
+    position:absolute; left: 50%; bottom: 28px; transform: translateX(-50%);
+    background: rgba(255,255,255,.85); color: var(--ink);
+    padding: 8px 16px; border-radius: 999px;
+    backdrop-filter: blur(12px);
+    z-index: 3; min-width: 160px; text-align: center;
+  }
+  .t-skilled-tag-name{ font-size: 13px; font-weight: 700; }
+  .t-skilled-tag-role{ font-size: 11px; color: var(--ink-2); }
+
+  .t-skilled-ball{
+    position: absolute; left: 62%; top: 118px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #555, #1a1a1a);
+    box-shadow: 0 4px 14px rgba(10,22,40,.35);
+    z-index: 5;
+  }
+  .t-skilled-arrows{
+    position: absolute; left: 50%; bottom: 12px;
+    transform: translateX(-50%);
+    display: flex; gap: 80px;
+    z-index: 4;
+  }
+  .t-arrow-btn{
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 1px solid var(--hairline); background: transparent;
+    color: var(--ink); font-size: 18px; cursor: pointer;
+    display: grid; place-items: center;
+  }
+  .t-arrow-btn.dark{ background: var(--ink); color: #fff; border-color: var(--ink);}
+
+  /* ========== FACILITIES — ALL COURT ========== */
+  .t-facilities{ padding: 72px 0; background: var(--paper); }
+  @keyframes facFadeIn{
+    from{ opacity:0; transform: translateY(8px);}
+    to{   opacity:1; transform: translateY(0);}
+  }
+
+  .t-fac-header{ display:flex; align-items:baseline; gap: 32px; flex-wrap:wrap; margin-bottom: 32px; }
+  .t-fac-title2{
+    font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(36px, 5vw, 72px); line-height: 1; letter-spacing: -0.03em;
+    margin: 0; color: var(--ink);
+  }
+  .t-fac-tabs2{ display:flex; flex-wrap:wrap; gap: 8px; margin-left: auto; }
+  .t-fac-tab{
+    border: 1px solid var(--hairline); background: transparent;
+    padding: 8px 18px; border-radius: 999px; font-size: 12.5px; font-weight: 600;
+    color: var(--ink-2); cursor: pointer; font-family: var(--font-body);
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .t-fac-tab[aria-selected="true"]{ background: var(--ink); color: #fff; border-color: var(--ink);}
+
+  .t-fac-body{
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 28px;
+    align-items: start;
+    animation: facFadeIn .4s ease;
+  }
+  .t-fac-photo{
+    position: relative; border-radius: 18px; overflow: hidden;
+    aspect-ratio: 3/4; min-height: 340px; background: var(--brand);
+  }
+  .t-fac-photo-label{
+    position: absolute; bottom: 14px; left: 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #fff; background: rgba(0,0,0,.38); backdrop-filter: blur(8px);
+    padding: 6px 12px; border-radius: 999px;
+  }
+
+  .t-fac-sheet{ display: flex; flex-direction: column; gap: 20px; }
+  .t-fac-stats-row{ display: flex; flex-wrap: wrap; gap: 10px; }
+  .t-fac-stat-pill{
+    display: flex; flex-direction: column; gap: 2px;
+    background: #fff; border: 1px solid var(--hairline);
+    padding: 10px 16px; border-radius: 12px; min-width: 110px;
+  }
+  .t-fac-stat-k{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-mute); }
+  .t-fac-stat-v{ font-size: 14px; font-weight: 700; color: var(--ink); }
+
+  .t-fac-block{ border-top: 1px solid var(--hairline); padding-top: 16px; }
+  .t-fac-block-label{ font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); margin-bottom: 7px; }
+  .t-fac-block-text{ font-size: 14px; line-height: 1.65; color: var(--ink-2); margin: 0; }
+
+  .t-fac-refs{ display: flex; align-items: center; gap: 10px; flex-wrap: wrap; border-top: 1px solid var(--hairline); padding-top: 16px; }
+  .t-fac-refs-label{ font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute); }
+  .t-fac-refs-val{ font-size: 12.5px; font-weight: 600; color: var(--brand-2); }
+
+  /* old cell selectors kept for mobile fallback */
+  .t-fac-cell{ position: relative; border-radius: 18px; overflow:hidden; background: var(--brand); color: #fff; animation: facFadeIn .35s ease; }
+  .t-fac-cell-foot{ position:absolute; left: 14px; right: 14px; bottom: 14px; z-index: 2; background: rgba(0,0,0,.35); backdrop-filter: blur(12px); padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,.18); }
+  .t-fac-cell-name{ font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .t-fac-cell-cap{ font-size: 12px; color: rgba(255,255,255,.75); line-height: 1.4;}
+
+  /* placeholders */
+  .t-figure-fill{
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 12px, transparent 12px 24px),
+      linear-gradient(160deg, var(--brand-2) 0%, var(--brand) 80%);
+  }
+  .t-figure-fill.warm{
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 12px, transparent 12px 24px),
+      linear-gradient(160deg, #c8632b 0%, #6e2a10 80%);
+  }
+  .t-figure-fill.court{
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 14px, transparent 14px 28px),
+      linear-gradient(170deg, var(--brand-3) 0%, var(--brand) 80%);
+  }
+  .t-figure-fill.gym{
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 12px, transparent 12px 24px),
+      linear-gradient(160deg, #444 0%, #111 80%);
+  }
+
+  /* ========== SERVICES ========== */
+  .t-services{ padding: var(--section-py) 0; }
+  .t-services-tabs{ display:flex; gap: 8px; padding: 6px; background: #fff; border-radius: 999px;
+    box-shadow: 0 12px 30px -20px rgba(10,22,40,.15); margin-bottom: 32px; width: fit-content;}
+  .t-services-tab{
+    display:flex; flex-direction:column; gap: 2px; align-items: flex-start;
+    padding: 12px 22px; border-radius: 999px; border: 0; background: transparent;
+    font-family: var(--font-body); cursor: pointer; transition: all .2s ease;
+  }
+  .t-services-tab[aria-selected="true"]{ background: var(--ink); color: #fff;}
+  .t-services-tab-tag{ font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.16em; opacity: 0.6; text-transform: uppercase;}
+  .t-services-tab-name{ font-size: 13px; font-weight: 600;}
+  .t-service-panel{
+    display:grid; grid-template-columns: 1.05fr 1fr; gap: 48px;
+    padding: 40px; border-radius: 28px;
+    background: #fff; box-shadow: 0 24px 60px -30px rgba(10,22,40,.15);
+    align-items: center;
+  }
+  .t-service-art{ aspect-ratio: 5/4; border-radius: 20px; overflow:hidden; position:relative; background: var(--brand); color:#fff;}
+  .t-service-chips{ display:flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap;}
+  .t-chip{ font-family: var(--font-mono); font-size: 11px; padding: 6px 10px; border-radius:999px;
+    background: var(--bg); color: var(--ink-2); border:1px solid var(--hairline); letter-spacing:0.06em; text-transform:uppercase;}
+  .t-service-title{ font-family: var(--font-display); font-size: clamp(32px,3.4vw,48px); line-height: 0.98;
+    letter-spacing:-0.02em; margin:0 0 16px; font-weight:800;}
+  body[data-typo="editorial"] .t-service-title{ font-weight: 600;}
+  .t-service-desc{ font-size: 16px; line-height: 1.6; color: var(--ink-2); margin: 0 0 24px;}
+  .t-service-list{ list-style:none; padding:0; margin: 0 0 28px; display:grid; gap: 12px;}
+  .t-service-list li{ display:flex; gap: 12px; align-items:flex-start; font-size: 14.5px; color: var(--ink); }
+  .t-service-bullet{ width:18px; height:18px; flex-shrink:0; border-radius:50%; background: var(--accent); display:grid; place-items:center; margin-top:2px;}
+  .t-service-bullet svg{ width:10px; height:10px; color: var(--ink); }
+  .t-service-price{ display:flex; gap: 14px; align-items:baseline; padding: 18px 0; border-top: 1px solid var(--hairline); flex-wrap: wrap;}
+  .t-service-from{ font-family: var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.14em; color: var(--ink-mute);}
+  .t-service-num{ font-family: var(--font-display); font-size: 38px; font-weight:800; letter-spacing:-0.02em; line-height:1;}
+  .t-service-per{ color: var(--ink-mute); font-size:14px;}
+
+  /* generic dark button */
+  .t-btn{ display:inline-flex; align-items:center; gap: 8px; padding: 14px 22px;
+    border-radius: var(--btn-radius); border: 1px solid transparent;
+    font-family: var(--font-body); font-weight: 600; font-size: 13.5px; cursor: pointer;
+    transition: transform .15s ease, background .2s ease;
+  }
+  .t-btn:hover{ transform: translateY(-1px);}
+  .t-btn-dark{ background: var(--ink); color: #fff; }
+  .t-btn-dark:hover{ background: #000; }
+  .t-btn-light{ background: #fff; color: var(--ink); border-color: var(--hairline); }
+  body[data-btn="ghost"] .t-btn{ background: transparent !important; color: var(--ink); border-color: currentColor;}
+  body[data-btn="ghost"] .t-btn-dark{ color: var(--ink);}
+
+  /* ========== TRANSFORMATIONS ========== */
+  .t-transforms{ padding: var(--section-py) 0; background: var(--paper);}
+  .t-tx-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px;}
+  .t-tx-card{ background: #fff; border-radius: 24px; padding: 22px; display:flex; flex-direction:column; gap: 16px;
+    box-shadow: 0 12px 30px -20px rgba(10,22,40,.12);}
+  .t-tx-card.is-dark{ background: var(--brand); color:#fff;}
+  .t-tx-photo{ aspect-ratio: 4/3; border-radius: 16px; overflow:hidden; position:relative; background: var(--brand-2);}
+  .t-tx-quote{ font-family: var(--font-display); font-size: 19px; line-height: 1.3; letter-spacing: -0.005em; font-weight: 600; margin: 0;}
+  body[data-typo="editorial"] .t-tx-quote{ font-weight: 500;}
+  .t-tx-stats{ display:flex; gap: 18px;}
+  .t-tx-stat .n{ font-family: var(--font-display); font-size: 28px; font-weight:800; letter-spacing:-0.02em; line-height:1;}
+  .t-tx-stat .l{ font-size: 11px; color: var(--ink-mute); margin-top: 4px; text-transform:uppercase; letter-spacing:0.1em;}
+  .t-tx-card.is-dark .t-tx-stat .l{ color: rgba(255,255,255,.55);}
+  .t-tx-meta{ display:flex; align-items:center; gap: 12px; margin-top:auto; padding-top: 14px; border-top: 1px solid var(--hairline);}
+  .t-tx-card.is-dark .t-tx-meta{ border-color: rgba(255,255,255,.14);}
+  .t-tx-avatar{ width:38px; height:38px; border-radius:50%; background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent), white 30%));}
+  .t-tx-name{ font-weight: 700; font-size: 13.5px;}
+  .t-tx-role{ font-size: 12px; color: var(--ink-mute);}
+  .t-tx-card.is-dark .t-tx-role{ color: rgba(255,255,255,.6);}
+
+  /* ========== AUDIENCES ========== */
+  .t-audiences{ padding: var(--section-py) 0;}
+  .t-aud-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);}
+  .t-aud{ padding: 36px 24px; border-right: 1px solid var(--hairline); transition: background .25s ease;}
+  .t-aud:last-child{ border-right: 0;}
+  .t-aud:hover{ background: var(--paper);}
+  .t-aud-num{ font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); letter-spacing: 0.14em;}
+  .t-aud h4{ font-family: var(--font-display); font-size: 26px; line-height: 1.05; letter-spacing: -0.01em; margin: 16px 0 12px; font-weight: 700;}
+  .t-aud p{ font-size: 14px; line-height: 1.55; color: var(--ink-2); margin: 0;}
+
+  /* ========== METHOD ========== */
+  .t-method{ padding: var(--section-py) 0; background: var(--ink); color: #fff;}
+  .t-method-list{ border-top: 1px solid rgba(255,255,255,.15);}
+  .t-step{ display:grid; grid-template-columns: 80px 1fr 1.2fr 200px; gap: 32px; align-items: start;
+    padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,.15); transition: background .25s ease;}
+  .t-step:hover{ background: rgba(255,255,255,.03);}
+  .t-step-n{ font-family: var(--font-display); font-size: 56px; font-weight:800; letter-spacing: -0.02em; line-height: 1; color: var(--accent);}
+  body[data-typo="editorial"] .t-step-n{ font-style: italic; font-weight: 500;}
+  .t-step h3{ font-family: var(--font-display); font-size: 28px; font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; margin: 0;}
+  .t-step p{ font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.7); margin: 0;}
+  .t-step-dur{ font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,.55); padding-top: 12px;}
+
+  /* ========== TESTIMONIALS ========== */
+  .t-testimonials{ padding: var(--section-py) 0; background: var(--paper);}
+  .t-test-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;}
+  .t-test{ background: #fff; padding: 28px; border-radius: 22px; display:flex; flex-direction:column; gap: 18px;
+    box-shadow: 0 12px 30px -20px rgba(10,22,40,.10);}
+  .t-test-stars{ color: var(--accent); display:flex; gap: 2px;}
+  .t-test blockquote{ margin:0; font-family: var(--font-display); font-size: 17px; line-height: 1.4; font-weight: 600; letter-spacing: -0.005em;}
+  body[data-typo="editorial"] .t-test blockquote{ font-weight: 500;}
+  .t-test footer{ display:flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--hairline);}
+
+  /* ========== CTA ========== */
+  .t-cta{ padding: 16px;}
+  .t-cta-canvas{
+    background: var(--brand); color:#fff; border-radius: 28px;
+    padding: 80px 56px; position: relative; overflow:hidden;
+    display:grid; grid-template-columns: 1.05fr 1fr; gap: 64px;
+  }
+  .t-cta-canvas::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(60% 80% at 90% 30%, color-mix(in oklab, var(--brand-3), white 20%) 0%, transparent 60%),
+      radial-gradient(80% 100% at 0% 110%, color-mix(in oklab, var(--brand), black 30%) 0%, transparent 60%);
+    opacity: .5;
+  }
+  .t-cta-canvas > *{ position: relative; z-index: 1;}
+  .t-cta-title{ font-family: var(--font-display); font-weight: 800; font-size: clamp(48px, 6.5vw, 110px);
+    line-height: 0.92; letter-spacing: -0.03em; margin: 18px 0 20px;}
+  .t-cta-title em{ font-style: italic; font-family: 'Fraunces', serif; font-weight: 500; color: var(--accent); display:block;}
+  .t-cta-sub{ color: rgba(255,255,255,.75); font-size: 16px; line-height: 1.55; max-width: 460px; margin: 0;}
+  .t-cta-info{ display: flex; gap: 32px; margin-top: 48px; flex-wrap: wrap;}
+  .t-cta-info .k{ font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,.55);}
+  .t-cta-info .v{ margin-top: 8px; font-size: 16px; font-weight: 600;}
+
+  .t-form{ background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 22px; padding: 28px; backdrop-filter: blur(14px);}
+  .t-form-row{ display:flex; flex-direction:column; gap: 8px; margin-bottom: 16px;}
+  .t-form-row label{ font-family: var(--font-mono); font-size: 11px; letter-spacing:0.14em; text-transform:uppercase; color: rgba(255,255,255,.55);}
+  .t-form-row input, .t-form-row textarea{
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12);
+    border-radius: 10px; padding: 14px; color: #fff; font-family: var(--font-body); font-size: 14px;
+    outline: none; transition: border-color .2s ease; width: 100%;
+  }
+  .t-form-row input:focus, .t-form-row textarea:focus{ border-color: var(--accent);}
+  .t-form-grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
+  .t-form-pills{ display:flex; gap: 8px; flex-wrap: wrap;}
+  .t-form-pill{ padding: 10px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 600;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.85); cursor: pointer;}
+  .t-form-pill[aria-selected="true"]{ background: var(--accent); color: var(--ink); border-color: transparent;}
+  .t-form-submit{ width: 100%; padding: 18px; margin-top: 8px; background: var(--accent); color: var(--ink);
+    border: 0; border-radius: var(--btn-radius); font-family: var(--font-body); font-weight: 700; font-size: 14px; cursor: pointer;}
+  .t-form-note{ margin-top: 14px; font-size: 11.5px; color: rgba(255,255,255,.55); text-align:center; line-height: 1.5;}
+
+  /* ========== FOOTER ========== */
+  .t-footer{ background: var(--paper); padding: 64px 0 32px;}
+  .t-footer-grid{ display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding: 0 var(--gutter) 56px; border-bottom: 1px solid var(--hairline); max-width: var(--container); margin: 0 auto;}
+  .t-footer-logo{ font-family: var(--font-display); font-weight: 900; font-size: 36px; letter-spacing: -0.02em;}
+  .t-footer-logo span{ color: var(--accent);}
+  .t-footer-tag{ margin-top: 12px; color: var(--ink-2); font-size: 14.5px; line-height: 1.55; max-width: 360px;}
+  .t-footer-col h5{ font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); margin: 0 0 18px;}
+  .t-footer-col ul{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;}
+  .t-footer-col a{ color: var(--ink); text-decoration: none; font-size: 14px;}
+  .t-footer-col a:hover{ color: var(--brand);}
+  .t-footer-bot{ display: flex; justify-content: space-between; padding: 24px var(--gutter) 0; color: var(--ink-mute); font-size: 12.5px; max-width: var(--container); margin: 0 auto;}
+  .t-socials{ display: flex; gap: 8px; margin-top: 24px;}
+  .t-socials a{ width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--hairline); display:grid; place-items: center; color: var(--ink); transition: all .2s;}
+  .t-socials a:hover{ background: var(--ink); color: #fff; border-color: var(--ink);}
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1100px){
+    .t-section-head{ grid-template-columns: 1fr; gap: 24px;}
+    .t-trusted-grid, .t-service-panel, .t-cta-canvas{ grid-template-columns: 1fr; gap: 28px;}
+    .t-fac-body{ grid-template-columns: 1fr; }
+    .t-fac-photo{ aspect-ratio: 16/9; min-height: 220px; }
+    .t-tx-grid, .t-test-grid{ grid-template-columns: 1fr 1fr;}
+    .t-aud-grid{ grid-template-columns: 1fr 1fr;}
+    .t-aud{ border-right: 0; border-bottom: 1px solid var(--hairline);}
+    .t-step{ grid-template-columns: 60px 1fr; gap: 16px;}
+    .t-step-dur{ grid-column: 1 / -1; padding-top: 0;}
+    .t-footer-grid{ grid-template-columns: 1fr 1fr;}
+    .t-hero-feature{ display:none;}
+    .t-hero-stats{ width: auto; right: 24px; left: 24px; bottom: 24px;}
+    .t-hero-headline{ left: 24px; bottom: 110px;}
+    .t-hero-title{ left: 24px; right: 24px; top: 130px;}
+    .t-name{ display:none;}
+  }
+  @media (max-width: 700px){
+    .t-tx-grid, .t-test-grid, .t-aud-grid, .t-footer-grid{ grid-template-columns: 1fr;}
+    .t-nav{ padding: 16px 20px;}
+    .t-nav-l{ display:none;}
+    .t-services-tabs{ width: 100%; overflow-x: auto;}
+    .t-cta-canvas{ padding: 48px 24px;}
+    .t-skilled-photo{ width: 200px; height: 280px; top: 120px;}
+    .t-skilled-arrows{ display:none;}
+  }
+</style>
+</head>
+<body data-palette="blue" data-typo="display" data-density="regular" data-btn="pill">
+<div id="app"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+// ─── tweaks-panel ────────────────────────────────────────────────────────────
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    transform:scale(var(--dc-inv-zoom,1));transform-origin:bottom right;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:pointer;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:pointer;padding:4px 6px;line-height:1.2;overflow-wrap:anywhere}
+  .twk-field{appearance:none;width:100%;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+`;
+
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
+      ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+    window.dispatchEvent(new CustomEvent('tweakchange', { detail: edits }));
+  }, []);
+  return [values, setTweak];
+}
+
+function TweaksPanel({ title = 'Tweaks', children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 16;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(clampToViewport) : null;
+    if (ro) { ro.observe(document.documentElement); return () => ro.disconnect(); }
+    window.addEventListener('resize', clampToViewport);
+    return () => window.removeEventListener('resize', clampToViewport);
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => {
+      offsetRef.current = { x: startRight - (ev.clientX - sx), y: startBottom - (ev.clientY - sy) };
+      clampToViewport();
+    };
+    const up = () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel" style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" onMouseDown={(e) => e.stopPropagation()} onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">{children}</div>
+      </div>
+    </>
+  );
+}
+
+function TweakSection({ label }) {
+  return <div className="twk-sect">{label}</div>;
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl">
+        <span>{label}</span>
+        {value != null && <span className="twk-val">{value}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  const labelLen = (o) => String(typeof o === 'object' ? o.label : o).length;
+  const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
+  const fitsAsSegments = maxLen <= ({ 2: 16, 3: 10 }[options.length] ?? 0);
+
+  if (!fitsAsSegments) {
+    return (
+      <TweakRow label={label}>
+        <select className="twk-field" value={value} onChange={(e) => {
+          const m = options.find((o) => String(typeof o === 'object' ? o.value : o) === e.target.value);
+          onChange(m === undefined ? e.target.value : typeof m === 'object' ? m.value : m);
+        }}>
+          {options.map((o) => {
+            const v = typeof o === 'object' ? o.value : o;
+            const l = typeof o === 'object' ? o.label : o;
+            return <option key={v} value={v}>{l}</option>;
+          })}
+        </select>
+      </TweakRow>
+    );
+  }
+
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => { if (trackRef.current) { const v = segAt(ev.clientX); if (v !== valueRef.current) onChange(v); } };
+    const up = () => { setDragging(false); window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown} className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb" style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`, width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => (
+          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>{o.label}</button>
+        ))}
+      </div>
+    </TweakRow>
+  );
+}
+
+// ─── components ──────────────────────────────────────────────────────────────
+const Icon = {
+  Arrow: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M7 17L17 7M9 7h8v8"/></svg>),
+  ArrowR:(p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M5 12h14M13 5l7 7-7 7"/></svg>),
+  Check: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" {...p}><polyline points="20 6 9 17 4 12"/></svg>),
+  Menu:  (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" {...p}><path d="M4 7h16M4 12h16M4 17h16"/></svg>),
+  Star:  (p) => (<svg viewBox="0 0 24 24" fill="currentColor" {...p}><path d="M12 2l2.9 6.9 7.4.6-5.6 4.9 1.7 7.3L12 17.8 5.6 21.7l1.7-7.3L1.7 9.5l7.4-.6L12 2z"/></svg>),
+  Insta: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>),
+  Yt:    (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}><rect x="2" y="5" width="20" height="14" rx="3"/><polygon points="10 9 16 12 10 15" fill="currentColor" stroke="none"/></svg>),
+  Tt:    (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}><path d="M16 4v3a4 4 0 0 0 4 4M12 4v12a3 3 0 1 1-3-3"/></svg>),
+  X:     (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}><path d="M4 4l16 16M20 4L4 20"/></svg>),
+  Logo:  (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" {...p}>
+    <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
+    <path d="M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M19 5l-4 4M9 15l-4 4"/>
+  </svg>),
+};
+
+function Nav({ onBookClick }) {
+  return (
+    <nav className="t-nav">
+      <div className="t-nav-l">
+        <a href="#methode" className="t-nav-mini"><span>Coach &amp;</span><span>Planning</span></a>
+        <a href="#pour-qui" className="t-nav-mini"><span>Partenaires &amp;</span><span>Événements</span></a>
+      </div>
+      <div className="t-nav-c">
+        <Icon.Logo width="24" height="24"/>
+        <span className="t-brand">PassionTennis</span>
+      </div>
+      <div className="t-nav-r">
+        <button className="t-nav-talk" onClick={onBookClick}>PARLONS-EN</button>
+      </div>
+    </nav>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="t-hero">
+      <div className="t-hero-canvas">
+        <div className="t-hero-bg"></div>
+        <div className="t-hero-grain"></div>
+
+        <div className="t-hero-figure" aria-hidden="true">
+          <img src="hero.jpg" alt="" onError={(e) => { e.target.style.display='none'; }}/>
+          <div className="t-hero-figure-overlay"></div>
+        </div>
+
+        <h1 className="t-hero-title">MOVE FASTER</h1>
+
+
+        <div className="t-hero-headline"><div>EN JEU,</div><div>SANS LIMITE</div></div>
+
+        <div className="t-hero-feature">
+          <div className="t-hero-feature-thumb" aria-hidden="true">
+            <img src="coach2.jpg" alt="" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}}/>
+          </div>
+          <div className="t-hero-feature-body">
+            <div className="t-hero-feature-eyebrow">PROGRAMME · PERFORMANCE</div>
+            <div className="t-hero-feature-title">Hybride 12 semaines —<br/>Tennis + Physique</div>
+            <a href="#services" className="t-hero-feature-link">Voir le programme →</a>
+          </div>
+        </div>
+
+        <div className="t-hero-stats">
+          <div className="t-hero-stats-num">120<span>+</span></div>
+          <div className="t-hero-stats-avatars">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div className="t-hero-stats-lbl">100+ athlètes coachés</div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+const COACHES = [
+  { file:'coach1.jpg', role:'Coach tennis & performance', rotate:'-10deg' },
+  { file:'coach2.jpg', role:'Sur le court',               rotate:'0deg'   },
+  { file:'coach3.jpg', role:'Préparation physique',       rotate:'9deg'   },
+];
+
+function Trusted() {
+  const [coachIdx, setCoachIdx] = React.useState(0);
+  const [dir, setDir] = React.useState('next');
+  const prev = () => { setDir('prev'); setCoachIdx(i => (i - 1 + COACHES.length) % COACHES.length); };
+  const next = () => { setDir('next'); setCoachIdx(i => (i + 1) % COACHES.length); };
+  const coach = COACHES[coachIdx];
+
+  return (
+    <section className="t-trusted">
+      <div className="t-container">
+        <div className="t-trusted-grid">
+          <div className="t-bubble">
+            <div className="t-bubble-num">100<span>%</span></div>
+            <div className="t-bubble-cap">Entraîne-toi avec les meilleurs<br/>pour devenir le meilleur</div>
+          </div>
+          <div className="t-trusted-card">
+            <div className="t-trusted-tag">#01</div>
+            <div className="t-trusted-body">
+              <h3>Zakhary Laloum — Une approche réellement personnalisée.</h3>
+              <p>Rejoins ceux qui s'appuient sur notre programme — bâti sur l'<em>expérience</em>, validé par les <em>résultats</em>, et choisi par <em>beaucoup</em>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="t-skilled">
+          <div className="t-skilled-text">
+            <div className="t-skilled-row">
+              <span className="word">Coach</span>
+              <span className="word muted">passionné</span>
+            </div>
+            <div className="t-skilled-row">
+              <span className="word muted">Joueur</span>
+              <span className="word">né</span>
+            </div>
+          </div>
+          <div className="t-skilled-photo" style={{'--coach-rotate': coach.rotate}}>
+            <img key={coach.file} src={coach.file} alt="Zakhary Laloum" className={`coach-img--${dir}`}/>
+            <div className="t-skilled-tag">
+              <div className="t-skilled-tag-name">Zakhary Laloum</div>
+              <div className="t-skilled-tag-role">{coach.role}</div>
+            </div>
+          </div>
+          <div className="t-skilled-arrows">
+            <button className="t-arrow-btn ghost" aria-label="précédent" onClick={prev}>←</button>
+            <button className="t-arrow-btn dark" aria-label="suivant" onClick={next}>→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const FACILITIES = [
+  {
+    id:'terre', name:'Terre battue', img:'terre.jpg',
+    vitesse:'Lente', rebond:'Haut & lent', friction:'Élevée',
+    stats:[{k:'Vitesse',v:'Lente'},{k:'Rebond',v:'Haut & lent'},{k:'Friction',v:'Élevée'},{k:'Usure genoux',v:'Faible'}],
+    style:'Jeu de fond de court, patience et construction du point. La glissade est une compétence à part entière — elle permet d\'arriver à l\'équilibre sur des balles difficiles. Les échanges sont longs, la gestion physique et mentale prime.',
+    avantages:'Favorise les joueurs puissants de fond, les lifts appuyés (topspin) qui font rebondir la balle haut et repoussent l\'adversaire. Les passes décroisées et les angles extrêmes sont redoutables.',
+    inconvenients:'Le service-ace est rare. Les volleyeurs et les serveurs-attaquants sont désavantagés. Les balles plates ont peu d\'effet — le lift est roi.',
+    refs:'Roland-Garros · Monte-Carlo · Rome',
+  },
+  {
+    id:'gazon', name:'Gazon', img:'gazon.jpg',
+    stats:[{k:'Vitesse',v:'Très rapide'},{k:'Rebond',v:'Bas & fuyant'},{k:'Friction',v:'Faible'},{k:'Glissance',v:'Élevée'}],
+    style:'Surface la plus rapide. La balle reste basse et accélère après le rebond, laissant très peu de temps de réaction. Le point se joue souvent en 3 à 5 coups maximum. La position à la montée et le toucher de balle sont décisifs.',
+    avantages:'Idéal pour les serveurs avec beaucoup de première balle, les volleyeurs et les attaquants de court. Le slice reste très bas, difficile à relever. Les aces et les coups gagnants directs sont fréquents.',
+    inconvenients:'Le topspin perd de son efficacité — la balle ne monte pas. Les défenseurs de fond de court sont en difficulté. La lecture de balle est exigeante même pour les joueurs expérimentés.',
+    refs:'Wimbledon · Queen\'s Club · Halle',
+  },
+  {
+    id:'dur', name:'Dur', img:'Dur.jpg',
+    stats:[{k:'Vitesse',v:'Moyenne'},{k:'Rebond',v:'Régulier & moyen'},{k:'Friction',v:'Modérée'},{k:'Impact articulaire',v:'Élevé'}],
+    style:'Surface polyvalente et neutre. Le rebond est prévisible et constant, ce qui avantage les joueurs complets. C\'est la surface de référence mondiale pour l\'entraînement : ce que tu travailles ici, tu peux le transférer partout.',
+    avantages:'Équilibre entre fond de court et attaque. Tous les types de coups sont efficaces. La régularité du rebond permet de construire du timing précis et de travailler la mécanique de chaque geste sans surprise.',
+    inconvenients:'Impact physique plus élevé sur les articulations (genoux, chevilles, hanches) avec le temps. La surface ne pardonne pas les schémas de jeu flous — la neutralité expose tes faiblesses techniques.',
+    refs:'US Open · Open d\'Australie · Dubaï',
+  },
+];
+
+function Facilities() {
+  const [active, setActive] = React.useState(0);
+  const f = FACILITIES[active];
+
+  return (
+    <section className="t-facilities">
+      <div className="t-container">
+        <div className="t-fac-header">
+          <div className="t-eyebrow">Surfaces</div>
+          <h2 className="t-fac-title2">ALL COURT</h2>
+          <div className="t-fac-tabs2">
+            {FACILITIES.map((s,i) => (
+              <button key={s.id} className="t-fac-tab" aria-selected={i === active} onClick={() => setActive(i)}>{s.name}</button>
+            ))}
+          </div>
+        </div>
+
+        <div className="t-fac-body" key={f.id}>
+          {/* Photo */}
+          <div className="t-fac-photo">
+            <img key={f.img} src={f.img} alt={f.name}
+              style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center',display:'block',animation:'facFadeIn .4s ease'}}/>
+            <div className="t-fac-photo-label">{f.name}</div>
+          </div>
+
+          {/* Fiche technique */}
+          <div className="t-fac-sheet">
+            <div className="t-fac-stats-row">
+              {f.stats.map(s => (
+                <div key={s.k} className="t-fac-stat-pill">
+                  <span className="t-fac-stat-k">{s.k}</span>
+                  <span className="t-fac-stat-v">{s.v}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="t-fac-block">
+              <div className="t-fac-block-label">Style de jeu</div>
+              <p className="t-fac-block-text">{f.style}</p>
+            </div>
+            <div className="t-fac-block">
+              <div className="t-fac-block-label">Avantages tactiques</div>
+              <p className="t-fac-block-text">{f.avantages}</p>
+            </div>
+            <div className="t-fac-block">
+              <div className="t-fac-block-label">Points de vigilance</div>
+              <p className="t-fac-block-text">{f.inconvenients}</p>
+            </div>
+            <div className="t-fac-refs">
+              <span className="t-fac-refs-label">Tournois référence</span>
+              <span className="t-fac-refs-val">{f.refs}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const SERVICES = [
+  { id:'tennis', tag:'COACHING TENNIS', meta:['Court','Technique','Tactique'],
+    title:'Coaching tennis individuel',
+    desc:"Travail technique et tactique sur le court, vidéo à l'appui. On démonte ton jeu, on identifie les fuites, on reconstruit plus solide.",
+    bullets:['Analyse vidéo après chaque séance','Plan de jeu adapté à ton style','Préparation tournoi (Swiss Tennis)','Sparring avec partenaires de niveau'],
+    price:'90 CHF', per:'/ séance · 1h30', img:'prepa.tennis.jpg', pos:'center 35%' },
+  { id:'fitness', tag:'COACHING FITNESS', meta:['Salle','Force','Conditioning'],
+    title:'Préparation physique',
+    desc:"Force, vitesse, explosivité, capacité à enchaîner les matchs sans s'écrouler. Tu deviens un athlète, pas juste un joueur.",
+    bullets:['Évaluation initiale complète','Programmation périodisée 12 sem.','Travail spécifique tennis','Suivi nutrition et récupération'],
+    price:'80 CHF', per:'/ séance · 1h', img:'physique.jpg', pos:'42% 15%' },
+  { id:'hybrid', tag:'PROGRAMME HYBRIDE', meta:['Court + Salle','12 semaines','Le complet'],
+    title:'Programme hybride · Performance',
+    desc:'Le programme qui change tout. Tennis + physique + mental, intégrés sur 12 semaines avec un objectif chiffré et un plan béton.',
+    bullets:['2 tennis + 2 physique / semaine','Bilan vidéo + tests physiques /4 sem.','App de suivi : plan, vidéos, stats','WhatsApp direct 7j/7'],
+    price:'1 490 CHF', per:'/ programme 12 sem.', img:'hybride.jpg', pos:'center 12%' },
+];
+
+// ─── PLAY STYLES data ────────────────────────────────────────────────────────
+const PLAY_STYLES = [
+  {
+    id:'offensif', num:'01',
+    name:'L\'Offensif', tag:'Frapper. Dicter. Dominer.',
+    color:'#1B4FA0',
+    desc:'Le jeu offensif repose sur un principe simple : ne jamais laisser l\'adversaire s\'installer. Chaque balle est une opportunité d\'accélérer, de prendre de l\'avance dans l\'échange et d\'imposer son rythme. Le but est de raccourcir le point, pas de le gérer.',
+    traits:['Service percutant — mise en danger directe','Frappe à plat ou avec avance','Prise de balle haute et tôt','Montée implicite dès la 3e balle','Jeu de jambes vers l\'avant'],
+    force:'Raccourcit les échanges, punit les balles courtes, met une pression psychologique constante sur l\'adversaire.',
+    faiblesse:'Taux d\'erreurs directs plus élevé. Très exigeant mentalement. Vulnérable si le timing est perturbé (vent, surface lente).',
+    surfaces:['Dur','Gazon'],
+    pros:['Jannik Sinner','Andre Agassi','Daniil Medvedev','Marat Safin'],
+  },
+  {
+    id:'defenseur', num:'02',
+    name:'Le Défenseur', tag:'Chaque balle revient. Toujours.',
+    color:'#0F3D2E',
+    desc:'Le défenseur transforme la frustration adversaire en arme. Sa lecture de jeu, son placement, sa régularité mentale et physique usent le concurrent point après point. Ce style exige une condition physique d\'élite et une gestion émotionnelle irréprochable.',
+    traits:['Déplacement ultra-réactif','Slice défensif pour gagner du temps','Lob de précision sous pression','Contre-attaque depuis les positions impossibles','Endurance musculaire et cardio hors norme'],
+    force:'Ne se bat jamais pour rien. Capitalise sur chaque erreur adverse. Idéal sur les longs matchs, les sets à enjeu, les conditions difficiles.',
+    faiblesse:'Peu d\'initiative. Dépend de l\'erreur de l\'autre. Difficile à assumer sur gazon où les points sont trop courts.',
+    surfaces:['Terre battue','Dur'],
+    pros:['David Ferrer','Diego Schwartzman','Lleyton Hewitt','Guillermo Coria'],
+  },
+  {
+    id:'cadence', num:'03',
+    name:'Le Joueur en Cadence', tag:'Contrôler le tempo. Imposer le rythme.',
+    color:'#3A3A3A',
+    desc:'Ce style consiste à construire le point avec méthode — ni trop vite, ni trop lentement. On installe un rythme, on déplace l\'adversaire, on attend la balle qui mérite d\'être tuée. C\'est du tennis intelligent, basé sur la lecture tactique plutôt que la puissance brute.',
+    traits:['Cross profond et constant pour fixer','Variation de rythme calculée','Changement de direction maîtrisé','Jeu sur les deux ailes en équilibre','Utilisation des angles pour ouvrir le court'],
+    force:'Très solide dans les longs échanges. Adaptatif selon l\'adversaire. Usure progressive, erreurs provoquées plutôt que forcées.',
+    faiblesse:'Peut devenir prévisible si la variation manque. Vulnérable face à un adversaire qui accélère fort et vite.',
+    surfaces:['Dur','Terre battue'],
+    pros:['Andy Murray','Novak Djokovic','Nalbandian','Lleyton Hewitt'],
+  },
+  {
+    id:'coupDroit', num:'04',
+    name:'Le Finisseur Coup Droit', tag:'Contourner. Accélérer. Finir.',
+    color:'#5B2D8E',
+    desc:'Le coup droit est l\'arme principale — parfois la seule. Ce joueur organise chaque échange pour se retrouver en position inside-out ou inside-in et déclencher son coup droit avec autorité. Sa mobilité latérale est exceptional, son revers souvent en slice ou en guidé.',
+    traits:['Inside-out et inside-in comme finisseurs','Revers slice pour gérer défensivement','Déplacement latéral vers la gauche anticipé','Service orienté pour se placer côté coup droit','Montée filet après l\'accélération gagnante'],
+    force:'Coup droit dévastateur en position ouverte. Très efficace sur balles courtes. Crée des ouvertures là où d\'autres voient des impasses.',
+    faiblesse:'Revers souvent exposé — les adversaires le ciblent systématiquement. Physiquement exigeant (couverture du court côté revers).',
+    surfaces:['Dur','Gazon','Terre battue'],
+    pros:['Roger Federer','Carlos Alcaraz','Dominic Thiem','Juan Martín del Potro'],
+  },
+  {
+    id:'serveurVolleur', num:'05',
+    name:'Le Serveur-Volleyeur', tag:'Servir. Charger. Conclure au filet.',
+    color:'#7A2020',
+    desc:'Un style d\'attaque totale : le service est une mise en danger directe, suivie immédiatement d\'une montée au filet pour conclure l\'échange en un ou deux coups. Technique de volée, lecture de la trajectoire et timing de montée sont les trois piliers de ce jeu.',
+    traits:['Premier service très fort et varié (slice, kick, plat)','Montée filet dans le couloir du service','Première volée stabilisatrice','Deuxième volée pour conclure','Réflexes au filet — smash et volée haute'],
+    force:'Raccourcit massivement les échanges. Psychologiquement déstabilisant. Exceptionnel sur gazon et surface rapide.',
+    faiblesse:'Très exposé sur terre battue et surface lente. Le retour de jeu devient une menace directe si la première balle n\'est pas là.',
+    surfaces:['Gazon','Dur (rapide)'],
+    pros:['John McEnroe','Stefan Edberg','Patrick Rafter','Richard Krajicek','Boris Becker'],
+  },
+  {
+    id:'contreAttaquant', num:'06',
+    name:'Le Contre-attaquant', tag:'Utiliser la balle adverse. Retourner l\'agression.',
+    color:'#0A2A55',
+    desc:'Ce style transforme la puissance adverse en arme. La balle est prise tôt — parfois montante — pour priver l\'adversaire de temps. Le contre-attaquant ne produit pas la vitesse lui-même : il la redirige, souvent en croisant ou en jouant le long de la ligne avec un timing parfait.',
+    traits:['Prise de balle très tôt (balle montante)','Position proche de la ligne de fond','Retour de service agressif et dans le corps','Revers à deux mains solide et driving','Réduction du temps de jeu adverse'],
+    force:'Utilise l\'énergie de l\'adversaire. Très efficace face aux frappeurs. Breakeur redoutable — le retour de service est une arme.',
+    faiblesse:'Exige un timing d\'exception. Difficile dans le vent ou sur surface lente où la balle ne vient pas assez vite.',
+    surfaces:['Dur','Gazon'],
+    pros:['Novak Djokovic','Andre Agassi','Jimmy Connors','Gael Monfils'],
+  },
+  {
+    id:'complet', num:'07',
+    name:'Le Tout-Terrain', tag:'Pas de faiblesse. Aucune faille.',
+    color:'#1A4500',
+    desc:'Le joueur complet n\'a pas de style figé — c\'est sa force. Il adapte son jeu à la surface, à l\'adversaire, au score. Défensif quand c\'est nécessaire, offensif quand l\'occasion se présente, il peut tout faire et l\'adversaire ne peut jamais le cibler sur un point précis.',
+    traits:['Service varié (kick, slice, plat) selon situation','Fond de court solide sur les deux ailes','Montée au filet opportuniste','Capacité à changer de rythme à chaque set','Adaptation tactique entre les sets'],
+    force:'Imprévisible. Efficace sur toutes les surfaces. Difficile à préparer adversariallement — il n\'a pas de pattern évident.',
+    faiblesse:'Peut manquer de l\'arme decisive du spécialiste. Si le niveau baisse, il n\'a pas de "coup de secours" par défaut.',
+    surfaces:['Toutes surfaces'],
+    pros:['Novak Djokovic','Rafael Nadal','Andy Murray','Roger Federer'],
+  },
+];
+
+function PlayStyles() {
+  const [open, setOpen] = React.useState(null);
+  const toggle = (id) => setOpen(o => o === id ? null : id);
+
+  return (
+    <section className="t-ps">
+      <div className="t-container">
+        <div className="t-ps-head">
+          <div className="t-eyebrow t-on-dark-eyebrow">Analyse de jeu</div>
+          <h2 className="t-ps-title">Trouve ton<br/><em>style</em></h2>
+          <p className="t-ps-intro">Sept profils de joueurs. Des caractéristiques précises, une tactique, des forces, des faiblesses. Identifie où tu en es — et où tu veux aller.</p>
+        </div>
+
+        <div className="t-ps-grid">
+          {PLAY_STYLES.map((s) => {
+            const isOpen = open === s.id;
+            return (
+              <article key={s.id} className={`t-ps-card${isOpen ? ' t-ps-card--open' : ''}`}
+                style={{'--ps-color': s.color}}>
+                <button className="t-ps-card-hd" onClick={() => toggle(s.id)} aria-expanded={isOpen}>
+                  <span className="t-ps-num">{s.num}</span>
+                  <div className="t-ps-card-title-wrap">
+                    <span className="t-ps-card-name">{s.name}</span>
+                    <span className="t-ps-card-tag">{s.tag}</span>
+                  </div>
+                  <span className="t-ps-chevron">{isOpen ? '↑' : '↓'}</span>
+                </button>
+
+                {isOpen && (
+                  <div className="t-ps-body">
+                    <p className="t-ps-desc">{s.desc}</p>
+
+                    <div className="t-ps-cols">
+                      <div>
+                        <div className="t-ps-sub">Caractéristiques clés</div>
+                        <ul className="t-ps-list">
+                          {s.traits.map((t,i) => <li key={i}>{t}</li>)}
+                        </ul>
+                      </div>
+                      <div className="t-ps-ff">
+                        <div className="t-ps-ff-block t-ps-ff--plus">
+                          <div className="t-ps-sub">Point fort</div>
+                          <p>{s.force}</p>
+                        </div>
+                        <div className="t-ps-ff-block t-ps-ff--minus">
+                          <div className="t-ps-sub">Point de vigilance</div>
+                          <p>{s.faiblesse}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="t-ps-footer">
+                      <div className="t-ps-surfaces">
+                        <span className="t-ps-meta-label">Surfaces idéales</span>
+                        {s.surfaces.map(sv => <span key={sv} className="t-ps-surf-pill">{sv}</span>)}
+                      </div>
+                      <div className="t-ps-pros">
+                        <span className="t-ps-meta-label">Exemples pro</span>
+                        <div className="t-ps-pros-list">
+                          {s.pros.map(p => <span key={p} className="t-ps-pro-name">{p}</span>)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Services() {
+  const [active, setActive] = React.useState(SERVICES[2].id);
+  const s = SERVICES.find(x => x.id === active);
+  return (
+    <section id="services" className="t-services">
+      <div className="t-container">
+        <div className="t-section-head">
+          <div>
+            <div className="t-eyebrow">— Programmes</div>
+            <h2 className="t-section-title">Trois portes d'entrée.<br/><em>Une seule promesse.</em></h2>
+          </div>
+          <p className="t-section-desc">Choisis le format qui correspond à ton moment. Tu peux changer en cours de route — ton plan évolue avec toi.</p>
+        </div>
+        <div className="t-services-tabs" role="tablist">
+          {SERVICES.map(svc => (
+            <button key={svc.id} className="t-services-tab" role="tab" aria-selected={active === svc.id} onClick={() => setActive(svc.id)}>
+              <span className="t-services-tab-tag">{svc.tag}</span>
+              <span className="t-services-tab-name">{svc.title.split(' ').slice(0,3).join(' ')}</span>
+            </button>
+          ))}
+        </div>
+        <div className="t-service-panel">
+          <div className="t-service-art">
+            <img key={s.img} src={s.img} alt={s.title}
+              style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:s.pos,display:'block',animation:'facFadeIn .35s ease'}}/>
+          </div>
+          <div>
+            <div className="t-service-chips">
+              {s.meta.map(m => <span className="t-chip" key={m}>{m}</span>)}
+            </div>
+            <h3 className="t-service-title">{s.title}</h3>
+            <p className="t-service-desc">{s.desc}</p>
+            <ul className="t-service-list">
+              {s.bullets.map(b => (
+                <li key={b}><span className="t-service-bullet"><Icon.Check/></span>{b}</li>
+              ))}
+            </ul>
+            <div className="t-service-price">
+              <span className="t-service-from">à partir de</span>
+              <span className="t-service-num">{s.price}</span>
+              <span className="t-service-per">{s.per}</span>
+              <button className="t-btn t-btn-dark"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}>
+                Réserver →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const TRANSFORMS = [
+  { label:'Athlète · 34 ans', role:'2e série · Compétiteur',
+    quote:"En 12 semaines, j'ai gagné 14 km/h sur mon premier service.",
+    stats:[ ['+14','km/h service'], ['-6%','masse grasse'], ['+18%','squat 1RM'] ] },
+  { label:'Athlète · 28 ans', role:'Loisir → reprise compétition',
+    quote:"J'avais arrêté pendant 5 ans. J'ai retrouvé un niveau que je n'avais jamais eu.",
+    stats:[ ['R4','classement actuel'], ['3x','/ semaine'], ['8','tournois finis'] ] },
+  { label:'Athlète · 41 ans', role:'Transformation physique',
+    quote:"Je voulais reprendre sans me blesser. Trois mois après, je joue 2h sans craquer du dos.",
+    stats:[ ['-9 kg','en 4 mois'], ['0','blessure'], ['2h','sans douleur'] ] },
+];
+
+function Transformations() {
+  return (
+    <section className="t-transforms" id="resultats">
+      <div className="t-container">
+        <div className="t-section-head">
+          <div>
+            <div className="t-eyebrow">— Résultats</div>
+            <h2 className="t-section-title">Des chiffres.<br/>Des visages. <em>Du vrai.</em></h2>
+          </div>
+          <p className="t-section-desc">Des athlètes ordinaires, des progrès mesurables. Chaque transformation est documentée — pas de avant/après photoshop, juste des données.</p>
+        </div>
+        <div className="t-tx-grid">
+          {TRANSFORMS.map((t, i) => (
+            <article key={i} className={`t-tx-card ${i===0?'is-dark':''}`}>
+              <p className="t-tx-quote">"{t.quote}"</p>
+              <div className="t-tx-stats">
+                {t.stats.map(([n,l]) => (
+                  <div className="t-tx-stat" key={l}><div className="n">{n}</div><div className="l">{l}</div></div>
+                ))}
+              </div>
+              <footer className="t-tx-meta">
+                <div className="t-tx-avatar"></div>
+                <div>
+                  <div className="t-tx-name">{t.label}</div>
+                  <div className="t-tx-role">{t.role}</div>
+                </div>
+              </footer>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const AUDIENCES = [
+  { n:'01', t:'Débutants',      d:"Tu n'as jamais touché une raquette ou tu reprends. On pose des fondations propres, sans presser." },
+  { n:'02', t:'Intermédiaires', d:"Tu joues, tu progresses, mais tu sens un plafond. On identifie les blocages et on les casse, un par un." },
+  { n:'03', t:'Compétiteurs',   d:"Tu vises un classement, un tournoi, une finale. Programme exigeant, structure pro, zéro improvisation." },
+  { n:'04', t:'Transformation', d:"Le tennis est un prétexte — tu veux retrouver un corps qui répond. Force, mobilité, énergie au quotidien." },
+];
+
+function ForWhom() {
+  return (
+    <section className="t-audiences" id="pour-qui">
+      <div className="t-container">
+        <div className="t-section-head">
+          <div>
+            <div className="t-eyebrow">— Pour qui ?</div>
+            <h2 className="t-section-title">Quatre profils.<br/><em>Une même méthode.</em></h2>
+          </div>
+          <p className="t-section-desc">Que tu débutes ou que tu vises la performance, le programme s'adapte. Toujours sur mesure, jamais générique.</p>
+        </div>
+        <div className="t-aud-grid">
+          {AUDIENCES.map(a => (
+            <div className="t-aud" key={a.n}>
+              <div className="t-aud-num">{a.n}</div>
+              <h4>{a.t}</h4>
+              <p>{a.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const STEPS = [
+  { n:'01', t:'Bilan complet',   d:'On parle. De toi, de ton jeu, de ton corps, de ton emploi du temps. Tests physiques + analyse vidéo.', dur:'Semaine 1 · 90 min' },
+  { n:'02', t:'Plan sur mesure', d:'Tu repars avec un programme construit pour TES objectifs. Tennis + physique + nutrition + récupération.', dur:'Semaine 1' },
+  { n:'03', t:'Coaching actif',  d:'On exécute. Séances sur le court, séances en salle, suivi WhatsApp 7j/7, ajustements toutes les semaines.', dur:'Semaines 2 → 11' },
+  { n:'04', t:'Bilan & next step',d:"On mesure les progrès — chiffres à l'appui. On célèbre. Puis on définit la suite.", dur:'Semaine 12' },
+];
+
+function Method() {
+  return (
+    <section className="t-method" id="methode">
+      <div className="t-container">
+        <div className="t-section-head t-on-dark">
+          <div>
+            <div className="t-eyebrow">— Méthode</div>
+            <h2 className="t-section-title">Quatre étapes.<br/><em>Aucune surprise.</em></h2>
+          </div>
+          <p className="t-section-desc">Tu sais ce que tu paies, ce qui t'attend, et quand. La transparence, c'est la base du résultat.</p>
+        </div>
+        <div className="t-method-list">
+          {STEPS.map(s => (
+            <div className="t-step" key={s.n}>
+              <div className="t-step-n">{s.n}</div>
+              <h3>{s.t}</h3>
+              <p>{s.d}</p>
+              <div className="t-step-dur">{s.dur}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const QUOTES = [
+  { role:'Cliente · 8 mois',       stars:5, text:"J'ai testé trois coachs avant. Aucun ne s'intéressait vraiment à ce que je voulais. Ici c'est différent — on a un VRAI plan." },
+  { role:'R6 · Compétition',       stars:5, text:"Le suivi vidéo a tout changé. Je vois ce que je fais mal, et chaque semaine je sens le progrès dans mon coup droit." },
+  { role:'Reprise sport · 39 ans', stars:5, text:"Bienveillant, exigeant, jamais culpabilisant. Le seul coach qui m'a fait aimer la salle." },
+];
+
+function Testimonials() {
+  return (
+    <section className="t-testimonials" id="temoignages">
+      <div className="t-container">
+        <div className="t-section-head">
+          <div>
+            <div className="t-eyebrow">— Témoignages</div>
+            <h2 className="t-section-title">Ce qu'ils disent,<br/><em>pas ce que je promets.</em></h2>
+          </div>
+          <p className="t-section-desc">Plus de 120 athlètes coachés. Voici trois d'entre eux. Les autres, je peux te les présenter de vive voix.</p>
+        </div>
+        <div className="t-test-grid">
+          {QUOTES.map((q,i) => (
+            <article className="t-test" key={i}>
+              <div className="t-test-stars">
+                {Array.from({length:q.stars}).map((_,j) => <Icon.Star key={j} width="14" height="14"/>)}
+              </div>
+              <blockquote>"{q.text}"</blockquote>
+              <footer>
+                <div className="t-tx-role">{q.role}</div>
+              </footer>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BookingForm() {
+  const [program, setProgram] = React.useState('hybrid');
+  const [level, setLevel]     = React.useState('intermediate');
+  const [name, setName]       = React.useState('');
+  const [email, setEmail]     = React.useState('');
+  const [phone, setPhone]     = React.useState('');
+  const [msg, setMsg]         = React.useState('');
+  const [submitted, setSubmitted] = React.useState(false);
+
+  const submit = (e) => { e.preventDefault(); if (!name || !email) return; setSubmitted(true); };
+
+  if (submitted) {
+    return (
+      <div className="t-form" style={{textAlign:'center',padding:'48px 28px'}}>
+        <div style={{width:64,height:64,borderRadius:'50%',margin:'0 auto 20px',background:'#fff',display:'grid',placeItems:'center',color:'var(--brand)'}}>
+          <Icon.Check width="28" height="28"/>
+        </div>
+        <h3 style={{fontFamily:'var(--font-display)',fontSize:28,margin:'0 0 12px',letterSpacing:'-0.01em',color:'#fff'}}>
+          On se parle bientôt, {name.split(' ')[0] || 'champion'}.
+        </h3>
+        <p style={{color:'rgba(255,255,255,.7)',fontSize:14.5,lineHeight:1.6,maxWidth:380,margin:'0 auto'}}>
+          Tu vas recevoir un mail à <strong style={{color:'#fff'}}>{email}</strong> dans les 5 minutes avec mes créneaux.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form className="t-form" onSubmit={submit}>
+      <div className="t-form-row">
+        <label>Programme qui t'intéresse</label>
+        <div className="t-form-pills">
+          {[['tennis','Tennis'],['fitness','Fitness'],['hybrid','Hybride'],['discovery','Essai']].map(([id,l]) => (
+            <button type="button" key={id} className="t-form-pill" aria-selected={program===id} onClick={() => setProgram(id)}>{l}</button>
+          ))}
+        </div>
+      </div>
+      <div className="t-form-row">
+        <label>Ton niveau</label>
+        <div className="t-form-pills">
+          {[['beginner','Débutant'],['intermediate','Intermédiaire'],['advanced','Confirmé'],['competition','Compétition']].map(([id,l]) => (
+            <button type="button" key={id} className="t-form-pill" aria-selected={level===id} onClick={() => setLevel(id)}>{l}</button>
+          ))}
+        </div>
+      </div>
+      <div className="t-form-grid2">
+        <div className="t-form-row">
+          <label>Prénom & nom</label>
+          <input type="text" required value={name} onChange={e => setName(e.target.value)} placeholder="Marie Dupont"/>
+        </div>
+        <div className="t-form-row">
+          <label>Téléphone</label>
+          <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+41 79 123 45 67"/>
+        </div>
+      </div>
+      <div className="t-form-row">
+        <label>Email</label>
+        <input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="ton@email.com"/>
+      </div>
+      <div className="t-form-row">
+        <label>Ton objectif (optionnel)</label>
+        <textarea rows="3" value={msg} onChange={e => setMsg(e.target.value)} placeholder="Dis-moi ce que tu veux atteindre."/>
+      </div>
+      <button type="submit" className="t-form-submit">Réserver ma séance d'essai →</button>
+      <div className="t-form-note">Réponse sous 24h. Première séance offerte si on signe.</div>
+    </form>
+  );
+}
+
+function CTA() {
+  return (
+    <section className="t-cta" id="contact">
+      <div className="t-cta-canvas">
+        <div>
+          <div className="t-eyebrow t-on-dark-eyebrow">— Réservation</div>
+          <h2 className="t-cta-title">PRÊT À<br/>FRAPPER<br/><em>plus fort ?</em></h2>
+          <p className="t-cta-sub">Une séance d'essai. 90 minutes. Aucun engagement. Tu repars avec un diagnostic complet et trois choses à travailler dès demain.</p>
+          <div className="t-cta-info">
+            <div><div className="k">Téléphone</div><div className="v">+41 79 123 45 67</div></div>
+            <div><div className="k">Email</div><div className="v">hello@passiontennis.ch</div></div>
+            <div><div className="k">Lieu</div><div className="v">Lausanne · TC Pully</div></div>
+          </div>
+        </div>
+        <BookingForm/>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="t-footer">
+      <div className="t-container">
+        <div className="t-footer-grid">
+          <div>
+            <div className="t-footer-logo">PassionTennis<span>.</span></div>
+            <p className="t-footer-tag">Coaching tennis et préparation physique premium. Lausanne & alentours. On progresse, ensemble.</p>
+            <div className="t-socials">
+              <a href="#" aria-label="Instagram"><Icon.Insta width="16" height="16"/></a>
+              <a href="#" aria-label="YouTube"><Icon.Yt width="16" height="16"/></a>
+              <a href="#" aria-label="TikTok"><Icon.Tt width="16" height="16"/></a>
+              <a href="#" aria-label="X"><Icon.X width="16" height="16"/></a>
+            </div>
+          </div>
+          <div className="t-footer-col">
+            <h5>Programmes</h5>
+            <ul>
+              <li><a href="#services">Coaching tennis</a></li>
+              <li><a href="#services">Préparation physique</a></li>
+              <li><a href="#services">Programme hybride</a></li>
+              <li><a href="#services">Stages intensifs</a></li>
+            </ul>
+          </div>
+          <div className="t-footer-col">
+            <h5>Ressources</h5>
+            <ul>
+              <li><a href="#methode">Méthode</a></li>
+              <li><a href="#temoignages">Témoignages</a></li>
+              <li><a href="#resultats">Résultats</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+          <div className="t-footer-col">
+            <h5>Contact</h5>
+            <ul>
+              <li><a href="#contact">Réserver</a></li>
+              <li><a href="mailto:hello@passiontennis.ch">hello@passiontennis.ch</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Mentions légales</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="t-footer-bot">
+          <span>© 2026 PassionTennis · IDE CHE-000.000.000</span>
+          <span>Conçu avec rigueur. Comme les programmes.</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+// ─── app ─────────────────────────────────────────────────────────────────────
+const TWEAK_DEFAULTS = {
+  palette: 'blue',
+  typo: 'display',
+  density: 'regular',
+  btn: 'pill',
+};
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(() => {
+    document.body.dataset.palette = t.palette;
+    document.body.dataset.typo    = t.typo;
+    document.body.dataset.density = t.density;
+    document.body.dataset.btn     = t.btn;
+  }, [t]);
+
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior:'smooth', block:'start' });
+  };
+
+  return (
+    <>
+      <Nav onBookClick={scrollToContact} />
+      <Hero />
+      <Trusted />
+      <Facilities />
+      <Services />
+      <Transformations />
+      <ForWhom />
+      <Method />
+      <Testimonials />
+      <CTA />
+      <Footer />
+
+      <TweaksPanel title="Réglages">
+        <TweakSection label="Palette" />
+        <TweakRadio label="Couleur" value={t.palette}
+          options={[{value:'blue',label:'Bleu'},{value:'green',label:'Vert'},{value:'black',label:'Noir'},{value:'cobalt',label:'Cobalt'}]}
+          onChange={(v) => setTweak('palette', v)} />
+        <TweakSection label="Typographie" />
+        <TweakRadio label="Style" value={t.typo}
+          options={[{value:'display',label:'Display'},{value:'editorial',label:'Éditorial'},{value:'condensed',label:'Condensé'}]}
+          onChange={(v) => setTweak('typo', v)} />
+        <TweakSection label="Densité" />
+        <TweakRadio label="Espacement" value={t.density}
+          options={[{value:'compact',label:'Compact'},{value:'regular',label:'Normal'},{value:'spacious',label:'Spacieux'}]}
+          onChange={(v) => setTweak('density', v)} />
+        <TweakSection label="Boutons" />
+        <TweakRadio label="Forme" value={t.btn}
+          options={[{value:'pill',label:'Arrondi'},{value:'square',label:'Carré'},{value:'ghost',label:'Fantôme'}]}
+          onChange={(v) => setTweak('btn', v)} />
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('app')).render(<App />);
+</script>
+</body>
+</html>
