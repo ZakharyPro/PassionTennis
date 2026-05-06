@@ -797,12 +797,13 @@
     .t-nav-c{ justify-content: center; }
 
     /* ── Hero ── */
-    .t-hero{ padding: 62px 10px 10px; }
+    .t-hero{ padding: 0; }
     .t-hero-canvas{
-      height: calc(100svh - 72px); min-height: 460px;
-      border-radius: 16px; aspect-ratio: unset;
+      height: 100svh; height: 100dvh;
+      min-height: 0; border-radius: 0; aspect-ratio: unset;
       display: flex; flex-direction: column; justify-content: flex-end;
     }
+    .t-hero-figure img{ object-position: center center; }
     .t-hero-headline{
       position: relative; left: unset; bottom: unset;
       padding: 0 20px;
@@ -960,6 +961,11 @@
     /* ── Tweaks panel masqué ── */
     .twk-panel{ display: none !important; }
   }
+
+  /* ── Wave dividers ── */
+  .t-wave{ line-height: 0; overflow: hidden; position: relative; z-index: 1; }
+  .t-wave svg{ display: block; width: 100%; height: clamp(36px, 4.5vw, 72px); }
+  @media (max-width: 480px){ .t-wave svg{ height: 36px; } }
 </style>
 </head>
 <body data-palette="blue" data-typo="display" data-density="regular" data-btn="pill">
@@ -1893,6 +1899,19 @@ const TWEAK_DEFAULTS = {
   btn: 'pill',
 };
 
+function Wave({ fill, bg }) {
+  const H = 72;
+  // Descend du bord gauche (y=0) jusqu'au centre (y=H), puis reste à plat en bas
+  return (
+    <div aria-hidden="true" className="t-wave" style={{background: bg}}>
+      <svg viewBox={`0 0 1440 ${H}`} preserveAspectRatio="none">
+        <path d={`M0,0 C240,0 480,${H} 720,${H} L1440,${H} L1440,0 L0,0 Z`}
+          style={{fill}}/>
+      </svg>
+    </div>
+  );
+}
+
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
 
@@ -1911,13 +1930,21 @@ function App() {
     <>
       <Nav onBookClick={scrollToContact} />
       <Hero />
+      <Wave fill="var(--brand)" bg="var(--bg)" />
       <Trusted />
+      <Wave fill="var(--bg)" bg="var(--paper)" />
       <Facilities />
+      <Wave fill="var(--paper)" bg="#1a3a6b" />
       <PlayStyles />
+      <Wave fill="#1a3a6b" bg="var(--bg)" />
       <ForWhom />
+      <Wave fill="var(--bg)" bg="#1a3a6b" />
       <Method />
+      <Wave fill="#1a3a6b" bg="var(--bg)" />
       <Services />
+      <Wave fill="var(--bg)" bg="var(--paper)" />
       <Testimonials />
+      <Wave fill="var(--paper)" bg="var(--bg)" />
       <CTA />
       <Footer />
 
