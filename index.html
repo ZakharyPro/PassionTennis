@@ -786,12 +786,16 @@
     /* ── Hero ── */
     .t-hero{ padding: 0; }
     .t-hero-canvas{
-      /* Aspect ratio 4/5 au lieu de 100dvh : correspond mieux aux images paysage, réduit le zoom forcé */
-      height: auto; aspect-ratio: 4/5;
-      min-height: 0; border-radius: 0;
+      height: 100svh; height: 100dvh;
+      min-height: 0; border-radius: 0; aspect-ratio: unset;
       display: flex; flex-direction: column; justify-content: flex-end;
     }
-    .t-hero-figure img{ object-position: center 30%; }
+    /* Image paysage 1482×1061 : contain évite le zoom forcé, fond dégradé remplit le reste */
+    .t-hero-figure img{
+      object-fit: contain;
+      object-position: center top;
+      width: 100%; height: auto;
+    }
     .t-hero-headline{
       position: relative; left: unset; bottom: unset;
       padding: 0 20px;
