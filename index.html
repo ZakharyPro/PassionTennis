@@ -1143,7 +1143,7 @@ function Trusted() {
             <div className="t-trusted-tag">#01</div>
             <div className="t-trusted-body">
               <h3>Zakhary Laloum — Une approche réellement personnalisée.</h3>
-              <p>Rejoins ceux qui s'appuient sur notre programme — bâti sur l'<em>expérience</em>, validé par les <em>résultats</em>, et choisi par <em>beaucoup</em>.</p>
+              <p>Rejoins ceux qui s'appuient sur notre programme bâti sur l'<em>expérience</em>, validé par les <em>résultats</em>, et choisi par <em>beaucoup</em>.</p>
             </div>
           </div>
         </div>
@@ -1269,17 +1269,17 @@ const SERVICES = [
     title:'Coaching tennis individuel',
     desc:"Travail technique et tactique sur le court, vidéo à l'appui. On démonte ton jeu, on identifie les fuites, on reconstruit plus solide.",
     bullets:['Analyse vidéo après chaque séance','Plan de jeu adapté à ton style','Préparation tournoi (Swiss Tennis)','Sparring avec partenaires de niveau'],
-    price:'90 CHF', per:'/ séance · 1h30', img:'prepa-tennis.jpg', pos:'center 35%' },
+    price:'60 CHF', per:'/ heure', img:'prepa-tennis.jpg', pos:'center 35%' },
   { id:'fitness', tag:'COACHING FITNESS', meta:['Salle','Force','Conditioning'],
     title:'Préparation physique',
     desc:"Force, vitesse, explosivité, capacité à enchaîner les matchs sans s'écrouler. Tu deviens un athlète, pas juste un joueur.",
     bullets:['Évaluation initiale complète','Programmation périodisée 12 sem.','Travail spécifique tennis','Suivi nutrition et récupération'],
-    price:'80 CHF', per:'/ séance · 1h', img:'physique.jpg', pos:'42% 15%' },
+    price:'60 CHF', per:'/ heure', img:'physique.jpg', pos:'center center', fit:'contain', bg:'#ffffff' },
   { id:'hybrid', tag:'PROGRAMME HYBRIDE', meta:['Court + Salle','12 semaines','Le complet'],
     title:'Programme hybride · Performance',
     desc:'Le programme qui change tout. Tennis + physique + mental, intégrés sur 12 semaines avec un objectif chiffré et un plan béton.',
-    bullets:['2 tennis + 2 physique / semaine','Bilan vidéo + tests physiques /4 sem.','App de suivi : plan, vidéos, stats','WhatsApp direct 7j/7'],
-    price:'1 490 CHF', per:'/ programme 12 sem.', img:'hybride.jpg', pos:'center 12%' },
+    bullets:['2h Tennis + 2h Physique / semaine','Bilan vidéo + tests physiques /4 sem.','App de suivi : plan, vidéos, stats','WhatsApp direct 7j/7'],
+    price:'550 CHF', per:'/ mois', img:'hybride.jpg', pos:'center center', fit:'contain', bg:'#ffffff' },
 ];
 
 // ─── PLAY STYLES data ────────────────────────────────────────────────────────
@@ -1459,9 +1459,9 @@ function Services() {
           ))}
         </div>
         <div className="t-service-panel">
-          <div className="t-service-art">
+          <div className="t-service-art" style={s.bg ? {background: s.bg} : {}}>
             <img key={s.img} src={s.img} alt={s.title}
-              style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:s.pos,display:'block',animation:'facFadeIn .35s ease'}}
+              style={{width:'100%',height:'100%',objectFit:s.fit||'cover',objectPosition:s.pos,display:'block',animation:'facFadeIn .35s ease'}}
               onError={(e)=>{e.target.style.display='none'}}/>
           </div>
           <div>
@@ -1491,52 +1491,6 @@ function Services() {
   );
 }
 
-const TRANSFORMS = [
-  { label:'Athlète · 34 ans', role:'2e série · Compétiteur',
-    quote:"En 12 semaines, j'ai gagné 14 km/h sur mon premier service.",
-    stats:[ ['+14','km/h service'], ['-6%','masse grasse'], ['+18%','squat 1RM'] ] },
-  { label:'Athlète · 28 ans', role:'Loisir → reprise compétition',
-    quote:"J'avais arrêté pendant 5 ans. J'ai retrouvé un niveau que je n'avais jamais eu.",
-    stats:[ ['R4','classement actuel'], ['3x','/ semaine'], ['8','tournois finis'] ] },
-  { label:'Athlète · 41 ans', role:'Transformation physique',
-    quote:"Je voulais reprendre sans me blesser. Trois mois après, je joue 2h sans craquer du dos.",
-    stats:[ ['-9 kg','en 4 mois'], ['0','blessure'], ['2h','sans douleur'] ] },
-];
-
-function Transformations() {
-  return (
-    <section className="t-transforms" id="resultats">
-      <div className="t-container">
-        <div className="t-section-head">
-          <div>
-            <div className="t-eyebrow">— Résultats</div>
-            <h2 className="t-section-title">Des chiffres.<br/>Des visages. <em>Du vrai.</em></h2>
-          </div>
-          <p className="t-section-desc">Des athlètes ordinaires, des progrès mesurables. Chaque transformation est documentée — pas de avant/après photoshop, juste des données.</p>
-        </div>
-        <div className="t-tx-grid">
-          {TRANSFORMS.map((t, i) => (
-            <article key={i} className={`t-tx-card ${i===0?'is-dark':''}`}>
-              <p className="t-tx-quote">"{t.quote}"</p>
-              <div className="t-tx-stats">
-                {t.stats.map(([n,l]) => (
-                  <div className="t-tx-stat" key={l}><div className="n">{n}</div><div className="l">{l}</div></div>
-                ))}
-              </div>
-              <footer className="t-tx-meta">
-                <div className="t-tx-avatar"></div>
-                <div>
-                  <div className="t-tx-name">{t.label}</div>
-                  <div className="t-tx-role">{t.role}</div>
-                </div>
-              </footer>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 const AUDIENCES = [
   { n:'01', t:'Débutants',      d:"Tu n'as jamais touché une raquette ou tu reprends. On pose des fondations propres, sans presser." },
@@ -1808,7 +1762,6 @@ function App() {
       <Trusted />
       <Facilities />
       <PlayStyles />
-      <Transformations />
       <ForWhom />
       <Method />
       <Services />
