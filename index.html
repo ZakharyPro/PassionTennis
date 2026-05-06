@@ -786,11 +786,12 @@
     /* ── Hero ── */
     .t-hero{ padding: 0; }
     .t-hero-canvas{
-      height: 100svh; height: 100dvh;
-      min-height: 0; border-radius: 0; aspect-ratio: unset;
+      /* Aspect ratio 4/5 au lieu de 100dvh : correspond mieux aux images paysage, réduit le zoom forcé */
+      height: auto; aspect-ratio: 4/5;
+      min-height: 0; border-radius: 0;
       display: flex; flex-direction: column; justify-content: flex-end;
     }
-    .t-hero-figure img{ object-position: center top; }
+    .t-hero-figure img{ object-position: center 30%; }
     .t-hero-headline{
       position: relative; left: unset; bottom: unset;
       padding: 0 20px;
