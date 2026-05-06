@@ -962,10 +962,10 @@
     .twk-panel{ display: none !important; }
   }
 
-  /* ── Wave dividers ── */
-  .t-wave{ line-height: 0; overflow: hidden; position: relative; z-index: 1; }
-  .t-wave svg{ display: block; width: 100%; height: clamp(36px, 4.5vw, 72px); }
-  @media (max-width: 480px){ .t-wave svg{ height: 36px; } }
+  /* ── Seam dividers ── */
+  .t-seam{ line-height: 0; overflow: hidden; position: relative; z-index: 1; }
+  .t-seam svg{ display: block; width: 100%; height: clamp(72px, 8vw, 110px); }
+  @media (max-width: 480px){ .t-seam svg{ height: 60px; } }
 </style>
 </head>
 <body data-palette="blue" data-typo="display" data-density="regular" data-btn="pill">
@@ -1899,14 +1899,16 @@ const TWEAK_DEFAULTS = {
   btn: 'pill',
 };
 
-function Wave({ fill, bg }) {
-  const H = 72;
-  // Descend du bord gauche (y=0) jusqu'au centre (y=H), puis reste à plat en bas
+function Seam({ fill, bg, dir = 'up' }) {
+  // Bezier unique bord-à-bord : zéro jonction, arrondi garanti
+  // Contrôles rapprochés près du centre → transition abrupte au milieu, plateaux visuels naturels aux bords
+  const d = dir === 'up'
+    ? "M0,0 L0,88 C688,88 752,10 1440,10 L1440,0 Z"
+    : "M0,0 L0,10 C688,10 752,88 1440,88 L1440,0 Z";
   return (
-    <div aria-hidden="true" className="t-wave" style={{background: bg}}>
-      <svg viewBox={`0 0 1440 ${H}`} preserveAspectRatio="none">
-        <path d={`M0,0 C240,0 480,${H} 720,${H} L1440,${H} L1440,0 L0,0 Z`}
-          style={{fill}}/>
+    <div aria-hidden="true" className="t-seam" style={{background: bg}}>
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d={d} style={{fill}}/>
       </svg>
     </div>
   );
@@ -1930,21 +1932,20 @@ function App() {
     <>
       <Nav onBookClick={scrollToContact} />
       <Hero />
-      <Wave fill="var(--brand)" bg="var(--bg)" />
       <Trusted />
-      <Wave fill="var(--bg)" bg="var(--paper)" />
+      <Seam fill="var(--bg)" bg="var(--paper)" dir="up" />
       <Facilities />
-      <Wave fill="var(--paper)" bg="#1a3a6b" />
+      <Seam fill="var(--paper)" bg="#1a3a6b" dir="down" />
       <PlayStyles />
-      <Wave fill="#1a3a6b" bg="var(--bg)" />
+      <Seam fill="#1a3a6b" bg="var(--bg)" dir="up" />
       <ForWhom />
-      <Wave fill="var(--bg)" bg="#1a3a6b" />
+      <Seam fill="var(--bg)" bg="#1a3a6b" dir="down" />
       <Method />
-      <Wave fill="#1a3a6b" bg="var(--bg)" />
+      <Seam fill="#1a3a6b" bg="var(--bg)" dir="up" />
       <Services />
-      <Wave fill="var(--bg)" bg="var(--paper)" />
+      <Seam fill="var(--bg)" bg="var(--paper)" dir="down" />
       <Testimonials />
-      <Wave fill="var(--paper)" bg="var(--bg)" />
+      <Seam fill="var(--paper)" bg="var(--bg)" dir="up" />
       <CTA />
       <Footer />
 
@@ -2009,7 +2010,12 @@ ReactDOM.createRoot(document.getElementById('app')).render(<App />);
   /* ── 2. Scroll reveal ───────────────────────────────────────────────── */
   function initReveal() {
     const style = document.createElement('style');
-    style.textContent = `
+    // Sur mobile : fade seul, pas de translateY (évite l'effet de "scroll interne" dans les sections overflow:hidden)
+    const mob = isMobile();
+    style.textContent = mob ? `
+      [data-reveal]{opacity:0;transition:opacity .6s ease;}
+      [data-reveal].is-visible{opacity:1;}
+    ` : `
       [data-reveal]{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.22,.68,0,1.05),transform .7s cubic-bezier(.22,.68,0,1.05);}
       [data-reveal].is-visible{opacity:1;transform:none;}
       [data-reveal="left"]{transform:translateX(-50px);}
