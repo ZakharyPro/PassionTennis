@@ -838,8 +838,19 @@
 
     /* ── Skilled / Coach ── */
     .t-skilled{ padding: 24px 0 16px; }
-    .t-skilled-inner{ min-height: 320px; }
-    .t-skilled-text{ font-size: clamp(36px, 12vw, 64px); }
+    /* Sur mobile : texte sort de l'absolute pour apparaître au-dessus de la photo */
+    .t-skilled-inner{
+      min-height: unset;
+      flex-direction: column;
+      gap: 20px;
+      padding: 0 16px;
+    }
+    .t-skilled-text{
+      position: relative; inset: unset; overflow: visible;
+      font-size: clamp(32px, 11vw, 56px);
+      text-align: center;
+    }
+    .t-skilled-row:last-child{ justify-content: center; padding-right: 0; }
     .t-skilled-photo{ width: 165px; height: 235px; border-radius: 22px; }
     .t-skilled-nav{ padding: 0 10px; }
     .t-arrow-btn{ width: 44px; height: 44px; font-size: 16px; }
