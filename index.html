@@ -668,6 +668,34 @@
   .t-aud h4{ font-family: var(--font-display); font-size: 26px; line-height: 1.05; letter-spacing: -0.01em; margin: 16px 0 12px; font-weight: 700;}
   .t-aud p{ font-size: 14px; line-height: 1.55; color: var(--ink-2); margin: 0;}
 
+  /* ========== MINDSET ========== */
+  .t-mindset{ padding: var(--section-py) 0; background: var(--bg); }
+  .t-mindset-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 56px;
+  }
+  .t-mindset-card{
+    background: var(--paper);
+    border: 1px solid rgba(10,22,40,.07);
+    border-radius: 24px;
+    padding: 32px 28px 28px;
+    display: flex; flex-direction: column; gap: 14px;
+    box-shadow: 0 2px 0 rgba(255,255,255,.8) inset, 0 8px 32px -12px rgba(10,22,40,.1);
+    transition: transform .22s ease, box-shadow .22s ease;
+  }
+  .t-mindset-card:hover{ transform: translateY(-3px); box-shadow: 0 2px 0 rgba(255,255,255,.8) inset, 0 18px 48px -12px rgba(10,22,40,.14); }
+  .t-mindset-icon{ font-size: 32px; line-height: 1; }
+  .t-mindset-label{ font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); }
+  .t-mindset-title{ font-family: var(--font-display); font-size: 20px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin: 0; color: var(--ink); }
+  .t-mindset-desc{ font-size: 13.5px; line-height: 1.6; color: var(--ink-2); margin: 0; flex: 1; }
+  .t-mindset-quote{
+    font-family: var(--font-mono); font-size: 11px; color: var(--brand-2);
+    border-left: 2px solid var(--brand-3); padding-left: 10px; line-height: 1.5;
+    margin-top: auto;
+  }
+
   /* ========== METHOD ========== */
   .t-method{ padding: var(--section-py) 0; background: linear-gradient(to bottom, #1A8AB5 0%, #0D5A80 50%, #1A8AB5 100%); color: #fff; position: relative; overflow: hidden;}
   .t-method-list{ border-top: 1px solid rgba(255,255,255,.15);}
@@ -960,7 +988,7 @@
     .t-service-card{ flex: 0 0 calc(100vw - 48px); scroll-snap-align: start; scroll-snap-stop: always; border-radius: 24px; }
     .t-service-art{ aspect-ratio: 5/2; }
     .t-service-icon{ font-size: 48px; }
-    [data-svc="hybrid"] .t-service-art img{ object-position: center 30%; }
+    [data-svc="hybrid"] .t-service-art img{ object-position: center top; }
     .t-service-body{ padding: 12px 14px; gap: 0; }
     .t-service-chips{ margin-bottom: 7px; }
     .t-service-title{ font-size: clamp(17px, 5vw, 21px); margin-bottom: 6px; }
@@ -972,6 +1000,12 @@
     .t-service-num{ font-size: 24px; }
     .t-services-arrows{ display: none; }
     .t-form-grid2{ grid-template-columns: 1fr; }
+
+    /* ── Mindset ── */
+    .t-mindset{ padding: 56px 0; }
+    .t-mindset-grid{ grid-template-columns: 1fr; gap: 12px; margin-top: 36px; }
+    .t-mindset-card{ padding: 22px 20px 20px; border-radius: 20px; }
+    .t-mindset-title{ font-size: 18px; }
 
     /* ── Pour qui ── */
     .t-audiences{ padding: 48px 0; }
@@ -1651,6 +1685,54 @@ function PlayStyles() {
   );
 }
 
+const MINDSET_PILLARS = [
+  { icon:'🧠', label:'Mental', title:'Gère ta tête, pas le score',
+    desc:"La pression, les erreurs, les sets perdus — tout ça se gère. On travaille la régulation émotionnelle pour que ton niveau reste stable même quand ça coince.",
+    quote:'Entre deux points, tu as le choix de qui tu es.' },
+  { icon:'🎯', label:'Focus & Concentration', title:'L\'attention est un muscle',
+    desc:"Se reconcentrer après une faute, rester dans le présent point, couper le bruit mental. Des protocoles simples, utilisés à chaque séance.",
+    quote:'Le champion pense au prochain point. Toujours.' },
+  { icon:'🌿', label:'Hygiène de vie', title:'Récupère comme un pro',
+    desc:"Sommeil, stress, charge mentale. Ce que tu fais hors du court décide de ce que tu peux faire dessus. On optimise les fondations.",
+    quote:'Tu progresses quand tu récupères, pas quand tu travailles.' },
+  { icon:'🥗', label:'Nutrition', title:'Mange pour performer',
+    desc:"Énergie sur la durée, hydratation, pré-match et récupération post-effort. Pas de régime — des habitudes adaptées à ton mode de vie.",
+    quote:'Ton assiette est ta première supplémentation.' },
+  { icon:'🔄', label:'Habitudes', title:'Des systèmes, pas de la motivation',
+    desc:"La motivation est éphémère. On construit des routines d'entraînement, de préparation avant match et de débrief qui tiennent dans le temps.",
+    quote:'Tu ne t\'élèves pas à tes objectifs. Tu tombes à ton niveau de systèmes.' },
+  { icon:'💬', label:'Psychologie', title:'Comprends pourquoi tu joues comme ça',
+    desc:"Croyances limitantes, peur de gagner, profil compétitif. Comprendre tes patterns mentaux est le levier le plus sous-estimé de la progression.",
+    quote:'Le tennis révèle qui tu es. Le coaching change ça.' },
+];
+
+function Mindset() {
+  return (
+    <section className="t-mindset" id="mindset">
+      <div className="t-container">
+        <div className="t-section-head">
+          <div>
+            <div className="t-eyebrow">— Performance globale</div>
+            <h2 className="t-section-title">Le jeu commence<br/><em>dans ta tête</em></h2>
+          </div>
+          <p className="t-section-desc">Le tennis, c'est 50% physique et technique — et 50% mental, habitudes et hygiène de vie. On travaille les deux.</p>
+        </div>
+        <div className="t-mindset-grid">
+          {MINDSET_PILLARS.map((p,i) => (
+            <div key={i} className="t-mindset-card">
+              <div className="t-mindset-icon">{p.icon}</div>
+              <div className="t-mindset-label">{p.label}</div>
+              <h3 className="t-mindset-title">{p.title}</h3>
+              <p className="t-mindset-desc">{p.desc}</p>
+              <div className="t-mindset-quote">"{p.quote}"</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Services() {
   const trackRef = React.useRef(null);
   const scroll = (dir) => {
@@ -1999,6 +2081,8 @@ function App() {
       <Seam fill="var(--paper)" bg="var(--brand-2)" dir="down" />
       <PlayStyles />
       <Seam fill="var(--brand-2)" bg="var(--bg)" dir="up" />
+      <Mindset />
+      <Seam fill="var(--bg)" bg="var(--brand-2)" dir="down" />
       <ForWhom />
       <Seam fill="var(--bg)" bg="var(--brand-2)" dir="down" />
       <Method />
