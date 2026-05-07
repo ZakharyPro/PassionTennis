@@ -189,6 +189,16 @@
   }
   body[data-typo="editorial"] .t-hero-headline{ font-weight: 500; font-style: italic;}
 
+  /* Desktop tagline bottom-left */
+  .t-hero-tagline{
+    position: absolute; left: 36px; bottom: 36px; z-index: 4;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,.7); pointer-events: none;
+  }
+  /* Desktop: wrapper transparent, mini-cards hidden */
+  .t-hero-cards-row{ display: contents; }
+  .t-hero-mini-card{ display: none; }
+
   .t-hero-feature{
     position: absolute; right: 80px; bottom: 220px; transform: none;
     width: 220px;
@@ -861,13 +871,19 @@
       object-position: center 30%;
       width: 100%; height: 100%;
     }
-    /* "EN JEU, SANS LIMITE" · caché sur mobile (inclus dans l'image) */
     .t-hero-headline{ display: none; }
-    /* Carte programme · remplit tout l'espace sous l'image */
+    .t-hero-tagline{ display: none; }
+
+    /* Row: programme card + deux mini-cartes côte à côte */
+    .t-hero-cards-row{
+      display: flex; flex-direction: row; gap: 10px;
+      flex: 1; margin: 0 16px; min-height: 0;
+    }
+    /* Carte programme · dans la row */
     .t-hero-feature{
       display: flex !important; flex-direction: column; align-items: stretch; gap: 0;
       position: relative; right: unset; top: unset; bottom: unset; transform: none;
-      flex: 1; margin: 0 16px;
+      flex: 1; margin: 0;
       backdrop-filter: none; -webkit-backdrop-filter: none;
       background: #fff; border: 1px solid rgba(10,22,40,.12);
       border-radius: 20px;
@@ -875,6 +891,25 @@
       color: var(--ink); padding: 0;
       overflow: hidden;
     }
+    /* Deux mini-cartes empilées à droite */
+    .t-hero-mini-card{
+      display: flex; flex-direction: column; gap: 10px;
+      width: 108px; flex-shrink: 0;
+    }
+    .t-hero-mini-card-item{
+      flex: 1; border-radius: 18px; overflow: hidden; position: relative;
+      background: #fff; border: 1px solid rgba(10,22,40,.1);
+      box-shadow: 0 4px 14px rgba(10,22,40,.09);
+      display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end;
+      padding: 12px 11px; text-decoration: none; color: var(--ink); gap: 4px;
+    }
+    .t-hero-mini-icon{ font-size: 22px; line-height: 1; margin-bottom: 2px; }
+    .t-hero-mini-title{
+      font-family: var(--font-display); font-size: 12px; font-weight: 800;
+      letter-spacing: -0.01em; line-height: 1.2;
+    }
+    .t-hero-mini-card-item.style-card{ background: linear-gradient(145deg,#E8F3FB 0%,#fff 100%); }
+    .t-hero-mini-card-item.mental-card{ background: linear-gradient(145deg,#F0EDF9 0%,#fff 100%); }
     .t-hero-feature-thumb{
       display: block; flex: 1; min-height: 0;
       width: 100%; aspect-ratio: unset; border-radius: 0; overflow: hidden;
@@ -1324,15 +1359,29 @@ function Hero() {
 
 
         <div className="t-hero-headline"><div>ALIGNE-TOI.</div><div>LE RESTE SUIT.</div></div>
+        <div className="t-hero-tagline">En jeu, sans limite*</div>
 
-        <div className="t-hero-feature">
-          <div className="t-hero-feature-thumb" aria-hidden="true">
-            <img src="coach2.jpg?v=3" alt="" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 80%',display:'block'}} onError={(e)=>{e.target.style.display='none'}}/>
+        <div className="t-hero-cards-row">
+          <div className="t-hero-feature">
+            <div className="t-hero-feature-thumb" aria-hidden="true">
+              <img src="coach2.jpg?v=3" alt="" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 80%',display:'block'}} onError={(e)=>{e.target.style.display='none'}}/>
+            </div>
+            <div className="t-hero-feature-body">
+              <div className="t-hero-feature-eyebrow">PROGRAMME · PERFORMANCE</div>
+              <div className="t-hero-feature-title">Hybride 12 semaines · Tennis + Physique</div>
+              <a href="#services" className="t-hero-feature-link">Voir le programme →</a>
+            </div>
           </div>
-          <div className="t-hero-feature-body">
-            <div className="t-hero-feature-eyebrow">PROGRAMME · PERFORMANCE</div>
-            <div className="t-hero-feature-title">Hybride 12 semaines · Tennis + Physique</div>
-            <a href="#services" className="t-hero-feature-link">Voir le programme →</a>
+
+          <div className="t-hero-mini-card">
+            <a href="#playstyles" className="t-hero-mini-card-item style-card">
+              <div className="t-hero-mini-icon">🎾</div>
+              <div className="t-hero-mini-title">Trouve ton style</div>
+            </a>
+            <a href="#mindset" className="t-hero-mini-card-item mental-card">
+              <div className="t-hero-mini-icon">🧠</div>
+              <div className="t-hero-mini-title">Travail mental</div>
+            </a>
           </div>
         </div>
 
@@ -1618,7 +1667,7 @@ function PlayStyles() {
   const toggle = (id) => setActive(prev => prev === id ? null : id);
 
   return (
-    <section className="t-ps">
+    <section className="t-ps" id="playstyles">
       <div className="t-container">
         <div className="t-ps-head">
           <div className="t-eyebrow t-on-dark-eyebrow">Connais-toi d'abord</div>
