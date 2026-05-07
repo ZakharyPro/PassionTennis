@@ -553,10 +553,7 @@
   /* ========== SERVICES ========== */
   .t-services{ padding: var(--section-py) 0; }
   .t-services-outer{ position: relative; margin-top: 8px; }
-  .t-services-arrows{
-    display: flex; gap: 8px; justify-content: flex-end;
-    padding: 0 var(--gutter) 16px;
-  }
+  .t-services-arrows{ display: none; }
   .t-arr-btn{
     width: 44px; height: 44px; border-radius: 50%;
     border: 1.5px solid var(--hairline); background: #fff;
@@ -566,44 +563,67 @@
   }
   .t-arr-btn:hover{ background: var(--ink); color: #fff; border-color: var(--ink); }
   .t-services-track{
-    display: flex; gap: 24px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     padding: 4px var(--gutter) 28px;
-    scroll-padding-left: var(--gutter);
   }
-  .t-services-track::-webkit-scrollbar{ display: none; }
   .t-service-card{
-    flex: 0 0 min(480px, 82vw);
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    border-radius: 52px; overflow: hidden;
-    background: #fff;
-    box-shadow: 0 24px 60px -30px rgba(10,22,40,.15);
-    border: 1px solid var(--hairline);
+    width: 100%;
+    scroll-snap-align: unset;
+    scroll-snap-stop: unset;
+    border-radius: 28px; overflow: hidden;
+    background: var(--paper);
+    box-shadow: 0 2px 0 rgba(255,255,255,.7) inset, 0 20px 50px -16px rgba(10,22,40,.18);
+    border: 1px solid rgba(10,22,40,.08);
     display: flex; flex-direction: column;
+    transition: transform .22s ease, box-shadow .22s ease;
   }
-  .t-service-art{ aspect-ratio: 5/4; overflow:hidden; position:relative; background: var(--brand); color:#fff; flex-shrink: 0;}
-  .t-service-body{ padding: 32px; display: flex; flex-direction: column; flex: 1; }
-  .t-service-chips{ display:flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap;}
-  .t-chip{ font-family: var(--font-mono); font-size: 11px; padding: 6px 10px; border-radius:999px;
-    background: var(--bg); color: var(--ink-2); border:1px solid var(--hairline); letter-spacing:0.06em; text-transform:uppercase;}
-  .t-service-title{ font-family: var(--font-display); font-size: clamp(24px,2.6vw,36px); line-height: 1.05;
-    letter-spacing:-0.02em; margin:0 0 14px; font-weight:800;}
+  .t-service-card:hover{ transform: translateY(-4px); box-shadow: 0 2px 0 rgba(255,255,255,.7) inset, 0 32px 64px -16px rgba(10,22,40,.22); }
+  .t-service-art{
+    aspect-ratio: 4/3; overflow:hidden; position:relative; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .t-service-icon-wrap{
+    position: relative; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .t-service-icon{
+    font-size: clamp(52px, 8vw, 72px);
+    position: relative; z-index: 2;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,.35));
+    line-height: 1;
+  }
+  .t-service-art-glow{
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,255,255,.09) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .t-service-body{ padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+  .t-service-chips{ display:flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;}
+  .t-chip{
+    font-family: var(--font-mono); font-size: 9.5px; padding: 3px 9px; border-radius:999px;
+    background: rgba(10,22,40,.05); color: var(--ink-2);
+    border: 1px solid rgba(10,22,40,.1); letter-spacing:0.08em; text-transform:uppercase;
+  }
+  .t-service-title{
+    font-family: var(--font-display); font-size: clamp(17px,1.6vw,22px); line-height: 1.08;
+    letter-spacing:-0.025em; margin:0 0 10px; font-weight:800;
+  }
   body[data-typo="editorial"] .t-service-title{ font-weight: 600;}
-  .t-service-desc{ font-size: 15px; line-height: 1.6; color: var(--ink-2); margin: 0 0 20px;}
-  .t-service-list{ list-style:none; padding:0; margin: 0 0 24px; display:grid; gap: 10px;}
-  .t-service-list li{ display:flex; gap: 10px; align-items:flex-start; font-size: 14px; color: var(--ink); }
-  .t-service-bullet{ width:18px; height:18px; flex-shrink:0; border-radius:50%; background: var(--accent); display:grid; place-items:center; margin-top:2px;}
-  .t-service-bullet svg{ width:10px; height:10px; color: var(--ink); }
-  .t-service-price{ display:flex; gap: 12px; align-items:baseline; padding: 16px 0 0; border-top: 1px solid var(--hairline); flex-wrap: wrap; margin-top: auto;}
-  .t-service-from{ font-family: var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.14em; color: var(--ink-mute);}
-  .t-service-num{ font-family: var(--font-display); font-size: 34px; font-weight:800; letter-spacing:-0.02em; line-height:1;}
-  .t-service-per{ color: var(--ink-mute); font-size:13px;}
-  .t-service-note{ font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); width: 100%; padding-top: 4px;}
+  .t-service-desc{ font-size: 13px; line-height: 1.55; color: var(--ink-2); margin: 0 0 14px;}
+  .t-service-list{ list-style:none; padding:0; margin: 0 0 16px; display:grid; gap: 7px;}
+  .t-service-list li{ display:flex; gap: 9px; align-items:flex-start; font-size: 12.5px; color: var(--ink); }
+  .t-service-bullet{ width:16px; height:16px; flex-shrink:0; border-radius:50%; background: var(--accent); display:grid; place-items:center; margin-top:1px;}
+  .t-service-bullet svg{ width:8px; height:8px; color: var(--ink); }
+  .t-service-price{
+    display:flex; gap: 8px; align-items:baseline; flex-wrap: wrap; margin-top: auto;
+    padding: 14px 0 0; border-top: 1px solid rgba(10,22,40,.08);
+  }
+  .t-service-from{ font-family: var(--font-mono); font-size:9px; text-transform:uppercase; letter-spacing:0.16em; color: var(--ink-mute);}
+  .t-service-num{ font-family: var(--font-display); font-size: 28px; font-weight:800; letter-spacing:-0.03em; line-height:1;}
+  .t-service-per{ color: var(--ink-mute); font-size:12px;}
+  .t-service-note{ font-family: var(--font-mono); font-size: 9.5px; color: var(--ink-mute); width: 100%; padding-top: 3px;}
 
   /* generic dark button */
   .t-btn{ display:inline-flex; align-items:center; gap: 8px; padding: 14px 22px;
@@ -929,9 +949,17 @@
 
     /* ── Programmes ── */
     .t-services{ padding: 48px 0; }
-    .t-services-track{ gap: 14px; padding: 4px 16px 20px; scroll-padding-left: 16px; }
-    .t-service-card{ flex: 0 0 calc(100vw - 48px); border-radius: 32px; }
+    .t-services-arrows{ display: none; }
+    .t-services-track{
+      display: flex; gap: 14px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+      scrollbar-width: none; padding: 4px 16px 20px; scroll-padding-left: 16px;
+    }
+    .t-services-track::-webkit-scrollbar{ display: none; }
+    .t-service-card{ flex: 0 0 calc(100vw - 48px); scroll-snap-align: start; scroll-snap-stop: always; border-radius: 24px; }
     .t-service-art{ aspect-ratio: 5/2; }
+    .t-service-icon{ font-size: 48px; }
     .t-service-body{ padding: 12px 14px; gap: 0; }
     .t-service-chips{ margin-bottom: 7px; }
     .t-service-title{ font-size: clamp(17px, 5vw, 21px); margin-bottom: 6px; }
@@ -1457,17 +1485,20 @@ const SERVICES = [
     title:'Coaching tennis individuel',
     desc:"Travail technique et tactique sur le court, vidéo à l'appui. On démonte ton jeu, on identifie les fuites, on reconstruit plus solide.",
     bullets:['Analyse vidéo après chaque séance','Plan de jeu adapté à ton style','Préparation tournoi (Swiss Tennis)','Sparring avec partenaires de niveau'],
-    price:'60 CHF', per:'/ heure', img:'prepa.tennis.jpg', pos:'center 35%' },
+    price:'60 CHF', per:'/ heure',
+    img:'prepa.tennis.jpg' },
   { id:'fitness', tag:'COACHING FITNESS', meta:['Salle','Force','Conditioning'],
     title:'Préparation physique',
     desc:"Force, vitesse, explosivité, capacité à enchaîner les matchs sans s'écrouler. Tu deviens un athlète, pas juste un joueur.",
     bullets:['Évaluation initiale complète','Programmation périodisée 12 sem.','Travail spécifique tennis','Suivi nutrition et récupération'],
-    price:'60 CHF', per:'/ heure', img:'physique.jpg', pos:'center center', fit:'contain', bg:'linear-gradient(135deg, #0C2155 0%, #14357D 40%, #1B44A0 60%, #0C2155 100%)' },
+    price:'60 CHF', per:'/ heure',
+    img:'physique.jpg', bg:'linear-gradient(145deg, #0C2155 0%, #14357D 45%, #1B44A0 75%, #0C2155 100%)' },
   { id:'hybrid', tag:'PROGRAMME HYBRIDE', meta:['Court + Salle','12 semaines','Le complet'],
     title:'Programme hybride · Performance',
     desc:'Le programme qui change tout. Tennis + physique + mental, intégrés sur 12 semaines avec un objectif chiffré et un plan béton.',
     bullets:['2h Tennis + 2h Physique / semaine','Bilan vidéo + tests physiques /4 sem.','App de suivi : plan, vidéos, stats','WhatsApp direct 7j/7'],
-    price:'790 CHF', per:'/ mois', note:'≈ 50 CHF / h', img:'hybride.jpg', pos:'center center', fit:'contain', bg:'linear-gradient(135deg, #1A3060 0%, #2A4D8E 40%, #365FA8 60%, #1A3060 100%)' },
+    price:'790 CHF', per:'/ mois', note:'≈ 50 CHF / h',
+    img:'hybride.jpg', bg:'linear-gradient(145deg, #1A3060 0%, #2A4D8E 45%, #365FA8 75%, #1A3060 100%)' },
 ];
 
 // ─── PLAY STYLES data ────────────────────────────────────────────────────────
@@ -1645,7 +1676,7 @@ function Services() {
             <div key={svc.id} className="t-service-card">
               <div className="t-service-art" style={svc.bg ? {background: svc.bg} : {}}>
                 <img src={svc.img} alt={svc.title}
-                  style={{width:'100%',height:'100%',objectFit:svc.fit||'cover',objectPosition:svc.pos,display:'block'}}
+                  style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center center',display:'block'}}
                   onError={(e)=>{e.target.style.display='none'}}/>
               </div>
               <div className="t-service-body">
