@@ -124,6 +124,15 @@
       linear-gradient(160deg, var(--brand-2), var(--brand) 80%);
     z-index: 0;
   }
+  .t-sky-video{
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center center;
+    z-index: 0 !important; pointer-events: none;
+  }
+  .t-sky-overlay{
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(160deg, rgba(10,22,40,.52) 0%, rgba(10,22,40,.38) 100%);
+  }
   .t-hero-grain{
     position: absolute; inset: 0;
     background-image: linear-gradient(transparent 95%, rgba(255,255,255,.05) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,.05) 95%);
@@ -469,28 +478,33 @@
   .t-ps-intro{ font-size: 16px; line-height: 1.65; color: rgba(255,255,255,.6); max-width: 560px; margin: 0; }
 
   /* Layout sidebar + panel */
-  .t-ps-layout{ display: grid; grid-template-columns: 260px 1fr; gap: 16px; align-items: start; }
-
-  /* Nav list */
-  .t-ps-nav{ display: flex; flex-direction: column; gap: 3px; }
-  .t-ps-nav-btn{
-    display: flex; align-items: center; gap: 14px; width: 100%;
-    padding: 13px 16px; border: 0; background: transparent;
-    color: rgba(255,255,255,.45); cursor: pointer; text-align: left;
-    border-radius: 10px; transition: background .18s, color .18s, border-color .18s;
-    border-left: 2px solid transparent;
+  /* Accordéon */
+  .t-ps-accordion{ display: flex; flex-direction: column; }
+  .t-ps-item{ border-top: 1px solid rgba(255,255,255,.1); }
+  .t-ps-item:last-child{ border-bottom: 1px solid rgba(255,255,255,.1); }
+  .t-ps-row{
+    display: grid; grid-template-columns: 36px 1fr 1fr auto;
+    align-items: center; gap: 20px;
+    width: 100%; padding: 18px 0;
+    background: transparent; border: 0;
+    color: rgba(255,255,255,.5); cursor: pointer; text-align: left;
+    transition: color .2s;
   }
-  .t-ps-nav-btn:hover{ background: rgba(255,255,255,.06); color: rgba(255,255,255,.8); }
-  .t-ps-nav-btn.is-active{ background: rgba(255,255,255,.1); color: #fff; border-left-color: var(--ps-color, #fff); }
-  .t-ps-nav-num{ font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; min-width: 22px; flex-shrink: 0; }
-  .t-ps-nav-name{ font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: -0.01em; line-height: 1.1; }
+  .t-ps-row:hover{ color: rgba(255,255,255,.85); }
+  .t-ps-row.is-active{ color: #fff; }
+  .t-ps-row-num{ font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; }
+  .t-ps-row-name{ font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
+  .t-ps-row-tag{ font-size: 13px; font-style: italic; font-family: 'Fraunces', serif; opacity: .7; }
+  .t-ps-row-chevron{ font-size: 16px; transition: transform .25s; justify-self: end; }
+  .t-ps-row.is-active .t-ps-row-chevron{ transform: rotate(180deg); }
 
-  /* Panel */
+  /* Panel accordéon */
   .t-ps-panel{
     position: relative; overflow: hidden;
     background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-    border-radius: 52px; padding: 40px;
-    animation: psPanelIn .28s cubic-bezier(.22,.68,0,1.05);
+    border-radius: 32px; padding: 32px;
+    margin-bottom: 20px;
+    animation: psPanelIn .3s cubic-bezier(.22,.68,0,1.05);
   }
   @keyframes psPanelIn{ from{ opacity:0; transform:translateX(10px);} to{ opacity:1; transform:none;} }
   .t-ps-panel-deco{
@@ -676,13 +690,13 @@
     display:grid; grid-template-columns: 1.05fr 1fr; gap: 64px;
   }
   .t-cta-canvas::before{
-    content:""; position:absolute; inset:0;
+    content:""; position:absolute; inset:0; z-index: 1;
     background:
       radial-gradient(60% 80% at 90% 30%, color-mix(in oklab, var(--brand-3), white 20%) 0%, transparent 60%),
       radial-gradient(80% 100% at 0% 110%, color-mix(in oklab, var(--brand), black 30%) 0%, transparent 60%);
     opacity: .5;
   }
-  .t-cta-canvas > *{ position: relative; z-index: 1;}
+  .t-cta-canvas > *{ position: relative; z-index: 2;}
   .t-cta-title{ font-family: var(--font-display); font-weight: 500; font-size: clamp(48px, 6.5vw, 110px);
     line-height: 0.92; letter-spacing: -0.03em; margin: 18px 0 20px;}
   .t-cta-title em{ font-style: italic; font-family: 'Fraunces', serif; font-weight: 500; color: var(--accent); display:block;}
@@ -920,12 +934,10 @@
     .t-ps-head{ margin-bottom: 28px; }
     .t-ps-title{ font-size: clamp(36px, 10vw, 60px); margin-bottom: 12px; }
     .t-ps-intro{ font-size: 13.5px; }
-    .t-ps-layout{ grid-template-columns: 1fr; gap: 12px; }
-    .t-ps-nav{ flex-direction: row; flex-wrap: wrap; gap: 6px; }
-    .t-ps-nav-btn{ border-left: 0; border-bottom: 2px solid transparent; padding: 8px 12px; border-radius: 8px; flex-direction: column; align-items: flex-start; gap: 2px; }
-    .t-ps-nav-btn.is-active{ border-bottom-color: var(--ps-color, #fff); }
-    .t-ps-nav-num{ display: none; }
-    .t-ps-nav-name{ font-size: 12px; }
+    .t-ps-row{ grid-template-columns: 28px 1fr auto; gap: 12px; padding: 14px 0; }
+    .t-ps-row-tag{ display: none; }
+    .t-ps-row-name{ font-size: 15px; }
+    .t-ps-panel{ padding: 20px; border-radius: 20px; }
     .t-ps-panel{ padding: 22px; border-radius: 24px; }
     .t-ps-panel-deco{ display: none; }
     .t-ps-panel-name{ font-size: clamp(24px, 7vw, 36px); }
@@ -1257,7 +1269,11 @@ function Hero() {
   return (
     <section className="t-hero">
       <div className="t-hero-canvas">
-        <div className="t-hero-bg"></div>
+        <video className="t-sky-video" autoPlay loop muted playsInline>
+          <source src="sky.webm" type="video/webm"/>
+          <source src="sky.mp4" type="video/mp4"/>
+        </video>
+        <div className="t-sky-overlay"></div>
         <div className="t-hero-grain"></div>
 
         <div className="t-hero-figure" aria-hidden="true">
@@ -1555,65 +1571,72 @@ const PLAY_STYLES = [
 ];
 
 function PlayStyles() {
-  const [active, setActive] = React.useState(PLAY_STYLES[0].id);
-  const s = PLAY_STYLES.find(x => x.id === active);
+  const [active, setActive] = React.useState(null);
+  const toggle = (id) => setActive(prev => prev === id ? null : id);
 
   return (
     <section className="t-ps">
-      <div className="t-container">
+      <video className="t-sky-video" autoPlay loop muted playsInline>
+        <source src="sky.webm" type="video/webm"/>
+        <source src="sky.mp4" type="video/mp4"/>
+      </video>
+      <div className="t-sky-overlay"></div>
+      <div className="t-container" style={{position:'relative',zIndex:2}}>
         <div className="t-ps-head">
           <div className="t-eyebrow t-on-dark-eyebrow">Analyse de jeu</div>
           <h2 className="t-ps-title">Trouve ton<br/><em>style</em></h2>
           <p className="t-ps-intro">Sept profils de joueurs. Des caractéristiques précises, une tactique, des forces, des faiblesses. Identifie où tu en es — et où tu veux aller.</p>
         </div>
 
-        <div className="t-ps-layout">
-          <nav className="t-ps-nav">
-            {PLAY_STYLES.map(ps => (
-              <button key={ps.id}
-                className={`t-ps-nav-btn${active === ps.id ? ' is-active' : ''}`}
-                style={{'--ps-color': ps.color}}
-                onClick={() => setActive(ps.id)}>
-                <span className="t-ps-nav-num">{ps.num}</span>
-                <span className="t-ps-nav-name">{ps.name}</span>
+        <div className="t-ps-accordion">
+          {PLAY_STYLES.map(ps => (
+            <div key={ps.id} className="t-ps-item" style={{'--ps-color': ps.color}}>
+              <button
+                className={`t-ps-row${active === ps.id ? ' is-active' : ''}`}
+                onClick={() => toggle(ps.id)}>
+                <span className="t-ps-row-num">{ps.num}</span>
+                <span className="t-ps-row-name">{ps.name}</span>
+                <span className="t-ps-row-tag">{ps.tag}</span>
+                <span className="t-ps-row-chevron">↓</span>
               </button>
-            ))}
-          </nav>
-
-          <div className="t-ps-panel" key={active} style={{'--ps-color': s.color}}>
-            <div className="t-ps-panel-deco">{s.num}</div>
-            <div className="t-ps-panel-eyebrow">{s.num} · Profil</div>
-            <div className="t-ps-panel-name">{s.name}</div>
-            <div className="t-ps-panel-tag">{s.tag}</div>
-            <p className="t-ps-panel-desc">{s.desc}</p>
-            <div className="t-ps-traits">
-              {s.traits.map((t,i) => <span key={i} className="t-ps-trait">{t}</span>)}
-            </div>
-            <div className="t-ps-ff">
-              <div className="t-ps-ff-card t-ps-ff-plus">
-                <div className="t-ps-ff-label">↑ Point fort</div>
-                <p>{s.force}</p>
-              </div>
-              <div className="t-ps-ff-card t-ps-ff-minus">
-                <div className="t-ps-ff-label">↓ Vigilance</div>
-                <p>{s.faiblesse}</p>
-              </div>
-            </div>
-            <div className="t-ps-panel-footer">
-              <div>
-                <span className="t-ps-meta-label">Surfaces idéales</span>
-                <div className="t-ps-surf-pills">
-                  {s.surfaces.map(sv => <span key={sv} className="t-ps-surf-pill">{sv}</span>)}
+              {active === ps.id && (
+                <div className="t-ps-panel" key={ps.id} style={{'--ps-color': ps.color}}>
+                  <div className="t-ps-panel-deco">{ps.num}</div>
+                  <div className="t-ps-panel-eyebrow">{ps.num} · Profil</div>
+                  <div className="t-ps-panel-name">{ps.name}</div>
+                  <div className="t-ps-panel-tag">{ps.tag}</div>
+                  <p className="t-ps-panel-desc">{ps.desc}</p>
+                  <div className="t-ps-traits">
+                    {ps.traits.map((t,i) => <span key={i} className="t-ps-trait">{t}</span>)}
+                  </div>
+                  <div className="t-ps-ff">
+                    <div className="t-ps-ff-card t-ps-ff-plus">
+                      <div className="t-ps-ff-label">↑ Point fort</div>
+                      <p>{ps.force}</p>
+                    </div>
+                    <div className="t-ps-ff-card t-ps-ff-minus">
+                      <div className="t-ps-ff-label">↓ Vigilance</div>
+                      <p>{ps.faiblesse}</p>
+                    </div>
+                  </div>
+                  <div className="t-ps-panel-footer">
+                    <div>
+                      <span className="t-ps-meta-label">Surfaces idéales</span>
+                      <div className="t-ps-surf-pills">
+                        {ps.surfaces.map(sv => <span key={sv} className="t-ps-surf-pill">{sv}</span>)}
+                      </div>
+                    </div>
+                    <div>
+                      <span className="t-ps-meta-label">Exemples pro</span>
+                      <div className="t-ps-pros-list">
+                        {ps.pros.map(p => <span key={p} className="t-ps-pro-name">{p}</span>)}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <span className="t-ps-meta-label">Exemples pro</span>
-                <div className="t-ps-pros-list">
-                  {s.pros.map(p => <span key={p} className="t-ps-pro-name">{p}</span>)}
-                </div>
-              </div>
+              )}
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -1664,11 +1687,11 @@ function Services() {
                   <span className="t-service-from">à partir de</span>
                   <span className="t-service-num">{svc.price}</span>
                   <span className="t-service-per">{svc.per}</span>
+                  {svc.note && <span className="t-service-note">{svc.note}</span>}
                   <button className="t-btn t-btn-dark"
                     onClick={() => document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}>
                     Réserver →
                   </button>
-                  {svc.note && <span className="t-service-note">{svc.note}</span>}
                 </div>
               </div>
             </div>
@@ -1853,6 +1876,10 @@ function CTA() {
   return (
     <section className="t-cta" id="contact">
       <div className="t-cta-canvas">
+        <video className="t-sky-video" autoPlay loop muted playsInline>
+          <source src="sky.webm" type="video/webm"/>
+          <source src="sky.mp4" type="video/mp4"/>
+        </video>
         <div>
           <div className="t-eyebrow t-on-dark-eyebrow">— Réservation</div>
           <h2 className="t-cta-title">PRÊT À<br/>FRAPPER<br/><em>plus fort ?</em></h2>
