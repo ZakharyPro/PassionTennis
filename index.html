@@ -799,15 +799,15 @@
       height: 100svh; height: 100dvh;
       min-height: 0; border-radius: 0; aspect-ratio: unset;
       display: flex; flex-direction: column; justify-content: flex-start;
-      /* padding-top = nav height (60px) + image height (90vw) + gap (8px) */
-      padding-top: calc(90vw + 68px);
+      /* padding-top = nav height (60px) + image height (80vw) + gap (8px) */
+      padding-top: calc(80vw + 68px);
       background: #fff;
     }
     .t-hero-bg{ display: none; }
     /* Image encadrée en bulle, positionnée sous la nav */
     .t-hero-figure{
       top: 60px; left: 16px; right: 16px;
-      bottom: unset; height: 90vw;
+      bottom: unset; height: 80vw;
       border-radius: 36px; overflow: hidden;
     }
     .t-hero-figure img{
@@ -819,7 +819,7 @@
     .t-hero-headline{
       position: absolute;
       left: 32px; right: unset; bottom: unset;
-      top: calc(90vw - 30px);
+      top: calc(80vw - 30px);
       text-align: left;
       font-size: clamp(16px, 5vw, 22px);
       line-height: 1.1;
@@ -831,7 +831,7 @@
     /* Carte programme — remplit tout l'espace sous l'image */
     .t-hero-feature{
       display: flex !important; flex-direction: column; align-items: stretch; gap: 0;
-      position: relative; right: unset; top: unset; transform: none;
+      position: relative; right: unset; top: unset; bottom: unset; transform: none;
       flex: 1; margin: 0 16px;
       backdrop-filter: none; -webkit-backdrop-filter: none;
       background: #fff; border: 1px solid rgba(10,22,40,.12);
