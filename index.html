@@ -799,35 +799,24 @@
       height: 100svh; height: 100dvh;
       min-height: 0; border-radius: 0; aspect-ratio: unset;
       display: flex; flex-direction: column; justify-content: flex-start;
-      /* padding-top = nav height (60px) + image height (80vw) + gap (8px) */
-      padding-top: calc(80vw + 68px);
+      /* padding-top = nav height (60px) + image height (86vw) + gap (8px) */
+      padding-top: calc(86vw + 68px);
       background: #fff;
     }
     .t-hero-bg{ display: none; }
     /* Image encadrée en bulle, positionnée sous la nav */
     .t-hero-figure{
       top: 60px; left: 16px; right: 16px;
-      bottom: unset; height: 80vw;
+      bottom: unset; height: 86vw;
       border-radius: 36px; overflow: hidden;
     }
     .t-hero-figure img{
       object-fit: cover;
-      object-position: center top;
+      object-position: center 30%;
       width: 100%; height: 100%;
     }
-    /* "EN JEU, SANS LIMITE" — blanc, bas gauche dans l'image */
-    .t-hero-headline{
-      position: absolute;
-      left: 32px; right: unset; bottom: unset;
-      top: calc(80vw - 30px);
-      text-align: left;
-      font-size: clamp(16px, 5vw, 22px);
-      line-height: 1.1;
-      color: #fff;
-      text-shadow: 0 2px 18px rgba(0,0,0,.5);
-      z-index: 5;
-      padding: 0; margin: 0;
-    }
+    /* "EN JEU, SANS LIMITE" — caché sur mobile (inclus dans l'image) */
+    .t-hero-headline{ display: none; }
     /* Carte programme — remplit tout l'espace sous l'image */
     .t-hero-feature{
       display: flex !important; flex-direction: column; align-items: stretch; gap: 0;
