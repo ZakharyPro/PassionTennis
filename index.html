@@ -569,15 +569,17 @@
     display: flex; gap: 24px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
     scrollbar-width: none;
     padding: 4px var(--gutter) 28px;
+    scroll-padding-left: var(--gutter);
   }
   .t-services-track::-webkit-scrollbar{ display: none; }
   .t-service-card{
     flex: 0 0 min(480px, 82vw);
     scroll-snap-align: start;
+    scroll-snap-stop: always;
     border-radius: 52px; overflow: hidden;
     background: #fff;
     box-shadow: 0 24px 60px -30px rgba(10,22,40,.15);
@@ -927,8 +929,8 @@
 
     /* ── Programmes ── */
     .t-services{ padding: 48px 0; }
-    .t-services-track{ gap: 16px; padding: 4px 16px 20px; }
-    .t-service-card{ flex: 0 0 82vw; border-radius: 32px; }
+    .t-services-track{ gap: 14px; padding: 4px 16px 20px; scroll-padding-left: 16px; }
+    .t-service-card{ flex: 0 0 calc(100vw - 48px); border-radius: 32px; }
     .t-service-art{ aspect-ratio: 16/9; }
     .t-service-body{ padding: 16px; gap: 0; }
     .t-service-chips{ margin-bottom: 10px; }
@@ -1459,12 +1461,12 @@ const SERVICES = [
     title:'Préparation physique',
     desc:"Force, vitesse, explosivité, capacité à enchaîner les matchs sans s'écrouler. Tu deviens un athlète, pas juste un joueur.",
     bullets:['Évaluation initiale complète','Programmation périodisée 12 sem.','Travail spécifique tennis','Suivi nutrition et récupération'],
-    price:'60 CHF', per:'/ heure', img:'physique.jpg', pos:'center center', fit:'contain', bg:'#ffffff' },
+    price:'60 CHF', per:'/ heure', img:'physique.jpg', pos:'center center', fit:'contain', bg:'linear-gradient(135deg, #071E52 0%, #0D3080 40%, #1040A8 60%, #071E52 100%)' },
   { id:'hybrid', tag:'PROGRAMME HYBRIDE', meta:['Court + Salle','12 semaines','Le complet'],
     title:'Programme hybride · Performance',
     desc:'Le programme qui change tout. Tennis + physique + mental, intégrés sur 12 semaines avec un objectif chiffré et un plan béton.',
     bullets:['2h Tennis + 2h Physique / semaine','Bilan vidéo + tests physiques /4 sem.','App de suivi : plan, vidéos, stats','WhatsApp direct 7j/7'],
-    price:'790 CHF', per:'/ mois', note:'≈ 50 CHF / h', img:'hybride.jpg', pos:'center center', fit:'contain', bg:'#ffffff' },
+    price:'790 CHF', per:'/ mois', note:'≈ 50 CHF / h', img:'hybride.jpg', pos:'center center', fit:'contain', bg:'linear-gradient(135deg, #071E52 0%, #0D3080 40%, #1040A8 60%, #071E52 100%)' },
 ];
 
 // ─── PLAY STYLES data ────────────────────────────────────────────────────────
