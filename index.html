@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <meta name="theme-color" content="#1A8AB5" />
-<title>PassionTennis — Coaching Tennis & Performance</title>
+<title>PassionTennis · Coaching Tennis & Performance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Narrow:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -365,7 +365,7 @@
   .t-skilled-ball{ display: none; }
   .t-skilled-arrows{ display: none; }
 
-  /* ========== FACILITIES — ALL COURT ========== */
+  /* ========== FACILITIES · ALL COURT ========== */
   .t-facilities{ padding: 72px 0; background: var(--paper); }
   @keyframes facFadeIn{
     from{ opacity:0; transform: translateY(8px);}
@@ -651,8 +651,7 @@
   .t-tx-stat .n{ font-family: var(--font-display); font-size: 28px; font-weight:800; letter-spacing:-0.02em; line-height:1;}
   .t-tx-stat .l{ font-size: 11px; color: var(--ink-mute); margin-top: 4px; text-transform:uppercase; letter-spacing:0.1em;}
   .t-tx-card.is-dark .t-tx-stat .l{ color: rgba(255,255,255,.55);}
-  .t-tx-meta{ display:flex; align-items:center; gap: 12px; margin-top:auto; padding-top: 14px; border-top: 1px solid var(--hairline);}
-  .t-tx-card.is-dark .t-tx-meta{ border-color: rgba(255,255,255,.14);}
+  .t-tx-meta{ display:flex; align-items:center; gap: 12px; margin-top:auto; padding-top: 14px; }
   .t-tx-avatar{ width:38px; height:38px; border-radius:50%; background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent), white 30%));}
   .t-tx-name{ font-weight: 700; font-size: 13.5px;}
   .t-tx-role{ font-size: 12px; color: var(--ink-mute);}
@@ -660,9 +659,8 @@
 
   /* ========== AUDIENCES ========== */
   .t-audiences{ padding: var(--section-py) 0;}
-  .t-aud-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);}
-  .t-aud{ padding: 36px 24px; border-right: 1px solid var(--hairline); transition: background .25s ease;}
-  .t-aud:last-child{ border-right: 0;}
+  .t-aud-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .t-aud{ padding: 36px 24px; transition: background .25s ease;}
   .t-aud:hover{ background: var(--paper);}
   .t-aud-num{ font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); letter-spacing: 0.14em;}
   .t-aud h4{ font-family: var(--font-display); font-size: 26px; line-height: 1.05; letter-spacing: -0.01em; margin: 16px 0 12px; font-weight: 700;}
@@ -698,9 +696,8 @@
 
   /* ========== METHOD ========== */
   .t-method{ padding: var(--section-py) 0; background: linear-gradient(to bottom, #1A8AB5 0%, #0D5A80 50%, #1A8AB5 100%); color: #fff; position: relative; overflow: hidden;}
-  .t-method-list{ border-top: 1px solid rgba(255,255,255,.15);}
   .t-step{ display:grid; grid-template-columns: 80px 1fr 1.2fr 200px; gap: 32px; align-items: start;
-    padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,.15); transition: background .25s ease;}
+    padding: 40px 0; transition: background .25s ease;}
   .t-step:hover{ background: rgba(255,255,255,.03);}
   .t-step-n{ font-family: var(--font-display); font-size: 56px; font-weight:800; letter-spacing: -0.02em; line-height: 1; color: var(--accent);}
   body[data-typo="editorial"] .t-step-n{ font-style: italic; font-weight: 500;}
@@ -761,7 +758,7 @@
 
   /* ========== FOOTER ========== */
   .t-footer{ background: var(--paper); padding: 64px 0 32px;}
-  .t-footer-grid{ display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding: 0 var(--gutter) 56px; border-bottom: 1px solid var(--hairline); max-width: var(--container); margin: 0 auto;}
+  .t-footer-grid{ display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding: 0 var(--gutter) 56px; max-width: var(--container); margin: 0 auto;}
   .t-footer-logo{ font-family: var(--font-display); font-weight: 900; font-size: 36px; letter-spacing: -0.02em;}
   .t-footer-logo span{ color: var(--accent);}
   .t-footer-tag{ margin-top: 12px; color: var(--ink-2); font-size: 14.5px; line-height: 1.55; max-width: 360px;}
@@ -784,7 +781,6 @@
     .t-fac-photo{ aspect-ratio: 16/9; min-height: 200px; }
     .t-test-grid{ grid-template-columns: 1fr 1fr;}
     .t-aud-grid{ grid-template-columns: 1fr 1fr;}
-    .t-aud{ border-right: 0; border-bottom: 1px solid var(--hairline);}
     .t-step{ grid-template-columns: 56px 1fr; gap: 14px;}
     .t-step p{ grid-column: 1 / -1; }
     .t-step-dur{ grid-column: 1 / -1; padding-top: 0;}
@@ -865,9 +861,9 @@
       object-position: center 30%;
       width: 100%; height: 100%;
     }
-    /* "EN JEU, SANS LIMITE" — caché sur mobile (inclus dans l'image) */
+    /* "EN JEU, SANS LIMITE" · caché sur mobile (inclus dans l'image) */
     .t-hero-headline{ display: none; }
-    /* Carte programme — remplit tout l'espace sous l'image */
+    /* Carte programme · remplit tout l'espace sous l'image */
     .t-hero-feature{
       display: flex !important; flex-direction: column; align-items: stretch; gap: 0;
       position: relative; right: unset; top: unset; bottom: unset; transform: none;
@@ -988,7 +984,7 @@
     .t-service-card{ flex: 0 0 calc(100vw - 48px); scroll-snap-align: start; scroll-snap-stop: always; border-radius: 24px; }
     .t-service-art{ aspect-ratio: 5/2; }
     .t-service-icon{ font-size: 48px; }
-    [data-svc="hybrid"] .t-service-art img{ object-position: center top; }
+    [data-svc="hybrid"] .t-service-art img{ object-position: center bottom; }
     .t-service-body{ padding: 12px 14px; gap: 0; }
     .t-service-chips{ margin-bottom: 7px; }
     .t-service-title{ font-size: clamp(17px, 5vw, 21px); margin-bottom: 6px; }
@@ -1009,8 +1005,8 @@
 
     /* ── Pour qui ── */
     .t-audiences{ padding: 48px 0; }
-    .t-aud-grid{ grid-template-columns: 1fr; border-top: 1px solid var(--hairline); }
-    .t-aud{ border-right: 0; border-bottom: 1px solid var(--hairline); padding: 22px 0; }
+    .t-aud-grid{ grid-template-columns: 1fr; }
+    .t-aud{ padding: 22px 0; }
     .t-aud h4{ font-size: 20px; margin: 10px 0 8px; }
     .t-aud p{ font-size: 13px; }
 
@@ -1053,7 +1049,7 @@
   }
 
   /* ── Seam dividers ── */
-  .t-seam{ line-height: 0; overflow: hidden; position: relative; z-index: 1; }
+  .t-seam{ line-height: 0; overflow: hidden; position: relative; z-index: 1; margin-top: -2px; margin-bottom: -2px; }
   .t-seam svg{ display: block; width: 100%; height: clamp(72px, 8vw, 110px); }
   @media (max-width: 480px){ .t-seam svg{ height: 60px; } }
 </style>
@@ -1327,7 +1323,7 @@ function Hero() {
 
 
 
-        <div className="t-hero-headline"><div>EN JEU,</div><div>SANS LIMITE</div></div>
+        <div className="t-hero-headline"><div>ALIGNE-TOI.</div><div>LE RESTE SUIT.</div></div>
 
         <div className="t-hero-feature">
           <div className="t-hero-feature-thumb" aria-hidden="true">
@@ -1335,7 +1331,7 @@ function Hero() {
           </div>
           <div className="t-hero-feature-body">
             <div className="t-hero-feature-eyebrow">PROGRAMME · PERFORMANCE</div>
-            <div className="t-hero-feature-title">Hybride 12 semaines —<br/>Tennis + Physique</div>
+            <div className="t-hero-feature-title">Hybride 12 semaines · Tennis + Physique</div>
             <a href="#services" className="t-hero-feature-link">Voir le programme →</a>
           </div>
         </div>
@@ -1372,13 +1368,13 @@ function Trusted() {
         <div className="t-trusted-grid">
           <div className="t-bubble">
             <div className="t-bubble-num">100<span>%</span></div>
-            <div className="t-bubble-cap">Entraîne-toi avec les meilleurs<br/>pour devenir le meilleur</div>
+            <div className="t-bubble-cap">Avant le tennis.<br/>Avant le physique.<br/>Il y a toi.</div>
           </div>
           <div className="t-trusted-card">
             <div className="t-trusted-tag">#01</div>
             <div className="t-trusted-body">
-              <h3>Zakhary L. — Une approche réellement personnalisée.</h3>
-              <p>Rejoins ceux qui s'appuient sur notre programme bâti sur l'<em>expérience</em>, validé par les <em>résultats</em>, et choisi par <em>beaucoup</em>.</p>
+              <h3>Zakhary L. · Aligne d'abord. Progresse ensuite.</h3>
+              <p>Transformer ton corps ou ton tennis commence par une question simple : <em>où veux-tu vraiment aller ?</em> Tout le reste est méthode.</p>
             </div>
           </div>
         </div>
@@ -1432,9 +1428,9 @@ const FACILITIES = [
     id:'terre', name:'Terre battue', img:'terre.jpg',
     vitesse:'Lente', rebond:'Haut & lent', friction:'Élevée',
     stats:[{k:'Vitesse',v:'Lente'},{k:'Rebond',v:'Haut & lent'},{k:'Friction',v:'Élevée'},{k:'Usure genoux',v:'Faible'}],
-    style:'Jeu de fond de court, patience et construction du point. La glissade est une compétence à part entière — elle permet d\'arriver à l\'équilibre sur des balles difficiles. Les échanges sont longs, la gestion physique et mentale prime.',
+    style:'Jeu de fond de court, patience et construction du point. La glissade est une compétence à part entière · elle permet d\'arriver à l\'équilibre sur des balles difficiles. Les échanges sont longs, la gestion physique et mentale prime.',
     avantages:'Favorise les joueurs puissants de fond, les lifts appuyés (topspin) qui font rebondir la balle haut et repoussent l\'adversaire. Les passes décroisées et les angles extrêmes sont redoutables.',
-    inconvenients:'Le service-ace est rare. Les volleyeurs et les serveurs-attaquants sont désavantagés. Les balles plates ont peu d\'effet — le lift est roi.',
+    inconvenients:'Le service-ace est rare. Les volleyeurs et les serveurs-attaquants sont désavantagés. Les balles plates ont peu d\'effet · le lift est roi.',
     refs:'Roland-Garros · Monte-Carlo · Rome',
   },
   {
@@ -1442,7 +1438,7 @@ const FACILITIES = [
     stats:[{k:'Vitesse',v:'Très rapide'},{k:'Rebond',v:'Bas & fuyant'},{k:'Friction',v:'Faible'},{k:'Glissance',v:'Élevée'}],
     style:'Surface la plus rapide. La balle reste basse et accélère après le rebond, laissant très peu de temps de réaction. Le point se joue souvent en 3 à 5 coups maximum. La position à la montée et le toucher de balle sont décisifs.',
     avantages:'Idéal pour les serveurs avec beaucoup de première balle, les volleyeurs et les attaquants de court. Le slice reste très bas, difficile à relever. Les aces et les coups gagnants directs sont fréquents.',
-    inconvenients:'Le topspin perd de son efficacité — la balle ne monte pas. Les défenseurs de fond de court sont en difficulté. La lecture de balle est exigeante même pour les joueurs expérimentés.',
+    inconvenients:'Le topspin perd de son efficacité · la balle ne monte pas. Les défenseurs de fond de court sont en difficulté. La lecture de balle est exigeante même pour les joueurs expérimentés.',
     refs:'Wimbledon · Queen\'s Club · Halle',
   },
   {
@@ -1450,7 +1446,7 @@ const FACILITIES = [
     stats:[{k:'Vitesse',v:'Moyenne'},{k:'Rebond',v:'Régulier & moyen'},{k:'Friction',v:'Modérée'},{k:'Impact articulaire',v:'Élevé'}],
     style:'Surface polyvalente et neutre. Le rebond est prévisible et constant, ce qui avantage les joueurs complets. C\'est la surface de référence mondiale pour l\'entraînement : ce que tu travailles ici, tu peux le transférer partout.',
     avantages:'Équilibre entre fond de court et attaque. Tous les types de coups sont efficaces. La régularité du rebond permet de construire du timing précis et de travailler la mécanique de chaque geste sans surprise.',
-    inconvenients:'Impact physique plus élevé sur les articulations (genoux, chevilles, hanches) avec le temps. La surface ne pardonne pas les schémas de jeu flous — la neutralité expose tes faiblesses techniques.',
+    inconvenients:'Impact physique plus élevé sur les articulations (genoux, chevilles, hanches) avec le temps. La surface ne pardonne pas les schémas de jeu flous · la neutralité expose tes faiblesses techniques.',
     refs:'US Open · Open d\'Australie · Dubaï',
   },
 ];
@@ -1543,7 +1539,7 @@ const PLAY_STYLES = [
     name:'L\'Offensif', tag:'Frapper. Dicter. Dominer.',
     color:'#1B4FA0',
     desc:'Le jeu offensif repose sur un principe simple : ne jamais laisser l\'adversaire s\'installer. Chaque balle est une opportunité d\'accélérer, de prendre de l\'avance dans l\'échange et d\'imposer son rythme. Le but est de raccourcir le point, pas de le gérer.',
-    traits:['Service percutant — mise en danger directe','Frappe à plat ou avec avance','Prise de balle haute et tôt','Montée implicite dès la 3e balle','Jeu de jambes vers l\'avant'],
+    traits:['Service percutant · mise en danger directe','Frappe à plat ou avec avance','Prise de balle haute et tôt','Montée implicite dès la 3e balle','Jeu de jambes vers l\'avant'],
     force:'Raccourcit les échanges, punit les balles courtes, met une pression psychologique constante sur l\'adversaire.',
     faiblesse:'Taux d\'erreurs directs plus élevé. Très exigeant mentalement. Vulnérable si le timing est perturbé (vent, surface lente).',
     surfaces:['Dur','Gazon'],
@@ -1564,7 +1560,7 @@ const PLAY_STYLES = [
     id:'cadence', num:'03',
     name:'Le Joueur en Cadence', tag:'Contrôler le tempo. Imposer le rythme.',
     color:'#3A3A3A',
-    desc:'Ce style consiste à construire le point avec méthode — ni trop vite, ni trop lentement. On installe un rythme, on déplace l\'adversaire, on attend la balle qui mérite d\'être tuée. C\'est du tennis intelligent, basé sur la lecture tactique plutôt que la puissance brute.',
+    desc:'Ce style consiste à construire le point avec méthode · ni trop vite, ni trop lentement. On installe un rythme, on déplace l\'adversaire, on attend la balle qui mérite d\'être tuée. C\'est du tennis intelligent, basé sur la lecture tactique plutôt que la puissance brute.',
     traits:['Cross profond et constant pour fixer','Variation de rythme calculée','Changement de direction maîtrisé','Jeu sur les deux ailes en équilibre','Utilisation des angles pour ouvrir le court'],
     force:'Très solide dans les longs échanges. Adaptatif selon l\'adversaire. Usure progressive, erreurs provoquées plutôt que forcées.',
     faiblesse:'Peut devenir prévisible si la variation manque. Vulnérable face à un adversaire qui accélère fort et vite.',
@@ -1575,10 +1571,10 @@ const PLAY_STYLES = [
     id:'coupDroit', num:'04',
     name:'Le Finisseur Coup Droit', tag:'Contourner. Accélérer. Finir.',
     color:'#5B2D8E',
-    desc:'Le coup droit est l\'arme principale — parfois la seule. Ce joueur organise chaque échange pour se retrouver en position inside-out ou inside-in et déclencher son coup droit avec autorité. Sa mobilité latérale est exceptional, son revers souvent en slice ou en guidé.',
+    desc:'Le coup droit est l\'arme principale · parfois la seule. Ce joueur organise chaque échange pour se retrouver en position inside-out ou inside-in et déclencher son coup droit avec autorité. Sa mobilité latérale est exceptional, son revers souvent en slice ou en guidé.',
     traits:['Inside-out et inside-in comme finisseurs','Revers slice pour gérer défensivement','Déplacement latéral vers la gauche anticipé','Service orienté pour se placer côté coup droit','Montée filet après l\'accélération gagnante'],
     force:'Coup droit dévastateur en position ouverte. Très efficace sur balles courtes. Crée des ouvertures là où d\'autres voient des impasses.',
-    faiblesse:'Revers souvent exposé — les adversaires le ciblent systématiquement. Physiquement exigeant (couverture du court côté revers).',
+    faiblesse:'Revers souvent exposé · les adversaires le ciblent systématiquement. Physiquement exigeant (couverture du court côté revers).',
     surfaces:['Dur','Gazon','Terre battue'],
     pros:['Roger Federer','Carlos Alcaraz','Dominic Thiem','Juan Martín del Potro'],
   },
@@ -1587,7 +1583,7 @@ const PLAY_STYLES = [
     name:'Le Serveur-Volleyeur', tag:'Servir. Charger. Conclure au filet.',
     color:'#7A2020',
     desc:'Un style d\'attaque totale : le service est une mise en danger directe, suivie immédiatement d\'une montée au filet pour conclure l\'échange en un ou deux coups. Technique de volée, lecture de la trajectoire et timing de montée sont les trois piliers de ce jeu.',
-    traits:['Premier service très fort et varié (slice, kick, plat)','Montée filet dans le couloir du service','Première volée stabilisatrice','Deuxième volée pour conclure','Réflexes au filet — smash et volée haute'],
+    traits:['Premier service très fort et varié (slice, kick, plat)','Montée filet dans le couloir du service','Première volée stabilisatrice','Deuxième volée pour conclure','Réflexes au filet · smash et volée haute'],
     force:'Raccourcit massivement les échanges. Psychologiquement déstabilisant. Exceptionnel sur gazon et surface rapide.',
     faiblesse:'Très exposé sur terre battue et surface lente. Le retour de jeu devient une menace directe si la première balle n\'est pas là.',
     surfaces:['Gazon','Dur (rapide)'],
@@ -1597,9 +1593,9 @@ const PLAY_STYLES = [
     id:'contreAttaquant', num:'06',
     name:'Le Contre-attaquant', tag:'Utiliser la balle adverse. Retourner l\'agression.',
     color:'#0A2A55',
-    desc:'Ce style transforme la puissance adverse en arme. La balle est prise tôt — parfois montante — pour priver l\'adversaire de temps. Le contre-attaquant ne produit pas la vitesse lui-même : il la redirige, souvent en croisant ou en jouant le long de la ligne avec un timing parfait.',
+    desc:'Ce style transforme la puissance adverse en arme. La balle est prise tôt · parfois montante · pour priver l\'adversaire de temps. Le contre-attaquant ne produit pas la vitesse lui-même : il la redirige, souvent en croisant ou en jouant le long de la ligne avec un timing parfait.',
     traits:['Prise de balle très tôt (balle montante)','Position proche de la ligne de fond','Retour de service agressif et dans le corps','Revers à deux mains solide et driving','Réduction du temps de jeu adverse'],
-    force:'Utilise l\'énergie de l\'adversaire. Très efficace face aux frappeurs. Breakeur redoutable — le retour de service est une arme.',
+    force:'Utilise l\'énergie de l\'adversaire. Très efficace face aux frappeurs. Breakeur redoutable · le retour de service est une arme.',
     faiblesse:'Exige un timing d\'exception. Difficile dans le vent ou sur surface lente où la balle ne vient pas assez vite.',
     surfaces:['Dur','Gazon'],
     pros:['Novak Djokovic','Andre Agassi','Jimmy Connors','Gael Monfils'],
@@ -1608,9 +1604,9 @@ const PLAY_STYLES = [
     id:'complet', num:'07',
     name:'Le Tout-Terrain', tag:'Pas de faiblesse. Aucune faille.',
     color:'#1A4500',
-    desc:'Le joueur complet n\'a pas de style figé — c\'est sa force. Il adapte son jeu à la surface, à l\'adversaire, au score. Défensif quand c\'est nécessaire, offensif quand l\'occasion se présente, il peut tout faire et l\'adversaire ne peut jamais le cibler sur un point précis.',
+    desc:'Le joueur complet n\'a pas de style figé · c\'est sa force. Il adapte son jeu à la surface, à l\'adversaire, au score. Défensif quand c\'est nécessaire, offensif quand l\'occasion se présente, il peut tout faire et l\'adversaire ne peut jamais le cibler sur un point précis.',
     traits:['Service varié (kick, slice, plat) selon situation','Fond de court solide sur les deux ailes','Montée au filet opportuniste','Capacité à changer de rythme à chaque set','Adaptation tactique entre les sets'],
-    force:'Imprévisible. Efficace sur toutes les surfaces. Difficile à préparer adversariallement — il n\'a pas de pattern évident.',
+    force:'Imprévisible. Efficace sur toutes les surfaces. Difficile à préparer adversariallement · il n\'a pas de pattern évident.',
     faiblesse:'Peut manquer de l\'arme decisive du spécialiste. Si le niveau baisse, il n\'a pas de "coup de secours" par défaut.',
     surfaces:['Toutes surfaces'],
     pros:['Novak Djokovic','Rafael Nadal','Andy Murray','Roger Federer'],
@@ -1625,9 +1621,9 @@ function PlayStyles() {
     <section className="t-ps">
       <div className="t-container">
         <div className="t-ps-head">
-          <div className="t-eyebrow t-on-dark-eyebrow">Analyse de jeu</div>
-          <h2 className="t-ps-title">Trouve ton<br/><em>style</em></h2>
-          <p className="t-ps-intro">Sept profils de joueurs. Des caractéristiques précises, une tactique, des forces, des faiblesses. Identifie où tu en es — et où tu veux aller.</p>
+          <div className="t-eyebrow t-on-dark-eyebrow">Connais-toi d'abord</div>
+          <h2 className="t-ps-title">Quel joueur<br/><em>es-tu vraiment ?</em></h2>
+          <p className="t-ps-intro">Se connaître sur le court, c'est le premier acte d'alignement. Sept profils, des forces et des angles morts précis. Trouve où tu en es, avant de décider où tu veux aller.</p>
         </div>
 
         <div className="t-ps-accordion">
@@ -1686,24 +1682,24 @@ function PlayStyles() {
 }
 
 const MINDSET_PILLARS = [
-  { icon:'🧠', label:'Mental', title:'Gère ta tête, pas le score',
-    desc:"La pression, les erreurs, les sets perdus — tout ça se gère. On travaille la régulation émotionnelle pour que ton niveau reste stable même quand ça coince.",
-    quote:'Entre deux points, tu as le choix de qui tu es.' },
-  { icon:'🎯', label:'Focus & Concentration', title:'L\'attention est un muscle',
-    desc:"Se reconcentrer après une faute, rester dans le présent point, couper le bruit mental. Des protocoles simples, utilisés à chaque séance.",
-    quote:'Le champion pense au prochain point. Toujours.' },
-  { icon:'🌿', label:'Hygiène de vie', title:'Récupère comme un pro',
-    desc:"Sommeil, stress, charge mentale. Ce que tu fais hors du court décide de ce que tu peux faire dessus. On optimise les fondations.",
-    quote:'Tu progresses quand tu récupères, pas quand tu travailles.' },
-  { icon:'🥗', label:'Nutrition', title:'Mange pour performer',
-    desc:"Énergie sur la durée, hydratation, pré-match et récupération post-effort. Pas de régime — des habitudes adaptées à ton mode de vie.",
-    quote:'Ton assiette est ta première supplémentation.' },
-  { icon:'🔄', label:'Habitudes', title:'Des systèmes, pas de la motivation',
-    desc:"La motivation est éphémère. On construit des routines d'entraînement, de préparation avant match et de débrief qui tiennent dans le temps.",
-    quote:'Tu ne t\'élèves pas à tes objectifs. Tu tombes à ton niveau de systèmes.' },
-  { icon:'💬', label:'Psychologie', title:'Comprends pourquoi tu joues comme ça',
-    desc:"Croyances limitantes, peur de gagner, profil compétitif. Comprendre tes patterns mentaux est le levier le plus sous-estimé de la progression.",
-    quote:'Le tennis révèle qui tu es. Le coaching change ça.' },
+  { icon:'🧭', label:'Identité & Valeurs', title:'Sais-tu vraiment qui tu veux devenir ?',
+    desc:"Avant les objectifs, il y a les valeurs. On explore ce qui te motive profondément · pas ce que tu penses devoir vouloir · pour construire une direction de vie qui tient dans le temps.",
+    quote:'Ce que tu fais quand personne ne regarde, c\'est ça qui définit qui tu es.' },
+  { icon:'🌊', label:'Régulation émotionnelle', title:'Tes émotions t\'appartiennent',
+    desc:"Colère, peur, frustration, doute · elles ne sont pas tes ennemies. On apprend à les lire, les accueillir et les utiliser. Une compétence de vie, pas juste de sport.",
+    quote:'La maîtrise de soi est la seule maîtrise qui compte vraiment.' },
+  { icon:'🌿', label:'Hygiène de vie', title:'Le corps comme fondation',
+    desc:"Sommeil, exposition à la lumière, gestion du stress chronique, temps dans la nature. Ce ne sont pas des détails · ce sont les piliers sur lesquels tout le reste repose.",
+    quote:'Prends soin de ton corps. C\'est le seul endroit où tu dois vivre.' },
+  { icon:'🥗', label:'Nutrition & Énergie', title:'Nourris ton niveau d\'existence',
+    desc:"Pas de régime. Une relation saine à la nourriture, une énergie stable tout au long de la journée, et des choix alignés avec ce que tu veux ressentir · dans la vie comme à l'entraînement.",
+    quote:'Tu es ce que tu manges, mais aussi ce que tu penses en mangeant.' },
+  { icon:'🔁', label:'Habitudes & Discipline', title:'La liberté naît de la structure',
+    desc:"On ne se réinvente pas par volonté. On se réinvente par les systèmes qu'on installe. Routines matinales, rituels de récupération, protocoles de concentration · on construit ensemble.",
+    quote:'Discipline is freedom.' },
+  { icon:'💡', label:'Psychologie profonde', title:'Comprendre pour se transformer',
+    desc:"Croyances limitantes héritées, sabotage inconscient, rapport à l'échec et au succès. Un travail d'introspection guidé, au carrefour du coaching et de la psychologie positive.",
+    quote:'La connaissance de soi est le début de toute sagesse.' },
 ];
 
 function Mindset() {
@@ -1712,10 +1708,10 @@ function Mindset() {
       <div className="t-container">
         <div className="t-section-head">
           <div>
-            <div className="t-eyebrow">— Performance globale</div>
-            <h2 className="t-section-title">Le jeu commence<br/><em>dans ta tête</em></h2>
+            <div className="t-eyebrow">Le socle de tout</div>
+            <h2 className="t-section-title">L'alignement de soi,<br/><em>c'est le point de départ</em></h2>
           </div>
-          <p className="t-section-desc">Le tennis, c'est 50% physique et technique — et 50% mental, habitudes et hygiène de vie. On travaille les deux.</p>
+          <p className="t-section-desc">Avant les séances, avant les objectifs chiffrés : qui es-tu, comment tu vis, ce que tu penses de toi. C'est là que tout commence. C'est ce qu'on travaille ensemble.</p>
         </div>
         <div className="t-mindset-grid">
           {MINDSET_PILLARS.map((p,i) => (
@@ -1743,10 +1739,10 @@ function Services() {
       <div className="t-container">
         <div className="t-section-head">
           <div>
-            <div className="t-eyebrow">— Programmes</div>
-            <h2 className="t-section-title">Trois portes d'entrée.<br/><em>Une seule promesse.</em></h2>
+            <div className="t-eyebrow">Programmes</div>
+            <h2 className="t-section-title">Des objectifs clairs.<br/><em>Un programme taillé.</em></h2>
           </div>
-          <p className="t-section-desc">Choisis le format qui correspond à ton moment. Tu peux changer en cours de route — ton plan évolue avec toi.</p>
+          <p className="t-section-desc">Une fois aligné sur ce que tu veux vraiment, le format s'impose de lui-même. Tennis, physique ou les deux : chaque programme part de toi, pas d'un modèle standard.</p>
         </div>
       </div>
       <div className="t-services-outer">
@@ -1797,7 +1793,7 @@ const AUDIENCES = [
   { n:'01', t:'Débutants',      d:"Tu n'as jamais touché une raquette ou tu reprends. On pose des fondations propres, sans presser." },
   { n:'02', t:'Intermédiaires', d:"Tu joues, tu progresses, mais tu sens un plafond. On identifie les blocages et on les casse, un par un." },
   { n:'03', t:'Compétiteurs',   d:"Tu vises un classement, un tournoi, une finale. Programme exigeant, structure pro, zéro improvisation." },
-  { n:'04', t:'Transformation', d:"Le tennis est un prétexte — tu veux retrouver un corps qui répond. Force, mobilité, énergie au quotidien." },
+  { n:'04', t:'Transformation', d:"Le tennis est un prétexte · tu veux retrouver un corps qui répond. Force, mobilité, énergie au quotidien." },
 ];
 
 function ForWhom() {
@@ -1806,10 +1802,10 @@ function ForWhom() {
       <div className="t-container">
         <div className="t-section-head">
           <div>
-            <div className="t-eyebrow">— Pour qui ?</div>
-            <h2 className="t-section-title">Quatre profils.<br/><em>Une même méthode.</em></h2>
+            <div className="t-eyebrow">Pour qui ?</div>
+            <h2 className="t-section-title">Peu importe où tu en es.<br/><em>L'objectif, lui, compte.</em></h2>
           </div>
-          <p className="t-section-desc">Que tu débutes ou que tu vises la performance, le programme s'adapte. Toujours sur mesure, jamais générique.</p>
+          <p className="t-section-desc">Débutant ou compétiteur, reprise ou transformation : ce qui change ton parcours, c'est la clarté de ce que tu veux. Le programme, lui, s'adapte autour de ça.</p>
         </div>
         <div className="t-aud-grid">
           {AUDIENCES.map(a => (
@@ -1826,10 +1822,10 @@ function ForWhom() {
 }
 
 const STEPS = [
-  { n:'01', t:'Bilan complet',   d:'On parle. De toi, de ton jeu, de ton corps, de ton emploi du temps. Tests physiques + analyse vidéo.', dur:'Semaine 1 · 90 min' },
-  { n:'02', t:'Plan sur mesure', d:'Tu repars avec un programme construit pour TES objectifs. Tennis + physique + nutrition + récupération.', dur:'Semaine 1' },
-  { n:'03', t:'Coaching actif',  d:'On exécute. Séances sur le court, séances en salle, suivi WhatsApp 7j/7, ajustements toutes les semaines.', dur:'Semaines 2 → 11' },
-  { n:'04', t:'Bilan & next step',d:"On mesure les progrès — chiffres à l'appui. On célèbre. Puis on définit la suite.", dur:'Semaine 12' },
+  { n:'01', t:'Alignement & bilan', d:"On parle de toi. Pas juste de ton revers ou de ton cardio, de qui tu es, ce que tu veux vraiment, où tu en es. Tests physiques + analyse vidéo ensuite.", dur:'Semaine 1 · 90 min' },
+  { n:'02', t:'Objectifs clairs, plan béton', d:'Tes objectifs sont posés, hiérarchisés, datés. Le programme en découle naturellement : tennis, physique, mental, nutrition : tout est lié.', dur:'Semaine 1' },
+  { n:'03', t:'Exécution & ajustement', d:'On travaille. Court, salle, tête. Suivi WhatsApp 7j/7, recalibrage toutes les semaines selon tes retours et tes résultats réels.', dur:'Semaines 2 → 11' },
+  { n:'04', t:'Bilan & suite', d:"On mesure ce qui a changé : chiffres, sensations, regard sur soi. On célèbre. Puis on définit la prochaine étape, avec la même clarté.", dur:'Semaine 12' },
 ];
 
 function Method() {
@@ -1838,10 +1834,10 @@ function Method() {
       <div className="t-container">
         <div className="t-section-head t-on-dark">
           <div>
-            <div className="t-eyebrow">— Méthode</div>
-            <h2 className="t-section-title">Quatre étapes.<br/><em>Aucune surprise.</em></h2>
+            <div className="t-eyebrow">Méthode</div>
+            <h2 className="t-section-title">On commence<br/><em>par te comprendre.</em></h2>
           </div>
-          <p className="t-section-desc">Tu sais ce que tu paies, ce qui t'attend, et quand. La transparence, c'est la base du résultat.</p>
+          <p className="t-section-desc">Pas de programme avant le bilan. Pas d'objectif avant la conversation. On construit sur du solide, et ce solide, c'est toi.</p>
         </div>
         <div className="t-method-list">
           {STEPS.map(s => (
@@ -1859,7 +1855,7 @@ function Method() {
 }
 
 const QUOTES = [
-  { role:'Cliente · 8 mois',       stars:5, text:"J'ai testé trois coachs avant. Aucun ne s'intéressait vraiment à ce que je voulais. Ici c'est différent — on a un VRAI plan." },
+  { role:'Cliente · 8 mois',       stars:5, text:"J'ai testé trois coachs avant. Aucun ne s'intéressait vraiment à ce que je voulais. Ici c'est différent · on a un VRAI plan." },
   { role:'R6 · Compétition',       stars:5, text:"Le suivi vidéo a tout changé. Je vois ce que je fais mal, et chaque semaine je sens le progrès dans mon coup droit." },
   { role:'Reprise sport · 39 ans', stars:5, text:"Bienveillant, exigeant, jamais culpabilisant. Le seul coach qui m'a fait aimer la salle." },
 ];
@@ -1870,7 +1866,7 @@ function Testimonials() {
       <div className="t-container">
         <div className="t-section-head">
           <div>
-            <div className="t-eyebrow">— Témoignages</div>
+            <div className="t-eyebrow">Témoignages</div>
             <h2 className="t-section-title">Ce qu'ils disent,<br/><em>pas ce que je promets.</em></h2>
           </div>
           <p className="t-section-desc">Plus de 10 athlètes coachés. Voici trois d'entre eux. Les autres, je peux te les présenter de vive voix.</p>
@@ -1967,9 +1963,9 @@ function CTA() {
     <section className="t-cta" id="contact">
       <div className="t-cta-canvas">
         <div>
-          <div className="t-eyebrow t-on-dark-eyebrow">— Réservation</div>
-          <h2 className="t-cta-title">PRÊT À<br/>FRAPPER<br/><em>plus fort ?</em></h2>
-          <p className="t-cta-sub">Une séance d'essai. 90 minutes. Aucun engagement. Tu repars avec un diagnostic complet et trois choses à travailler dès demain.</p>
+          <div className="t-eyebrow t-on-dark-eyebrow">Première étape</div>
+          <h2 className="t-cta-title">PARLONS<br/>DE<br/><em>toi d'abord.</em></h2>
+          <p className="t-cta-sub">90 minutes. Aucun engagement. On commence par une vraie conversation sur toi, tes objectifs, ta vie. Le reste découle de là. Tu repars avec un cap clair, quoi qu'il arrive.</p>
           <div className="t-cta-info">
             <div><div className="k">Téléphone</div><div className="v">+41 79 123 45 67</div></div>
             <div><div className="k">Email</div><div className="v">hello@passiontennis.ch</div></div>
@@ -1989,7 +1985,7 @@ function Footer() {
         <div className="t-footer-grid">
           <div>
             <div className="t-footer-logo">PassionTennis<span>.</span></div>
-            <p className="t-footer-tag">Coaching tennis et préparation physique premium. Lausanne & alentours. On progresse, ensemble.</p>
+            <p className="t-footer-tag">Alignement. Objectifs. Transformation physique et tennis. Lausanne & alentours. On progresse, ensemble.</p>
             <div className="t-socials">
               <a href="#" aria-label="Instagram"><Icon.Insta width="16" height="16"/></a>
               <a href="#" aria-label="YouTube"><Icon.Yt width="16" height="16"/></a>
@@ -2046,11 +2042,11 @@ function Seam({ fill, bg, dir = 'up' }) {
   // Bezier unique bord-à-bord : zéro jonction, arrondi garanti
   // Contrôles rapprochés près du centre → transition abrupte au milieu, plateaux visuels naturels aux bords
   const d = dir === 'up'
-    ? "M0,0 L0,88 C688,88 752,10 1440,10 L1440,0 Z"
-    : "M0,0 L0,10 C688,10 752,88 1440,88 L1440,0 Z";
+    ? "M0,-2 L0,88 C688,88 752,10 1440,10 L1440,-2 Z"
+    : "M0,-2 L0,10 C688,10 752,88 1440,88 L1440,-2 Z";
   return (
     <div aria-hidden="true" className="t-seam" style={{background: bg}}>
-      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none" style={{display:'block'}}>
         <path d={d} style={{fill}}/>
       </svg>
     </div>
@@ -2082,7 +2078,6 @@ function App() {
       <PlayStyles />
       <Seam fill="var(--brand-2)" bg="var(--bg)" dir="up" />
       <Mindset />
-      <Seam fill="var(--bg)" bg="var(--brand-2)" dir="down" />
       <ForWhom />
       <Seam fill="var(--bg)" bg="var(--brand-2)" dir="down" />
       <Method />
@@ -2188,7 +2183,7 @@ ReactDOM.createRoot(document.getElementById('app')).render(<App />);
       document.querySelectorAll('.t-eyebrow').forEach(el => {
         if (!el.dataset.reveal) { el.dataset.reveal=''; el.dataset.delay=80; io.observe(el); }
       });
-      /* Cards & blocks — stagger */
+      /* Cards & blocks · stagger */
       document.querySelectorAll('.t-ps-card,.t-tx-card,.t-aud,.t-test,.t-fac-stat-pill,.t-fac-block').forEach((el,i) => {
         if (!el.dataset.reveal) { el.dataset.reveal=''; el.dataset.delay=i*60; io.observe(el); }
       });
