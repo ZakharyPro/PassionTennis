@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<meta name="theme-color" content="#0A2A55" />
+<meta name="theme-color" content="#1A8AB5" />
 <title>PassionTennis — Coaching Tennis & Performance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,9 +29,9 @@
     --ink-mute:#7A8597;
     --rule:rgba(10,22,40,.10);
     --hairline:rgba(10,22,40,.10);
-    --brand:#0A2A55;
-    --brand-2:#1B4FA0;
-    --brand-3:#3573D1;
+    --brand:#1270A0;
+    --brand-2:#1A8AB5;
+    --brand-3:#3ABBD8;
     --accent: oklch(0.86 0.16 110);
 
     --font-display:'Archivo', 'Helvetica Neue', sans-serif;
@@ -52,7 +52,7 @@
   body[data-btn="square"]{ --btn-radius:6px; }
   body[data-btn="ghost"]{ --btn-radius:0; }
 
-  body[data-palette="blue"]{ --brand:#0A2A55; --brand-2:#1B4FA0; --brand-3:#3573D1; --accent: oklch(0.86 0.16 110); }
+  body[data-palette="blue"]{ --brand:#1270A0; --brand-2:#1A8AB5; --brand-3:#3ABBD8; --accent: oklch(0.86 0.16 110); }
   body[data-palette="green"]{ --brand:#0F3D2E; --brand-2:#19694F; --brand-3:#2EA77E; --accent: oklch(0.82 0.13 95); }
   body[data-palette="black"]{ --brand:#0A0A0A; --brand-2:#1F1F1F; --brand-3:#3A3A3A; --accent: oklch(0.85 0.18 130); }
   body[data-palette="cobalt"]{ --brand:#0033A0; --brand-2:#1A4ED1; --brand-3:#3573ff; --accent: oklch(0.78 0.18 60); }
@@ -105,7 +105,7 @@
   }
 
   /* ========== HERO ========== */
-  .t-hero{ padding: 100px 16px 16px; }
+  .t-hero{ padding: 100px 16px 16px; background: #fff; }
   .t-hero-canvas{
     position: relative;
     aspect-ratio: 16/9.4;
@@ -124,15 +124,6 @@
       linear-gradient(160deg, var(--brand-2), var(--brand) 80%);
     z-index: 0;
   }
-  .t-sky-video{
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; object-position: center center;
-    z-index: 0 !important; pointer-events: none;
-  }
-  .t-sky-overlay{
-    position: absolute; inset: 0; z-index: 1; pointer-events: none;
-    background: linear-gradient(160deg, rgba(10,22,40,.52) 0%, rgba(10,22,40,.38) 100%);
-  }
   .t-hero-grain{
     position: absolute; inset: 0;
     background-image: linear-gradient(transparent 95%, rgba(255,255,255,.05) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,.05) 95%);
@@ -144,12 +135,7 @@
     width:100%; height:100%; object-fit:cover; object-position: center 30%;
     display:block;
   }
-  .t-hero-figure-overlay{
-    position:absolute; inset:0;
-    background:
-      linear-gradient(to bottom, rgba(10,22,40,.18) 0%, rgba(10,22,40,.55) 100%),
-      linear-gradient(to right, rgba(10,22,40,.4) 0%, transparent 60%);
-  }
+  .t-hero-figure-overlay{ display: none; }
   .t-hero-figure-fill{
     position:absolute; inset:0;
     background:
@@ -235,7 +221,7 @@
   .t-hero-stats-avatars span{ width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--brand);
     margin-left: -8px; background: linear-gradient(135deg, var(--accent), white);}
   .t-hero-stats-avatars span:first-child{ margin-left: 0; background: linear-gradient(135deg, #ffb478, #ed7250);}
-  .t-hero-stats-avatars span:nth-child(2){ background: linear-gradient(135deg, #a4d8ff, #3573D1);}
+  .t-hero-stats-avatars span:nth-child(2){ background: linear-gradient(135deg, #a4d8ff, #55C8E8);}
   .t-hero-stats-avatars span:nth-child(3){ background: linear-gradient(135deg, #c4f08c, #6da033);}
   .t-hero-stats-avatars span:nth-child(4){ background: linear-gradient(135deg, #ffc8d8, #c8639a);}
   .t-hero-stats-lbl{ margin-top: 12px; font-size: 11.5px; color: rgba(255,255,255,.7);}
@@ -467,7 +453,7 @@
   }
 
   /* ========== PLAY STYLES ========== */
-  .t-ps{ padding: var(--section-py) 0; background: #1a3a6b; color: #fff; }
+  .t-ps{ padding: var(--section-py) 0; background: linear-gradient(to bottom, #1A8AB5 0%, #0D5A80 50%, #1A8AB5 100%); color: #fff; }
   .t-ps-head{ max-width: 820px; margin-bottom: 48px; }
   .t-ps-title{
     font-family: var(--font-display); font-weight: 900;
@@ -661,7 +647,7 @@
   .t-aud p{ font-size: 14px; line-height: 1.55; color: var(--ink-2); margin: 0;}
 
   /* ========== METHOD ========== */
-  .t-method{ padding: var(--section-py) 0; background: #1a3a6b; color: #fff;}
+  .t-method{ padding: var(--section-py) 0; background: linear-gradient(to bottom, #1A8AB5 0%, #0D5A80 50%, #1A8AB5 100%); color: #fff; position: relative; overflow: hidden;}
   .t-method-list{ border-top: 1px solid rgba(255,255,255,.15);}
   .t-step{ display:grid; grid-template-columns: 80px 1fr 1.2fr 200px; gap: 32px; align-items: start;
     padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,.15); transition: background .25s ease;}
@@ -685,7 +671,7 @@
   /* ========== CTA ========== */
   .t-cta{ padding: 16px;}
   .t-cta-canvas{
-    background: var(--brand); color:#fff; border-radius: 60px;
+    background: linear-gradient(to bottom right, #1A8AB5 0%, #0D5A80 50%, #1A8AB5 100%); color:#fff; border-radius: 60px;
     padding: 80px 56px; position: relative; overflow:hidden;
     display:grid; grid-template-columns: 1.05fr 1fr; gap: 64px;
   }
@@ -767,7 +753,7 @@
   /* ── Tablette (≤860px) ── */
   @media (max-width: 860px){
     :root{ --section-py: 72px; }
-    .t-hero{ padding: 80px 12px 12px; }
+    .t-hero{ padding: 80px 12px 12px; background: #fff; }
     .t-hero-canvas{ height: 92svh; min-height: 520px; aspect-ratio: unset; border-radius: 32px; }
     .t-hero-title{ font-size: clamp(44px, 10vw, 110px); top: 100px; white-space: normal; }
     .t-hero-headline{ left: 20px; bottom: 90px; font-size: clamp(22px, 4vw, 48px); }
@@ -796,18 +782,19 @@
     /* ── Nav ── */
     .t-nav{
       padding: 12px 16px;
-      display: flex; justify-content: center; align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
       grid-template-columns: unset;
       background: rgba(239,238,234,.95);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(10,22,40,.06);
     }
     .t-nav .t-brand, .t-nav .t-nav-c{ color: var(--ink); }
-    .t-nav-l, .t-nav-r, .t-nav-talk, .t-nav-burger{ display: none !important; }
-    .t-nav-c{ justify-content: center; }
+    .t-nav-l, .t-nav-r, .t-nav-burger{ display: none !important; }
+    .t-nav-c{ justify-content: flex-start; }
+    .t-nav-talk{ display: flex !important; }
 
     /* ── Hero ── */
-    .t-hero{ padding: 0; }
+    .t-hero{ padding: 0; background: #fff; }
     .t-hero-canvas{
       height: 100svh; height: 100dvh;
       min-height: 0; border-radius: 0; aspect-ratio: unset;
@@ -1269,11 +1256,7 @@ function Hero() {
   return (
     <section className="t-hero">
       <div className="t-hero-canvas">
-        <video className="t-sky-video" autoPlay loop muted playsInline>
-          <source src="sky.webm" type="video/webm"/>
-          <source src="sky.mp4" type="video/mp4"/>
-        </video>
-        <div className="t-sky-overlay"></div>
+        <div className="t-hero-bg"></div>
         <div className="t-hero-grain"></div>
 
         <div className="t-hero-figure" aria-hidden="true">
@@ -1576,12 +1559,7 @@ function PlayStyles() {
 
   return (
     <section className="t-ps">
-      <video className="t-sky-video" autoPlay loop muted playsInline>
-        <source src="sky.webm" type="video/webm"/>
-        <source src="sky.mp4" type="video/mp4"/>
-      </video>
-      <div className="t-sky-overlay"></div>
-      <div className="t-container" style={{position:'relative',zIndex:2}}>
+      <div className="t-container">
         <div className="t-ps-head">
           <div className="t-eyebrow t-on-dark-eyebrow">Analyse de jeu</div>
           <h2 className="t-ps-title">Trouve ton<br/><em>style</em></h2>
@@ -1876,10 +1854,6 @@ function CTA() {
   return (
     <section className="t-cta" id="contact">
       <div className="t-cta-canvas">
-        <video className="t-sky-video" autoPlay loop muted playsInline>
-          <source src="sky.webm" type="video/webm"/>
-          <source src="sky.mp4" type="video/mp4"/>
-        </video>
         <div>
           <div className="t-eyebrow t-on-dark-eyebrow">— Réservation</div>
           <h2 className="t-cta-title">PRÊT À<br/>FRAPPER<br/><em>plus fort ?</em></h2>
@@ -1992,13 +1966,13 @@ function App() {
       <Trusted />
       <Seam fill="var(--bg)" bg="var(--paper)" dir="up" />
       <Facilities />
-      <Seam fill="var(--paper)" bg="#1a3a6b" dir="down" />
+      <Seam fill="var(--paper)" bg="var(--brand-2)" dir="down" />
       <PlayStyles />
-      <Seam fill="#1a3a6b" bg="var(--bg)" dir="up" />
+      <Seam fill="var(--brand-2)" bg="var(--bg)" dir="up" />
       <ForWhom />
-      <Seam fill="var(--bg)" bg="#1a3a6b" dir="down" />
+      <Seam fill="var(--bg)" bg="var(--brand-2)" dir="down" />
       <Method />
-      <Seam fill="#1a3a6b" bg="var(--bg)" dir="up" />
+      <Seam fill="var(--brand-2)" bg="var(--bg)" dir="up" />
       <Services />
       <Seam fill="var(--bg)" bg="var(--paper)" dir="down" />
       <Testimonials />
