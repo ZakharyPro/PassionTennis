@@ -7,7 +7,7 @@
 <title>PassionTennis — Coaching Tennis & Performance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Narrow:wght@400;500;600;700;800&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Narrow:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html{overflow-x:hidden;}
@@ -35,7 +35,6 @@
     --accent: oklch(0.86 0.16 110);
 
     --font-display:'Archivo', 'Helvetica Neue', sans-serif;
-    --font-impact:'Bebas Neue', 'Archivo Narrow', sans-serif;
     --font-body:'Inter', system-ui, sans-serif;
     --font-mono:'JetBrains Mono', ui-monospace, monospace;
 
@@ -68,8 +67,8 @@
 
   .t-section-head{ display:grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items:end; margin-bottom: 56px;}
   .t-section-title{
-    font-family: var(--font-impact); font-weight: 400;
-    font-size: clamp(38px, 4.4vw, 68px); line-height: 1; letter-spacing: 0.03em; margin: 0; text-wrap: balance;
+    font-family: var(--font-display); font-weight: 800;
+    font-size: clamp(38px, 4.4vw, 68px); line-height: 1; letter-spacing: -0.02em; margin: 0; text-wrap: balance;
   }
   .t-section-title em{ font-style: italic; font-family: 'Fraunces', serif; font-weight: 500; color: var(--ink-2);}
   .t-on-dark .t-section-title{ color:#fff;}
@@ -188,8 +187,8 @@
 
   .t-hero-headline{
     position:absolute; left: 36px; bottom: 48px; z-index: 4;
-    font-family: var(--font-impact); font-weight: 400;
-    font-size: clamp(36px, 4.6vw, 76px); line-height: 0.92; letter-spacing: 0.05em;
+    font-family: var(--font-display); font-weight: 800;
+    font-size: clamp(36px, 4.6vw, 76px); line-height: 0.92; letter-spacing: -0.03em;
     color: rgba(255,255,255,.92);
     text-shadow: 0 4px 30px rgba(0,0,0,.25);
   }
@@ -280,8 +279,8 @@
   }
   .t-skilled-text{
     position: relative; inset: unset;
-    font-family: var(--font-impact); font-weight: 400;
-    font-size: clamp(60px, 9vw, 155px); line-height: 0.92; letter-spacing: 0.02em;
+    font-family: var(--font-display); font-weight: 800;
+    font-size: clamp(60px, 9vw, 155px); line-height: 0.92; letter-spacing: -0.045em;
     color: var(--ink);
     overflow: visible;
     display: flex; flex-direction: column;
@@ -553,38 +552,56 @@
 
   /* ========== SERVICES ========== */
   .t-services{ padding: var(--section-py) 0; }
-  .t-services-tabs{ display:flex; gap: 8px; padding: 6px; background: #fff; border-radius: 999px;
-    box-shadow: 0 12px 30px -20px rgba(10,22,40,.15); margin-bottom: 32px; width: fit-content;}
-  .t-services-tab{
-    display:flex; flex-direction:column; gap: 2px; align-items: flex-start;
-    padding: 12px 22px; border-radius: 999px; border: 0; background: transparent;
-    font-family: var(--font-body); cursor: pointer; transition: all .2s ease;
+  .t-services-outer{ position: relative; margin-top: 8px; }
+  .t-services-arrows{
+    display: flex; gap: 8px; justify-content: flex-end;
+    padding: 0 var(--gutter) 16px;
   }
-  .t-services-tab[aria-selected="true"]{ background: var(--ink); color: #fff;}
-  .t-services-tab-tag{ font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.16em; opacity: 0.6; text-transform: uppercase;}
-  .t-services-tab-name{ font-size: 13px; font-weight: 600;}
-  .t-service-panel{
-    display:grid; grid-template-columns: 1.05fr 1fr; gap: 48px;
-    padding: 40px; border-radius: 28px;
-    background: #fff; box-shadow: 0 24px 60px -30px rgba(10,22,40,.15);
-    align-items: center;
+  .t-arr-btn{
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1.5px solid var(--hairline); background: #fff;
+    display: grid; place-items: center; cursor: pointer;
+    font-size: 18px; line-height: 1;
+    transition: background .18s, border-color .18s, color .18s;
   }
-  .t-service-art{ aspect-ratio: 5/4; border-radius: 20px; overflow:hidden; position:relative; background: var(--brand); color:#fff;}
+  .t-arr-btn:hover{ background: var(--ink); color: #fff; border-color: var(--ink); }
+  .t-services-track{
+    display: flex; gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px var(--gutter) 28px;
+  }
+  .t-services-track::-webkit-scrollbar{ display: none; }
+  .t-service-card{
+    flex: 0 0 min(480px, 82vw);
+    scroll-snap-align: start;
+    border-radius: 24px; overflow: hidden;
+    background: #fff;
+    box-shadow: 0 24px 60px -30px rgba(10,22,40,.15);
+    border: 1px solid var(--hairline);
+    display: flex; flex-direction: column;
+  }
+  .t-service-art{ aspect-ratio: 5/4; overflow:hidden; position:relative; background: var(--brand); color:#fff; flex-shrink: 0;}
+  .t-service-body{ padding: 32px; display: flex; flex-direction: column; flex: 1; }
   .t-service-chips{ display:flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap;}
   .t-chip{ font-family: var(--font-mono); font-size: 11px; padding: 6px 10px; border-radius:999px;
     background: var(--bg); color: var(--ink-2); border:1px solid var(--hairline); letter-spacing:0.06em; text-transform:uppercase;}
-  .t-service-title{ font-family: var(--font-display); font-size: clamp(32px,3.4vw,48px); line-height: 0.98;
-    letter-spacing:-0.02em; margin:0 0 16px; font-weight:800;}
+  .t-service-title{ font-family: var(--font-display); font-size: clamp(24px,2.6vw,36px); line-height: 1.05;
+    letter-spacing:-0.02em; margin:0 0 14px; font-weight:800;}
   body[data-typo="editorial"] .t-service-title{ font-weight: 600;}
-  .t-service-desc{ font-size: 16px; line-height: 1.6; color: var(--ink-2); margin: 0 0 24px;}
-  .t-service-list{ list-style:none; padding:0; margin: 0 0 28px; display:grid; gap: 12px;}
-  .t-service-list li{ display:flex; gap: 12px; align-items:flex-start; font-size: 14.5px; color: var(--ink); }
+  .t-service-desc{ font-size: 15px; line-height: 1.6; color: var(--ink-2); margin: 0 0 20px;}
+  .t-service-list{ list-style:none; padding:0; margin: 0 0 24px; display:grid; gap: 10px;}
+  .t-service-list li{ display:flex; gap: 10px; align-items:flex-start; font-size: 14px; color: var(--ink); }
   .t-service-bullet{ width:18px; height:18px; flex-shrink:0; border-radius:50%; background: var(--accent); display:grid; place-items:center; margin-top:2px;}
   .t-service-bullet svg{ width:10px; height:10px; color: var(--ink); }
-  .t-service-price{ display:flex; gap: 14px; align-items:baseline; padding: 18px 0; border-top: 1px solid var(--hairline); flex-wrap: wrap;}
+  .t-service-price{ display:flex; gap: 12px; align-items:baseline; padding: 16px 0 0; border-top: 1px solid var(--hairline); flex-wrap: wrap; margin-top: auto;}
   .t-service-from{ font-family: var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.14em; color: var(--ink-mute);}
-  .t-service-num{ font-family: var(--font-display); font-size: 38px; font-weight:800; letter-spacing:-0.02em; line-height:1;}
-  .t-service-per{ color: var(--ink-mute); font-size:14px;}
+  .t-service-num{ font-family: var(--font-display); font-size: 34px; font-weight:800; letter-spacing:-0.02em; line-height:1;}
+  .t-service-per{ color: var(--ink-mute); font-size:13px;}
+  .t-service-note{ font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); width: 100%; padding-top: 4px;}
 
   /* generic dark button */
   .t-btn{ display:inline-flex; align-items:center; gap: 8px; padding: 14px 22px;
@@ -712,7 +729,7 @@
   /* ── Tablette large (≤1100px) ── */
   @media (max-width: 1100px){
     .t-section-head{ grid-template-columns: 1fr; gap: 24px;}
-    .t-trusted-grid, .t-service-panel, .t-cta-canvas{ grid-template-columns: 1fr; gap: 28px;}
+    .t-trusted-grid, .t-cta-canvas{ grid-template-columns: 1fr; gap: 28px;}
     .t-fac-body{ grid-template-columns: 1fr; }
     .t-fac-photo{ aspect-ratio: 16/9; min-height: 200px; }
     .t-test-grid{ grid-template-columns: 1fr 1fr;}
@@ -749,7 +766,6 @@
     .t-skilled-text{ font-size: clamp(52px, 12vw, 110px); }
     .t-skilled-photo{ width: 210px; height: 290px; }
     .t-skilled-nav{ padding: 0 24px; }
-    .t-service-panel{ grid-template-columns: 1fr; }
     .t-cta-canvas{ grid-template-columns: 1fr; padding: 48px 28px; }
     .t-test-grid{ grid-template-columns: 1fr; }
     .t-aud-grid{ grid-template-columns: 1fr 1fr; }
@@ -789,7 +805,8 @@
     .t-hero-canvas{
       height: 100svh; height: 100dvh;
       min-height: 0; border-radius: 0; aspect-ratio: unset;
-      display: flex; flex-direction: column; justify-content: flex-end;
+      display: flex; flex-direction: column; justify-content: flex-start;
+      padding-top: 71.5vw;
       background: #fff;
     }
     .t-hero-bg{ display: none; }
@@ -800,50 +817,47 @@
       object-position: center top;
       width: 100%; height: auto;
     }
-    /* "EN JEU, SANS LIMITE" — blanc, en bas à droite de l'image hero */
+    /* "EN JEU, SANS LIMITE" — blanc, en bas à gauche de l'image */
     .t-hero-headline{
       position: absolute;
-      left: unset; bottom: unset;
-      right: 16px;
-      top: calc(71.5vw - 100px);
-      text-align: right;
-      font-size: clamp(38px, 12vw, 56px);
-      letter-spacing: 0.04em;
-      line-height: 0.95;
+      left: 16px; right: unset; bottom: unset;
+      top: calc(71.5vw - 72px);
+      text-align: left;
+      font-size: clamp(24px, 7.5vw, 36px);
+      line-height: 1;
       color: #fff;
-      text-shadow: 0 2px 24px rgba(0,0,0,.55);
+      text-shadow: 0 2px 18px rgba(0,0,0,.5);
       z-index: 5;
-      padding: 0;
-      margin: 0;
+      padding: 0; margin: 0;
     }
-    /* Carte programme — visible entre l'image et les stats */
+    /* Carte programme — remplit tout l'espace sous l'image */
     .t-hero-feature{
-      display: flex !important; flex-direction: row; align-items: center; gap: 12px;
+      display: flex !important; flex-direction: column; align-items: stretch; gap: 0;
       position: relative; right: unset; top: unset; transform: none;
-      width: calc(100% - 32px); margin: 0 16px 8px;
+      flex: 1; margin: 0 16px;
       backdrop-filter: none; -webkit-backdrop-filter: none;
       background: #fff; border: 1px solid rgba(10,22,40,.12);
-      box-shadow: 0 4px 16px rgba(10,22,40,.08);
-      color: var(--ink); padding: 10px;
-      order: 1;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(10,22,40,.1);
+      color: var(--ink); padding: 0;
+      overflow: hidden;
     }
     .t-hero-feature-thumb{
-      display: block;
-      width: 72px; min-width: 72px; height: 72px;
-      aspect-ratio: 1/1; border-radius: 10px; overflow: hidden;
+      display: block; flex: 1; min-height: 0;
+      width: 100%; aspect-ratio: unset; border-radius: 0; overflow: hidden;
     }
-    .t-hero-feature-body{ padding: 0; flex: 1; }
+    .t-hero-feature-thumb img{ width: 100%; height: 100%; object-fit: cover; object-position: center 80%; display: block; }
+    .t-hero-feature-body{ padding: 14px 16px; flex-shrink: 0; }
     .t-hero-feature-eyebrow{ color: var(--ink-mute); font-size: 9px; }
-    .t-hero-feature-title{ color: var(--ink); margin: 4px 0 6px; font-size: 13px; }
+    .t-hero-feature-title{ color: var(--ink); margin: 4px 0 6px; font-size: 14px; }
     .t-hero-feature-link{ color: var(--ink); border-bottom-color: rgba(10,22,40,.3); }
     .t-hero-stats{
       position: relative; right: unset; bottom: unset; left: unset;
-      width: calc(100% - 32px); margin: 0 16px 16px;
+      width: calc(100% - 32px); margin: 8px 16px 16px;
       display: flex; align-items: center; gap: 12px;
-      padding: 12px 16px; border-radius: 14px;
+      padding: 12px 16px; border-radius: 14px; flex-shrink: 0;
       background: rgba(10,22,40,.05); border-color: rgba(10,22,40,.1);
       color: var(--ink);
-      order: 2;
     }
     .t-hero-stats-num{ font-size: 26px; line-height: 1; color: var(--ink); }
     .t-hero-stats-num span{ color: var(--brand); }
@@ -928,34 +942,15 @@
 
     /* ── Programmes ── */
     .t-services{ padding: 48px 0; }
-    .t-services-tabs{
-      width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
-      padding: 4px 16px 4px; gap: 6px;
-      scrollbar-width: none; background: transparent;
-      box-shadow: none; border-radius: 0;
-      justify-content: flex-start;
-    }
-    .t-services-tabs::-webkit-scrollbar{ display: none; }
-    .t-services-tab{
-      white-space: nowrap; flex-shrink: 0;
-      padding: 8px 14px; font-size: 12px;
-      background: rgba(10,22,40,.06);
-      border-radius: 999px;
-    }
-    .t-services-tab[aria-selected="true"]{ background: var(--ink); color: #fff; }
-    .t-service-panel{
-      grid-template-columns: 1fr; gap: 0;
-      border-radius: 16px; overflow: hidden;
-      padding: 0; box-shadow: 0 12px 40px -20px rgba(10,22,40,.15);
-    }
-    .t-service-art{
-      aspect-ratio: 4/3; border-radius: 0; min-height: 0; order: -1;
-    }
-    .t-service-panel > div:last-child{ padding: 20px; }
-    .t-service-title{ font-size: clamp(20px, 5.5vw, 28px); margin-bottom: 10px; }
+    .t-services-track{ gap: 16px; padding: 4px 16px 20px; }
+    .t-service-card{ flex: 0 0 82vw; border-radius: 18px; }
+    .t-service-art{ aspect-ratio: 4/3; }
+    .t-service-body{ padding: 20px; }
+    .t-service-title{ font-size: clamp(20px, 5.5vw, 26px); margin-bottom: 10px; }
     .t-service-list li{ font-size: 13px; }
-    .t-service-price{ padding: 12px 0; }
-    .t-service-num{ font-size: 28px; }
+    .t-service-price{ padding: 12px 0 0; }
+    .t-service-num{ font-size: 26px; }
+    .t-services-arrows{ display: none; }
     .t-form-grid2{ grid-template-columns: 1fr; }
 
     /* ── Pour qui ── */
@@ -1478,7 +1473,7 @@ const SERVICES = [
     title:'Programme hybride · Performance',
     desc:'Le programme qui change tout. Tennis + physique + mental, intégrés sur 12 semaines avec un objectif chiffré et un plan béton.',
     bullets:['2h Tennis + 2h Physique / semaine','Bilan vidéo + tests physiques /4 sem.','App de suivi : plan, vidéos, stats','WhatsApp direct 7j/7'],
-    price:'550 CHF', per:'/ mois', img:'hybride.jpg', pos:'center center', fit:'contain', bg:'#ffffff' },
+    price:'790 CHF', per:'/ mois', note:'≈ 50 CHF / h', img:'hybride.jpg', pos:'center center', fit:'contain', bg:'#ffffff' },
 ];
 
 // ─── PLAY STYLES data ────────────────────────────────────────────────────────
@@ -1629,8 +1624,10 @@ function PlayStyles() {
 }
 
 function Services() {
-  const [active, setActive] = React.useState(SERVICES[2].id);
-  const s = SERVICES.find(x => x.id === active);
+  const trackRef = React.useRef(null);
+  const scroll = (dir) => {
+    trackRef.current?.scrollBy({ left: dir * 520, behavior: 'smooth' });
+  };
   return (
     <section id="services" className="t-services">
       <div className="t-container">
@@ -1641,41 +1638,44 @@ function Services() {
           </div>
           <p className="t-section-desc">Choisis le format qui correspond à ton moment. Tu peux changer en cours de route — ton plan évolue avec toi.</p>
         </div>
-        <div className="t-services-tabs" role="tablist">
-          {SERVICES.map(svc => (
-            <button key={svc.id} className="t-services-tab" role="tab" aria-selected={active === svc.id} onClick={() => setActive(svc.id)}>
-              <span className="t-services-tab-tag">{svc.tag}</span>
-              <span className="t-services-tab-name">{svc.title.split(' ').slice(0,3).join(' ')}</span>
-            </button>
-          ))}
+      </div>
+      <div className="t-services-outer">
+        <div className="t-services-arrows">
+          <button className="t-arr-btn" onClick={() => scroll(-1)} aria-label="Précédent">&#8592;</button>
+          <button className="t-arr-btn" onClick={() => scroll(1)} aria-label="Suivant">&#8594;</button>
         </div>
-        <div className="t-service-panel">
-          <div className="t-service-art" style={s.bg ? {background: s.bg} : {}}>
-            <img key={s.img} src={s.img} alt={s.title}
-              style={{width:'100%',height:'100%',objectFit:s.fit||'cover',objectPosition:s.pos,display:'block',animation:'facFadeIn .35s ease'}}
-              onError={(e)=>{e.target.style.display='none'}}/>
-          </div>
-          <div>
-            <div className="t-service-chips">
-              {s.meta.map(m => <span className="t-chip" key={m}>{m}</span>)}
+        <div className="t-services-track" ref={trackRef}>
+          {SERVICES.map(svc => (
+            <div key={svc.id} className="t-service-card">
+              <div className="t-service-art" style={svc.bg ? {background: svc.bg} : {}}>
+                <img src={svc.img} alt={svc.title}
+                  style={{width:'100%',height:'100%',objectFit:svc.fit||'cover',objectPosition:svc.pos,display:'block'}}
+                  onError={(e)=>{e.target.style.display='none'}}/>
+              </div>
+              <div className="t-service-body">
+                <div className="t-service-chips">
+                  {svc.meta.map(m => <span className="t-chip" key={m}>{m}</span>)}
+                </div>
+                <h3 className="t-service-title">{svc.title}</h3>
+                <p className="t-service-desc">{svc.desc}</p>
+                <ul className="t-service-list">
+                  {svc.bullets.map(b => (
+                    <li key={b}><span className="t-service-bullet"><Icon.Check/></span>{b}</li>
+                  ))}
+                </ul>
+                <div className="t-service-price">
+                  <span className="t-service-from">à partir de</span>
+                  <span className="t-service-num">{svc.price}</span>
+                  <span className="t-service-per">{svc.per}</span>
+                  <button className="t-btn t-btn-dark"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}>
+                    Réserver →
+                  </button>
+                  {svc.note && <span className="t-service-note">{svc.note}</span>}
+                </div>
+              </div>
             </div>
-            <h3 className="t-service-title">{s.title}</h3>
-            <p className="t-service-desc">{s.desc}</p>
-            <ul className="t-service-list">
-              {s.bullets.map(b => (
-                <li key={b}><span className="t-service-bullet"><Icon.Check/></span>{b}</li>
-              ))}
-            </ul>
-            <div className="t-service-price">
-              <span className="t-service-from">à partir de</span>
-              <span className="t-service-num">{s.price}</span>
-              <span className="t-service-per">{s.per}</span>
-              <button className="t-btn t-btn-dark"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}>
-                Réserver →
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
